@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MultiCore mask guide</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell training">
+    <header class="header">
+      <nav class="top-nav"><span class="eyebrow">PXRD · MultiCore</span><span class="training-actions"><a href="index.html">← Home</a></span></nav>
+      <h1>Mask</h1>
+      <p>These diagrams explain the iCore beam path and the three axial beam-width definitions in the instrument guide. They are schematics, not a measured profile or a scale drawing.</p>
+    </header>
+    <section class="panel diagram-section">
+      <h2>Incident path: masks and divergence slit</h2>
+      <svg viewBox="0 0 760 320" role="img" aria-labelledby="incident-title incident-desc">
+        <title id="incident-title">Incident X-ray path through two masks and a divergence slit</title>
+        <desc id="incident-desc">Illustrative straight rays leave different positions on a finite line source. A pale fan widens after Mask 1; its outer amber rays pass Mask 1 and are blocked by Mask 2. Teal rays pass both mask openings. The divergence slit is only a nearby reference plane because it acts in the perpendicular scan plane. The fan and rays are not a measured intensity profile, so no FWHM is drawn on this ray path.</desc>
+        <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9" fill="#117d86"/></marker></defs>
+        <text x="38" y="49" font-size="14" fill="#466e78">Axial view · mask-controlled W</text>
+        <path d="M241 143 L400 84.28 L400 235.72 L241 177 Z" fill="#f0ad4e" opacity=".2"/>
+        <path d="M65 120 L241 120 M65 120 L400 177 M65 200 L400 143 M65 112 L400 231.91 M65 208 L400 88.09" stroke="#c88732" stroke-width="2.5" stroke-dasharray="6 5" fill="none"/>
+        <path d="M65 120 L640 205.820896 M65 200 L640 114.179104 M65 144 L640 168.029851 M65 176 L640 151.970149 M65 168 L640 142 M65 152 L640 178 M65 160 L640 160" stroke="#117d86" stroke-width="2.1" fill="none"/>
+        <path d="M65 112 L65 208 M241 90 L241 143 M241 177 L241 230 M400 75 L400 149 M400 171 L400 245" stroke="#284a59" stroke-width="15"/>
+        <path d="M434 78 L434 242" stroke="#829ca6" stroke-width="2" stroke-dasharray="6 6"/>
+        <path d="M640 76 L640 244" stroke="#234b55" stroke-width="7"/>
+        <text x="434" y="60" text-anchor="middle">DS plane</text>
+        <text x="65" y="265" text-anchor="middle">Source</text>
+        <text x="241" y="265" text-anchor="middle">Mask 1</text>
+        <text x="400" y="265" text-anchor="middle">Mask 2</text>
+        <text x="640" y="265" text-anchor="middle">Sample plane</text>
+      </svg>
+      <svg class="profile-inset" viewBox="0 0 760 330" role="img" aria-labelledby="profile-title profile-desc">
+        <title id="profile-title">Core, FWHM and footprint of the iCore beam at the sample</title>
+        <desc id="profile-desc">Schematic trapezoidal axial intensity profile. A flat central plateau spans the core from x 330 to 430. The half-maximum intersections span the FWHM from x 285 to 475. The full baseline from x 240 to 520 spans the footprint. These widths differ from the irradiated length controlled by the divergence slit.</desc>
+        <text x="380" y="30" text-anchor="middle" class="profile-title">Axial beam intensity at the sample</text>
+        <path d="M174 56 L174 198 L580 198" fill="none" stroke="#667d86" stroke-width="1.8"/>
+        <path d="M174 133 L475 133" fill="none" stroke="#9aadb4" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <path d="M240 198 L330 68 L430 68 L520 198 Z" fill="#ccebed" opacity=".75" stroke="#0b7b83" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M330 68 L430 68" stroke="#0b7b83" stroke-width="4"/>
+        <circle cx="285" cy="133" r="4" fill="#b95724"/><circle cx="475" cy="133" r="4" fill="#b95724"/>
+        <path d="M330 74 V220 M430 74 V220 M285 138 V254 M475 138 V254 M240 198 V288 M520 198 V288" fill="none" stroke="#a6bac0" stroke-width="1.4" stroke-dasharray="4 5"/>
+        <path d="M330 218 H430 M330 213 V223 M430 213 V223" fill="none" stroke="#147b83" stroke-width="2.5"/>
+        <path d="M285 252 H475 M285 247 V257 M475 247 V257" fill="none" stroke="#b95724" stroke-width="2.5"/>
+        <path d="M240 286 H520 M240 281 V291 M520 281 V291" fill="none" stroke="#775e9c" stroke-width="2.5"/>
+        <text x="160" y="137" text-anchor="end">0.5</text>
+        <text x="160" y="73" text-anchor="end">1.0</text>
+        <text x="380" y="213" text-anchor="middle" class="profile-measure profile-core">Core</text>
+        <text x="380" y="247" text-anchor="middle" class="profile-measure profile-width">FWHM = W</text>
+        <text x="380" y="281" text-anchor="middle" class="profile-measure profile-footprint">Footprint</text>
+        <text x="595" y="202">Axial position</text>
+        <text x="90" y="124" text-anchor="middle" transform="rotate(-90 90 124)">I / Imax</text>
+        <text x="380" y="316" text-anchor="middle" class="profile-note">Conceptual shape · widths use the iCore guide and workbook tables</text>
+      </svg>
+      <p>The pale fan shows rays admitted by Mask 1 spreading before Mask 2. Its outer amber rays strike Mask 2; teal rays pass both masks. The ray spacing does not measure intensity. The iCore guide describes the resulting axial intensity as trapezoidal: <strong>core</strong> is the flat central width, <strong>FWHM (W)</strong> is the width at half the peak intensity, and <strong>footprint</strong> is the full base width. The calculator uses the workbook's FWHM lookup for W. The divergence slit controls irradiated length L in the perpendicular scan plane; its position alone is marked here.</p>
+    </section>
+    <section class="panel diagram-section">
+      <h2>Sample position and holder edge</h2>
+      <svg viewBox="0 0 760 300" role="img" aria-labelledby="sample-title sample-desc">
+        <title id="sample-title">Beam FWHM and tails relative to the sample holder</title>
+        <desc id="sample-desc">Top view of the sample: mask-controlled W runs vertically. A central FWHM strip sits within a larger illustrative axial beam profile. Weak tails can reach the surrounding holder.</desc>
+        <rect x="190" y="45" width="380" height="205" rx="20" fill="#dce5e7"/>
+        <circle cx="380" cy="147" r="89" fill="#f6fbf9" stroke="#577b82" stroke-width="3"/>
+        <ellipse cx="380" cy="147" rx="43" ry="104" fill="#f6c366" opacity=".38"/>
+        <rect x="357" y="90" width="46" height="114" rx="18" fill="#e9923d" opacity=".8"/>
+        <path d="M426 90 L426 204 M419 90 L433 90 M419 204 L433 204" stroke="#a94e1a" stroke-width="2"/>
+        <text x="449" y="147" text-anchor="middle" transform="rotate(90 449 147)">W (FWHM)</text>
+        <text x="380" y="283" text-anchor="middle">Weak tails may reach the holder even when W fits the sample.</text>
+      </svg>
+      <p>During a direct-beam Z alignment scan, the sample surface enters the beam until transmission is about half the open-beam value. That height reference is separate from the mask table's W. Positioning the sample there does not halve W or remove weak beam tails.</p>
+    </section>
+<section class="panel"><h2>Sources and limits</h2><p>The supplied iCore instrument guide (pp. 1–3) defines the trapezoidal profile and lists core, FWHM and footprint widths for each mask pair. The workbook supplies the calculator's FWHM lookup. These diagrams are qualitative. See the <a href="https://nrf.aux.eng.ufl.edu/_files/documents/16868.pdf" target="_blank" rel="noopener noreferrer">XRD alignment guide</a> for sample-height alignment.</p></section>
+  </main>
+</body>
+</html>

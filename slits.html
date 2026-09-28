@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MultiCore programmable slits guide</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell training">
+    <header class="header">
+      <nav class="top-nav"><span class="eyebrow">PXRD · MultiCore</span><a href="index.html">← Home</a></nav>
+      <h1>Programmable divergence and anti-scatter slits</h1>
+      <p>The incident programmable divergence slit (PDS) sets irradiated length. The detector-side programmable anti-scatter slit (PAS, called PASS in the MultiCore brochure) sets the observed region.</p>
+    </header>
+
+    <section class="panel diagram-section">
+      <h2>Where irradiation and observation overlap</h2>
+      <p class="overlap-intro">Read down each column: PDS illuminates the sample, PASS selects what the detector can see, and their intersection contributes to the measurement. Each circle shows the same sample position.</p>
+      <div class="slit-visual-grid">
+        <figure class="slit-figure overlap-card">
+          <div class="overlap-card-heading"><span class="overlap-card-index">01</span><h3>Conventional symmetric</h3></div>
+          <svg viewBox="0 0 400 570" role="img" aria-labelledby="sym-title sym-desc">
+            <title id="sym-title">Conventional slit sample coverage in three stages</title>
+            <desc id="sym-desc">PDS incident and PASS diffracted beam sketch above three equally sized circular samples. The yellow irradiated and green observed strips partly overlap. The red measured strip is their intersection, with blue hatching on the unmatched edges.</desc>
+            <defs>
+              <clipPath id="sym-sample"><circle cx="108" cy="0" r="39"/></clipPath>
+              <pattern id="sym-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(42)"><rect width="7" height="7" fill="#f8fbfa"/><rect width="2.5" height="7" fill="#6aaad0"/></pattern>
+            </defs>
+            <g class="overlap-optics">
+              <text x="24" y="27" class="optics-label">PDS · incident</text><text x="239" y="27" class="optics-label">PASS · diffracted</text>
+              <path d="M24 47L88 105L134 105Z" class="optics-beam-pds"/><path d="M78 105L124 105L368 49Z" class="optics-beam-pass"/>
+              <path d="M20 46L108 105L370 45" class="optics-ray"/>
+              <path d="M50 88H87 M135 88h32 M228 75h34 M310 75h33" class="optics-blade"/>
+              <path d="M88 82v13 M134 82v13 M78 104h46" class="optics-slit"/>
+              <circle cx="108" cy="105" r="5" class="optics-target"/>
+              <text x="108" y="134" text-anchor="middle" class="optics-sample-label">sample position</text>
+            </g>
+            <g transform="translate(0 225)"><circle cx="108" r="50" class="sample-rim-fill"/><circle cx="108" r="39" class="sample-fill"/><g clip-path="url(#sym-sample)"><rect x="88" y="-28" width="46" height="56" class="area-pds"/></g><text x="183" y="-5" class="overlap-stage">Irradiation area</text><text x="183" y="17" class="overlap-stage-sub">PDS · yellow band</text></g>
+            <g transform="translate(0 365)"><circle cx="108" r="50" class="sample-rim-fill"/><circle cx="108" r="39" class="sample-fill"/><g clip-path="url(#sym-sample)"><rect x="78" y="-28" width="46" height="56" class="area-pass"/></g><text x="183" y="-5" class="overlap-stage">Observation area</text><text x="183" y="17" class="overlap-stage-sub">PASS · green band</text></g>
+            <g transform="translate(0 505)"><circle cx="108" r="50" class="sample-rim-fill"/><circle cx="108" r="39" class="sample-fill"/><g clip-path="url(#sym-sample)"><rect x="78" y="-28" width="56" height="56" fill="url(#sym-hatch)"/><rect x="88" y="-28" width="36" height="56" class="area-measured"/></g><text x="183" y="-5" class="overlap-stage">Measured area</text><text x="183" y="17" class="overlap-stage-sub">Partly shared band</text></g>
+            <path d="M78 145V553 M88 145V553 M124 145V553 M134 145V553" class="overlap-guide"/>
+          </svg>
+          <figcaption>The symmetric settings leave unmatched strips at each side of the shared region.</figcaption>
+        </figure>
+        <figure class="slit-figure overlap-card">
+          <div class="overlap-card-heading"><span class="overlap-card-index">02</span><h3>Independent PDS + PASS</h3></div>
+          <svg viewBox="0 0 400 570" role="img" aria-labelledby="asym-title asym-desc">
+            <title id="asym-title">Independent PDS and PASS sample coverage in three stages</title>
+            <desc id="asym-desc">PDS incident and PASS diffracted beam sketch above three circular samples at the same scale as the conventional case. Yellow irradiation and green observation both span x 82 to 134, so the red measured region occupies the full shared band.</desc>
+            <defs><clipPath id="asym-sample"><circle cx="108" cy="0" r="39"/></clipPath></defs>
+            <g class="overlap-optics">
+              <text x="24" y="27" class="optics-label">PDS · incident</text><text x="239" y="27" class="optics-label">PASS · diffracted</text>
+              <path d="M24 47L82 105L134 105Z" class="optics-beam-pds"/><path d="M82 105L134 105L368 49Z" class="optics-beam-pass"/>
+              <path d="M20 46L108 105L370 45" class="optics-ray"/>
+              <path d="M44 88h37 M135 88h32 M228 75h34 M310 75h33" class="optics-blade"/>
+              <path d="M82 82v13 M134 82v13 M82 104h52" class="optics-slit"/>
+              <circle cx="108" cy="105" r="5" class="optics-target"/>
+              <text x="108" y="134" text-anchor="middle" class="optics-sample-label">sample position</text>
+            </g>
+            <g transform="translate(0 225)"><circle cx="108" r="50" class="sample-rim-fill"/><circle cx="108" r="39" class="sample-fill"/><g clip-path="url(#asym-sample)"><rect x="82" y="-28" width="52" height="56" class="area-pds"/></g><text x="183" y="-5" class="overlap-stage">Irradiation area</text><text x="183" y="17" class="overlap-stage-sub">PDS · yellow band</text></g>
+            <g transform="translate(0 365)"><circle cx="108" r="50" class="sample-rim-fill"/><circle cx="108" r="39" class="sample-fill"/><g clip-path="url(#asym-sample)"><rect x="82" y="-28" width="52" height="56" class="area-pass"/></g><text x="183" y="-5" class="overlap-stage">Observation area</text><text x="183" y="17" class="overlap-stage-sub">PASS · green band</text></g>
+            <g transform="translate(0 505)"><circle cx="108" r="50" class="sample-rim-fill"/><circle cx="108" r="39" class="sample-fill"/><g clip-path="url(#asym-sample)"><rect x="82" y="-28" width="52" height="56" class="area-measured"/></g><text x="183" y="-5" class="overlap-stage">Measured area</text><text x="183" y="17" class="overlap-stage-sub">Fully shared band</text></g>
+            <path d="M82 145V553 M134 145V553" class="overlap-guide"/>
+          </svg>
+          <figcaption>Independent blade positions bring the irradiated and observed bands into alignment.</figcaption>
+        </figure>
+      </div>
+      <p class="diagram-note overlap-legend"><span><i class="legend-swatch pds-swatch"></i>PDS · irradiated</span><span><i class="legend-swatch pass-swatch"></i>PASS · observed</span><span><i class="legend-swatch measured-swatch"></i>Intersection · measured</span></p>
+      <p class="diagram-note">Schematic sample coverage only; the positions and widths are illustrative, not instrument settings.</p>
+    </section>
+
+    <section class="panel diagram-section">
+      <h2>Fixed and programmable divergence across a scan</h2>
+      <div class="slit-visual-grid">
+        <figure class="slit-figure">
+          <svg viewBox="0 0 400 250" role="img" aria-labelledby="fds-title fds-desc">
+            <title id="fds-title">Fixed divergence slit at two scan angles</title>
+            <desc id="fds-desc">With a fixed divergence opening, a schematic beam footprint changes length between low and high incidence angles.</desc>
+            <text x="200" y="28" text-anchor="middle" class="slit-chart-title">Fixed DS</text>
+            <path d="M72 59 L252 190 L317 190 Z" fill="#e9aa72" opacity=".72"/>
+            <path d="M112 59 L223 190 L272 190 Z" fill="#f5ca60" opacity=".8"/>
+            <path d="M43 190 L357 190" stroke="#415f68" stroke-width="8"/>
+            <path d="M204 206 L334 206 M204 200 L204 212 M334 200 L334 212" stroke="#b65b25" stroke-width="2"/>
+            <text x="270" y="232" text-anchor="middle" class="slit-label">footprint changes</text>
+          </svg>
+          <figcaption>A fixed opening gives a changing irradiated length as scan geometry changes.</figcaption>
+        </figure>
+        <figure class="slit-figure">
+          <svg viewBox="0 0 400 250" role="img" aria-labelledby="pds-title pds-desc">
+            <title id="pds-title">Programmable divergence slit at two scan angles</title>
+            <desc id="pds-desc">Two schematic beam fans at different incidence angles reach a similar target length on the sample because the opening changes.</desc>
+            <text x="200" y="28" text-anchor="middle" class="slit-chart-title">Programmable DS</text>
+            <path d="M74 59 L157 190 L269 190 Z" fill="#e9aa72" opacity=".72"/>
+            <path d="M145 59 L166 190 L262 190 Z" fill="#f5ca60" opacity=".8"/>
+            <path d="M43 190 L357 190" stroke="#415f68" stroke-width="8"/>
+            <path d="M159 206 L267 206 M159 200 L159 212 M267 200 L267 212" stroke="#b65b25" stroke-width="2"/>
+            <text x="213" y="232" text-anchor="middle" class="slit-label">target length</text>
+          </svg>
+          <figcaption>The opening changes so the irradiated length can be controlled across the scan.</figcaption>
+        </figure>
+      </div>
+      <p class="diagram-note">The beam fans illustrate the brochure’s fixed versus programmable comparison. They do not show instrument dimensions or a calculated scan.</p>
+    </section>
+
+    <section class="panel diagram-section">
+      <h2>Measured scan example from the brochure</h2>
+      <p>See the measured fixed-DS and PDS comparison in <a href="https://www.malvernpanalytical.com/en/assets/Empyrean%20MultiCore%20Brochure%20with%20extended%20example%20data_tcm50-99472.pdf" target="_blank" rel="noopener noreferrer">Figure 6 of the original MultiCore brochure</a>. The result depends on the sample and measurement setup.</p>
+    </section>
+
+    <section class="panel"><h2>Source and limits</h2><p>The original diagrams above interpret Figures 4 and 5 of the <a href="https://www.malvernpanalytical.com/en/assets/Empyrean%20MultiCore%20Brochure%20with%20extended%20example%20data_tcm50-99472.pdf" target="_blank" rel="noopener noreferrer">Empyrean MultiCore brochure</a>; its Figure 6 is linked above. The brochure calls the detector-side slit “PASS.” The calculator follows the workbook’s slit settings; these illustrations do not determine an opening or predict intensity.</p></section>
+  </main>
+</body>
+</html>

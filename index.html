@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PXRD · MultiCore optics guides</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell home">
+    <header class="header">
+      <nav class="top-nav" aria-label="Optics guides">
+        <span class="eyebrow">PXRD · MultiCore</span>
+        <div class="home-links">
+          <a href="calculator.html">Optics setup calculator</a>
+          <a href="training.html">Mask</a>
+          <a href="divergent-slit.html">divergent slit</a>
+          <a href="soller.html">Soller slit</a>
+          <a href="slits.html">Programmable divergence and anti-scatter slits (PDS and PAS)</a>
+        </div>
+      </nav>
+      <h1>PXRD optics setup</h1>
+      <p>Explore the MultiCore optics guides or open the calculator to check workbook settings for your sample and scan.</p>
+    </header>
+    <figure class="home-instrument">
+      <div class="home-diagram-scroll" role="region" aria-label="Scrollable diffractometer optics schematic" tabindex="0">
+        <svg class="home-diagram" viewBox="0 0 1200 540" role="img" aria-labelledby="schematic-title schematic-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="schematic-title">Bragg-Brentano MultiCore optics arrangement</title>
+          <desc id="schematic-desc">Schematic of the incident path from the X-ray tube through the Bragg-BrentanoHD multilayer mirror, incident Soller slits, Mask 1, Mask 2 and divergence slit to the sample. The diffracted path goes through the programmable anti-scatter slit and diffracted Soller slits to the detector.</desc>
+          <defs>
+            <linearGradient id="housing" x2="1" y2="1"><stop stop-color="#edf4f5"/><stop offset="1" stop-color="#9bb0b6"/></linearGradient>
+            <linearGradient id="detector" x2="1" y2="1"><stop stop-color="#dfe9eb"/><stop offset="1" stop-color="#78929a"/></linearGradient>
+            <marker id="arrowBeam" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5 0 9Z" fill="#df7940"/></marker>
+            <marker id="arrowCall" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4 0 8Z" fill="#657e85"/></marker>
+          </defs>
+          <rect width="1200" height="540" rx="20" fill="#fbfdfd"/>
+          <text x="42" y="37" class="diagram-kicker">INCIDENT OPTICS</text>
+          <text x="857" y="37" class="diagram-kicker">DIFFRACTED OPTICS</text>
+          <path d="M95 280 L155 297 L600 423 L1048 147" fill="none" stroke="#e59b68" stroke-width="30" opacity=".13"/>
+          <path d="M95 280 L155 297 L600 423" fill="none" stroke="#df7940" stroke-width="3" marker-end="url(#arrowBeam)"/>
+          <path d="M600 423 L1048 147" fill="none" stroke="#df7940" stroke-width="3" marker-end="url(#arrowBeam)"/>
+          <text x="103" y="248" class="beam-label">incident beam</text>
+          <text x="906" y="213" class="beam-label" transform="rotate(-31 906 213)">diffracted beam</text>
+
+          <!-- source and incident components, each placed across the beam -->
+          <g aria-label="X-ray tube"><rect x="38" y="208" width="52" height="112" rx="9" fill="url(#housing)" stroke="#779098" stroke-width="2" transform="rotate(16 64 264)"/><rect x="70" y="263" width="27" height="13" rx="3" fill="#df7940" transform="rotate(16 83 270)"/></g>
+          <g aria-label="Bragg-BrentanoHD multilayer mirror"><path d="M137 292 L177 303 L177 311 L137 300 Z" fill="#168b96" stroke="#075862" stroke-width="2"/><path d="M137 292 L177 303" stroke="#b8edf0" stroke-width="3"/></g>
+          <g aria-label="Incident Soller slits"><rect x="252" y="286" width="14" height="48" rx="2" fill="#15849a" transform="rotate(16 259 310)"/><path d="M254 290l12 4m-13 2 12 4m-13 2 12 4m-13 2 12 4m-13 2 12 4m-13 2 12 4" stroke="#c9f3f4" stroke-width="1" transform="rotate(16 259 310)"/></g>
+          <g aria-label="Mask 1"><rect x="333" y="320" width="12" height="43" rx="2" fill="#7661b5" transform="rotate(16 339 341)"/><path d="M334 341l11 3" stroke="#fff" stroke-width="3" transform="rotate(16 339 341)"/></g>
+          <g aria-label="Mask 2"><rect x="399" y="339" width="12" height="43" rx="2" fill="#7661b5" transform="rotate(16 405 360)"/><path d="M400 360l11 3" stroke="#fff" stroke-width="3" transform="rotate(16 405 360)"/></g>
+          <g aria-label="Divergence slit DS"><rect x="490" y="363" width="14" height="46" rx="2" fill="#168b96" transform="rotate(16 497 386)"/><path d="M491 380l12 4" stroke="#fff" stroke-width="3" transform="rotate(16 497 386)"/></g>
+
+          <!-- sample and receiving side -->
+          <path d="M548 440h106l-10 18h-86z" fill="#c9d6d9" stroke="#718b92" stroke-width="2"/><rect x="569" y="423" width="64" height="17" rx="4" fill="#d7b879" stroke="#8e7749" stroke-width="2"/><path d="M548 459h106" stroke="#748b90" stroke-width="5" stroke-linecap="round"/>
+          <g aria-label="Programmable anti-scatter slit PASS"><rect x="718" y="337" width="16" height="48" rx="2" fill="#15849a" transform="rotate(-31 726 361)"/><path d="M719 360l13-8" stroke="#fff" stroke-width="3" transform="rotate(-31 726 361)"/></g>
+          <g aria-label="Diffracted Soller slits"><rect x="858" y="248" width="14" height="48" rx="2" fill="#15849a" transform="rotate(-31 865 272)"/><path d="M860 252l12 8m-14-2 12 8m-14-2 12 8m-14-2 12 8m-14-2 12 8" stroke="#c9f3f4" stroke-width="1" transform="rotate(-31 865 272)"/></g>
+          <g aria-label="Detector"><rect x="1020" y="94" width="63" height="113" rx="10" fill="url(#detector)" stroke="#6d8790" stroke-width="2" transform="rotate(18 1051 150)"/><rect x="1012" y="191" width="52" height="12" rx="3" fill="#536e77" transform="rotate(18 1038 197)"/></g>
+
+          <!-- callouts with independent lanes to keep every label legible -->
+          <g class="callout"><path d="M63 193V208"/><text x="63" y="180" text-anchor="middle">X-ray tube</text></g>
+          <g class="callout"><path d="M155 124V286"/><text x="155" y="77" text-anchor="middle"><tspan>Bragg-BrentanoHD</tspan><tspan x="155" dy="19">multilayer mirror</tspan><tspan x="155" dy="17" class="callout-sub">MultiCore · Kα selection</tspan></text></g>
+          <g class="callout"><path d="M258 210V279"/><text x="258" y="191" text-anchor="middle"><tspan>Incident</tspan><tspan x="258" dy="18">Soller slits</tspan></text></g>
+          <g class="callout"><path d="M339 265V313"/><text x="339" y="246" text-anchor="middle">Mask 1</text></g>
+          <g class="callout"><path d="M405 276V332"/><text x="405" y="257" text-anchor="middle">Mask 2</text></g>
+          <g class="callout"><path d="M497 302V358"/><text x="497" y="283" text-anchor="middle"><tspan>Divergence slit</tspan><tspan x="497" dy="18">(DS)</tspan></text></g>
+          <g class="callout"><path d="M600 478v-20"/><text x="600" y="502" text-anchor="middle">Sample</text></g>
+          <g class="callout"><path d="M727 413V389"/><text x="727" y="433" text-anchor="middle"><tspan>Programmable anti-scatter slit</tspan><tspan x="727" dy="18">(PASS / PAS)</tspan></text></g>
+          <g class="callout"><path d="M865 319v-20"/><text x="865" y="340" text-anchor="middle"><tspan>Diffracted</tspan><tspan x="865" dy="18">Soller slits</tspan></text></g>
+          <g class="callout"><path d="M1052 235V214"/><text x="1052" y="258" text-anchor="middle">Detector</text></g>
+
+          <rect x="34" y="511" width="1132" height="1" fill="#deeaec"/>
+          <text x="600" y="531" class="diagram-foot" text-anchor="middle">Bragg–Brentano reflection geometry · schematic, not to scale</text>
+        </svg>
+      </div>
+      <p class="home-scroll-hint">Swipe horizontally to follow the beam path →</p>
+      <figcaption><strong>Bragg–Brentano optics path</strong><span>MultiCore uses a Bragg–BrentanoHD multilayer mirror. Component spacing and shapes are schematic, not to scale. <a href="https://www.malvernpanalytical.com/tw/assets/Empyrean%20MultiCore%20Brochure%20with%20extended%20example%20data_tcm73-99472.pdf" target="_blank" rel="noopener noreferrer">Optics reference</a>.</span></figcaption>
+    </figure>
+  </main>
+</body>
+</html>

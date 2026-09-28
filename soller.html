@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MultiCore Soller slit guide</title><link rel="stylesheet" href="styles.css"></head><body><main class="shell training">
+<header class="header"><nav class="top-nav"><span class="eyebrow">PXRD · MultiCore</span><a href="index.html">← Home</a></nav><h1>Soller slit</h1><p>See how incident Soller plates limit axial divergence and can change the appearance of diffraction peaks.</p></header>
+    <section class="panel diagram-section">
+      <h2>Incident Soller slit and axial divergence</h2>
+      <div class="soller-comparison">
+        <svg viewBox="0 0 420 270" role="img" aria-labelledby="soller-title soller-desc">
+          <title id="soller-title">Soller plates limit axial divergence</title>
+          <desc id="soller-desc">A near-parallel central ray passes between the Soller plates. Oblique rays meet the plates and are blocked.</desc>
+          <defs><marker id="soller-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#0b8a90"/></marker></defs>
+          <text x="210" y="28" text-anchor="middle" class="soller-panel-title">Axial ray acceptance</text>
+          <path d="M30 137 L390 137" stroke="#0b8a90" stroke-width="3.5" marker-end="url(#soller-arrow)"/>
+          <path d="M30 72 L160 112 M30 202 L160 162" stroke="#b45d35" stroke-width="3" fill="none"/>
+          <g fill="#506b76"><rect x="145" y="76" width="240" height="9" rx="2"/><rect x="145" y="103" width="240" height="9" rx="2"/><rect x="145" y="162" width="240" height="9" rx="2"/><rect x="145" y="189" width="240" height="9" rx="2"/></g>
+          <text x="210" y="243" text-anchor="middle" class="soller-panel-note">Oblique rays blocked · near-parallel ray passes</text>
+        </svg>
+        <svg viewBox="0 0 420 270" role="img" aria-labelledby="soller-peak-title soller-peak-desc">
+          <title id="soller-peak-title">Schematic diffraction peak comparison for different incident Soller slit acceptances</title>
+          <desc id="soller-peak-desc">Three illustrative diffraction peaks share approximately the same peak position. No Soller has the broadest low-angle tail and highest intensity; 0.06 rad is intermediate; 0.02 rad has the least tail and lowest intensity. These are qualitative curves, not measured data or predicted intensity ratios.</desc>
+          <text x="210" y="28" text-anchor="middle" class="soller-panel-title">Diffraction peak · schematic</text>
+          <path d="M37 215 L392 215 M37 215 L37 40" fill="none" stroke="#738792" stroke-width="1.6"/>
+          <text x="392" y="242" text-anchor="end" class="soller-axis-label">2θ →</text>
+          <text x="15" y="128" text-anchor="middle" transform="rotate(-90 15 128)" class="soller-axis-label">Counts</text>
+          <path d="M225 43 L225 216" fill="none" stroke="#a6b6bb" stroke-width="1.2" stroke-dasharray="4 5"/>
+          <path d="M40 214 C98 214 137 207 168 190 C191 176 211 122 220 61 C223 41 226 41 229 69 C235 137 239 187 253 207 C269 215 331 215 388 215" class="soller-peak-none"/>
+          <path d="M40 215 C132 215 172 211 195 196 C212 179 219 131 223 103 C226 90 229 121 233 161 C238 199 248 213 266 215 L388 215" class="soller-peak-wide"/>
+          <path d="M40 215 C171 215 204 213 216 201 C222 191 223 151 225 145 C228 151 230 188 236 201 C243 214 257 215 388 215" class="soller-peak-narrow"/>
+          <g class="soller-legend">
+            <path d="M285 58 L311 58" class="soller-peak-none"/><text x="318" y="63">None</text>
+            <path d="M285 84 L311 84" class="soller-peak-wide"/><text x="318" y="89">0.06 rad*</text>
+            <path d="M285 110 L311 110" class="soller-peak-narrow"/><text x="318" y="115">0.02 rad</text>
+          </g>
+          <text x="210" y="260" text-anchor="middle" class="soller-panel-note">Shared nominal peak position · illustrative intensity</text>
+        </svg>
+      </div>
+      <p>A tighter incident Soller slit accepts a smaller range of axial ray angles. The curves illustrate how the low-angle tail and peak intensity can change; their heights and widths are <strong>not calculated values</strong>. The workbook offers None, 0.02 rad and 0.04 rad. <strong>0.06 rad is a teaching comparison only</strong>, not a selectable setting in this calculator. Actual peak profiles depend on the full instrument and sample geometry. <a href="https://journals.iucr.org/j/issues/2013/06/00/rw5057/index.html">IUCr example of Soller acceptance and peak profiles</a>.</p>
+    </section>
+</main></body></html>

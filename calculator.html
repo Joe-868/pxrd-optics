@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MultiCore optics setup calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <nav class="top-nav"><span class="eyebrow">PXRD · MultiCore</span><a href="index.html">← Home</a></nav>
+      <h1>Optics setup calculator</h1>
+      <p>Select the workbook settings for iCore and dCore, then check the FWHM-based sample fit at the scan start.</p>
+    </header>
+
+    <section class="panel" aria-labelledby="sample-title">
+      <div class="section-heading"><span class="step">1</span><h2 id="sample-title">Sample and scan</h2></div>
+      <div class="form-grid">
+        <div class="field"><label for="diameter">Usable round sample diameter <span>mm</span></label><input id="diameter" type="number" min="0.01" step="any" value="13"></div>
+        <div class="field"><label for="start-angle">Start 2θ <span>°</span></label><input id="start-angle" type="number" min="0.01" max="179.99" step="any" value="5"></div>
+        <div class="field"><label for="stop-angle">Stop 2θ <span>°</span></label><input id="stop-angle" type="number" min="0.01" max="179.99" step="any" value="90"></div>
+        <div class="field"><label for="omega-offset">ω offset <span>°</span></label><input id="omega-offset" type="number" step="any" value="0"></div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="icore-title">
+      <div class="section-heading"><span class="step">2</span><h2 id="icore-title">iCore choice</h2></div>
+      <fieldset class="mode-choice"><legend>Divergence slit usage</legend>
+        <label><input type="radio" name="slit-mode" id="mode-fixed" value="fixed" checked> Fixed DS</label>
+        <label><input type="radio" name="slit-mode" id="mode-automatic" value="automatic"> Automatic DS</label>
+      </fieldset>
+      <div class="form-grid">
+        <div class="field" id="fixed-ds-field"><label for="fixed-ds">Fixed divergence slit <span>°</span></label><select id="fixed-ds" aria-describedby="fixed-ds-warning"><option value="0.02">1/50</option><option value="0.03125">1/32</option><option value="0.0625">1/16</option><option value="0.125" selected>1/8</option><option value="0.25">1/4</option><option value="0.5">1/2</option><option value="0.61">Max (0.61°)</option></select><p id="fixed-ds-warning" class="inline-warning" hidden></p></div>
+        <div class="field" id="automatic-length-field" hidden><label for="target-length">Target irradiated length <span>mm</span></label><input id="target-length" type="number" min="0.5" max="20" step="0.5" value="5" aria-describedby="target-length-warning"><p id="target-length-warning" class="inline-warning" hidden></p></div>
+        <div class="field"><label for="mask1">Primary mask · Mask 1 <span>mm</span></label><select id="mask1" aria-describedby="mask1-warning"><option value="0.2">0.2</option><option value="0.3">0.3</option><option value="2">2</option><option value="14" selected>14</option></select><p id="mask1-warning" class="inline-warning" hidden></p></div>
+        <div class="field"><label for="mask2">Secondary mask · Mask 2 <span>mm</span></label><select id="mask2" aria-describedby="mask2-warning"><option value="0.1">0.1</option><option value="0.3">0.3</option><option value="0.5">0.5</option><option value="2">2</option><option value="6" selected>6</option><option value="14">14</option></select><p id="mask2-warning" class="inline-warning" hidden></p></div>
+        <figure class="footprint-geometry">
+          <svg viewBox="0 0 440 265" role="img" aria-labelledby="footprint-title footprint-desc">
+            <title id="footprint-title">Workbook W and L fit within a round sample of diameter D</title>
+            <desc id="footprint-desc">Top view: a centered rectangular FWHM-width W by irradiated-length L check area inside a circular usable sample. The rectangle's diagonal must not exceed the circle diameter. This is not the full axial beam footprint.</desc>
+            <defs>
+              <radialGradient id="sample-surface"><stop stop-color="#f9fcfc"/><stop offset="1" stop-color="#dbe9eb"/></radialGradient>
+              <linearGradient id="beam-footprint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9c76b" stop-opacity=".86"/><stop offset="1" stop-color="#e58a48" stop-opacity=".68"/></linearGradient>
+            </defs>
+            <circle cx="207" cy="130" r="101" fill="url(#sample-surface)" stroke="#557782" stroke-width="3"/>
+            <circle cx="207" cy="130" r="94" fill="none" stroke="#97b0b6" stroke-width="1.5" stroke-dasharray="4 7"/>
+            <rect x="135" y="92" width="144" height="76" rx="4" fill="url(#beam-footprint)" stroke="#a95c2a" stroke-width="2"/>
+            <path d="M135 185v18m144-18v18m-144-9h144" fill="none" stroke="#a95c2a" stroke-width="2"/>
+            <path d="M117 92h-18m18 76H99m9-76v76" fill="none" stroke="#a95c2a" stroke-width="2"/>
+            <path d="M136 59 278 201" stroke="#4d7580" stroke-width="2" stroke-dasharray="5 5"/>
+            <text x="207" y="224" text-anchor="middle" fill="#924d22" font-size="18" font-weight="700">L</text>
+            <text x="86" y="136" text-anchor="middle" fill="#924d22" font-size="18" font-weight="700">W</text>
+            <text x="293" y="64" fill="#315764" font-size="18" font-weight="700">D</text>
+            <text x="207" y="16" text-anchor="middle" fill="#45636d" font-size="13">Usable sample · top view</text>
+          </svg>
+          <figcaption><strong>L² + W² ≤ D²</strong><span>Maximum L = √(D² − W²)</span><small>Workbook fit check for a centered sample using FWHM W. The full axial footprint can be wider.</small></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="panel results" aria-live="polite" aria-labelledby="result-title">
+      <div class="section-heading"><span class="step">3</span><h2 id="result-title">Workbook checks</h2><span class="badge" id="status">Calculating</span></div>
+      <p id="message" class="message"></p>
+      <div class="metric-grid">
+        <div class="metric"><span>Beam FWHM width W</span><strong id="width">—</strong><small>Mask pair lookup</small><div class="metric-subvalue"><span>Full axial footprint</span><strong id="footprint">—</strong><small>iCore parameters table · same mask pair</small></div></div>
+        <div class="metric"><span>Irradiated length L</span><strong id="length">—</strong><small>mm · at scan start</small></div>
+        <div class="metric"><span>Maximum L for diameter</span><strong id="max-length">—</strong><small>mm · centered round sample</small></div>
+      </div>
+      <div id="automatic-results" class="auto-results" hidden><span>DS setting at start: <strong id="ds-start">—</strong></span><span>DS setting at stop: <strong id="ds-stop">—</strong></span><span>Estimated L at stop: <strong id="actual-length-stop">—</strong></span></div>
+      <p class="result-note">W is the FWHM width used for the workbook sample-fit check. The full axial footprint is a separate value from the iCore parameters table; check holder clearance on the instrument.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="dcore-title">
+      <div class="section-heading"><span class="step">4</span><h2 id="dcore-title">dCore choice</h2></div>
+      <div class="form-grid">
+        <div class="field"><span class="field-label">Recommended programmable anti-scatter slit</span><output id="pass-setting">Fixed at 1/8°</output></div>
+        <div class="field"><label for="soller">Large Soller slits <span>rad</span></label><select id="soller"><option value="None">None</option><option value="0.02">0.02</option><option value="0.04" selected>0.04</option></select></div>
+      </div>
+    </section>
+
+    <section class="panel notes" aria-label="Explanations">
+      <h2>Explanations</h2>
+      <details><summary>Workbook-fit mask candidates <span id="candidate-count"></span></summary><div class="detail-body"><p>Pairs below pass the workbook W × L check at the current DS or target length. Select a pair to fill the iCore masks. This check does not show the full beam boundary or certify holder clearance.</p><div id="candidate-list" class="candidate-list"></div></div></details>
+      <details><summary>How the workbook calculates these checks</summary><div class="detail-body"><p>Mask 1 and Mask 2 select FWHM width W from the workbook table. Fixed DS uses the workbook irradiated-length equation at the scan start. Automatic DS requests a length from 0.5 to 20 mm in 0.5 mm steps. The displayed DS settings are capped at Max (0.61°); above that limit, the iCore guide says the irradiated length decreases as the angle rises. Estimated L at stop uses the workbook geometry with the slit capped at 0.61°; it is an estimate, not a measured length. The guide's published critical-angle examples differ slightly from this workbook estimate.</p><p>The workbook compares L with √(D² − W²) for a centered, spinning round sample. Its automatic check also flags required DS above 0.61° at the scan stop. The workbook says its “Reduce” sample-fit warnings may be ignored when the sample is not spinning; that exception does not apply to the DS range check.</p></div></details>
+      <details><summary>Sample height alignment and beam FWHM</summary><div class="detail-body"><p>In a direct-beam Z scan, move the sample surface into the beam until the transmitted intensity is about half its open-beam value, following the instrument alignment procedure. That height reference is distinct from W, the beam FWHM width across the sample in the mask table. Beam tails can extend beyond W. <a href="https://nrf.aux.eng.ufl.edu/_files/documents/16868.pdf" target="_blank" rel="noopener noreferrer">Alignment reference</a>.</p></div></details>
+      <details><summary>Why the dCore slit cannot erase every holder peak</summary><div class="detail-body"><p>The programmable anti-scatter slit limits what the detector observes; it does not change where the incident beam lands. A holder reflection along an accepted diffracted path may remain. Control incident illumination and verify with a blank-holder scan. <a href="https://www.malvernpanalytical.com/en/assets/empyrean%20multicore%20brochure%20with%20extended%20example%20data_tcm50-99472.pdf" target="_blank" rel="noopener noreferrer">MultiCore brochure</a>.</p></div></details>
+    </section>
+  </main>
+</body>
+</html>
