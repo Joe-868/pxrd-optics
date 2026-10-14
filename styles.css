@@ -1,7 +1,7 @@
 :root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: #24343b; background: #f5f6f2; color-scheme: light; }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-body { margin: 0; min-height: 100vh; background: #f5f6f2 url("optics-background-bragg.svg?v=header-equations-6") center top / 100% auto fixed no-repeat; }
+body { margin: 0; min-height: 100vh; background: #f5f6f2 url("optics-background-bragg.svg?v=bragg-theta-7") center top / 100% auto fixed no-repeat; }
 .header { color: #24343b; }
 .header h1 { text-shadow: none; font-weight: 650; }
 .header .eyebrow { color: #46736e; letter-spacing: .08em; }
@@ -11,7 +11,7 @@ body { margin: 0; min-height: 100vh; background: #f5f6f2 url("optics-background-
 .top-nav a { color: #075862; }
 @media (max-width: 700px) { body { background-attachment: scroll; background-size: auto 620px; background-position: right top; } }
 .shell { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
-.header { max-width: 740px; margin-bottom: 30px; }
+.header { max-width: none; margin-bottom: 30px; }
 .header-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .header-launch { border: 1px solid #a4c6c9; background: #e9f5f5; color: #075862; border-radius: 999px; padding: 7px 12px; font: inherit; font-size: .75rem; font-weight: 800; cursor: pointer; }
 .header-launch:hover, .header-launch:focus { background: #d4ebed; }
