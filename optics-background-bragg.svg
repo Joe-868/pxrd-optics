@@ -10,7 +10,5 @@
 <path d="M1000 273 Q1040 325 1083 273"/>
 </g>
 <g fill="#50766f" font-family="Georgia, serif" opacity=".32">
-<text x="1010" y="225" font-size="38">2d sin θ = nλ</text>
-<text x="1010" y="280" font-size="31">D = Kλ / (β cos θ)</text>
 <text x="1130" y="300" font-size="27">2θ</text>
 </g></svg>
