@@ -6,13 +6,18 @@
       <div class="soller-comparison">
         <svg viewBox="0 0 420 270" role="img" aria-labelledby="soller-title soller-desc">
           <title id="soller-title">Soller plates limit axial divergence</title>
-          <desc id="soller-desc">A near-parallel central ray passes between the Soller plates. Oblique rays meet the plates and are blocked.</desc>
+          <desc id="soller-desc">A parallel ray and two slightly inclined rays pass through a Soller channel without touching its plates. Two more steeply inclined rays enter the same channel but stop where they hit a plate. Transmission depends on both ray angle and entry position; accepted rays retain their direction. Angles are exaggerated for clarity.</desc>
           <defs><marker id="soller-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#0b8a90"/></marker></defs>
           <text x="210" y="28" text-anchor="middle" class="soller-panel-title">Axial ray acceptance</text>
-          <path d="M30 137 L390 137" stroke="#0b8a90" stroke-width="3.5" marker-end="url(#soller-arrow)"/>
-          <path d="M30 72 L160 112 M30 202 L160 162" stroke="#b45d35" stroke-width="3" fill="none"/>
+          <text x="30" y="70" class="soller-panel-note">Incident X-rays</text>
+          <path d="M30 137 L395 137" stroke="#0b8a90" stroke-width="2.5" marker-end="url(#soller-arrow)"/>
+          <path d="M30 102 L395 161" stroke="#0b8a90" stroke-width="2" fill="none" marker-end="url(#soller-arrow)"/>
+          <path d="M30 172 L395 113" stroke="#0b8a90" stroke-width="2" fill="none" marker-end="url(#soller-arrow)"/>
+          <path d="M30 120 L225 162 M30 154 L225 112" stroke="#b45d35" stroke-width="2.5" fill="none"/>
           <g fill="#506b76"><rect x="145" y="76" width="240" height="9" rx="2"/><rect x="145" y="103" width="240" height="9" rx="2"/><rect x="145" y="162" width="240" height="9" rx="2"/><rect x="145" y="189" width="240" height="9" rx="2"/></g>
-          <text x="210" y="243" text-anchor="middle" class="soller-panel-note">Oblique rays blocked · near-parallel ray passes</text>
+          <g fill="#b45d35"><circle cx="225" cy="162" r="3"/><circle cx="225" cy="112" r="3"/></g>
+          <text x="210" y="226" text-anchor="middle" class="soller-panel-note">Rays within the axial angular acceptance</text>
+          <text x="210" y="246" text-anchor="middle" class="soller-panel-note">Larger-angle rays hit plates · angles exaggerated</text>
         </svg>
         <svg viewBox="0 0 420 270" role="img" aria-labelledby="soller-peak-title soller-peak-desc">
           <title id="soller-peak-title">Schematic diffraction peak comparison for different incident Soller slit acceptances</title>
@@ -33,6 +38,7 @@
           <text x="210" y="260" text-anchor="middle" class="soller-panel-note">Shared nominal peak position · illustrative intensity</text>
         </svg>
       </div>
+      <p>The Soller channels transmit a finite range of axial angles, including slightly inclined rays. Whether a ray passes depends on its angle and where it enters the channel. Transmitted rays continue in the same direction; rays that intersect a plate are blocked. The drawing exaggerates the angles for clarity.</p>
       <p>A tighter incident Soller slit accepts a smaller range of axial ray angles. The curves illustrate how the low-angle tail and peak intensity can change; their heights and widths are <strong>not calculated values</strong>. The workbook offers None, 0.02 rad and 0.04 rad. <strong>0.06 rad is a teaching comparison only</strong>, not a selectable setting in this calculator. Actual peak profiles depend on the full instrument and sample geometry. <a href="https://journals.iucr.org/j/issues/2013/06/00/rw5057/index.html">IUCr example of Soller acceptance and peak profiles</a>.</p>
     </section>
 </main></body></html>
