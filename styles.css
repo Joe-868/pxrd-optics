@@ -1,7 +1,7 @@
 :root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: #24343b; background: #f5f6f2; color-scheme: light; }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-body { margin: 0; min-height: 100vh; background: #f5f6f2 url("optics-background-bragg.svg?v=lower-equations-4") center top / 100% auto fixed no-repeat; }
+body { margin: 0; min-height: 100vh; background: #f5f6f2 url("optics-background-bragg.svg?v=lower-equations-5") center top / 100% auto fixed no-repeat; }
 .header { color: #24343b; }
 .header h1 { text-shadow: none; font-weight: 650; }
 .header .eyebrow { color: #46736e; letter-spacing: .08em; }
