@@ -1,11 +1,11 @@
-:root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: #172534; background: #091d30; }
+:root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: #24343b; background: #f5f6f2; color-scheme: light; }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-body { margin: 0; min-height: 100vh; background: #091d30 url("optics-background.svg") center top / cover fixed no-repeat; }
-.header { color: #edf8fb; }
-.header h1 { text-shadow: 0 3px 22px #04142188; }
-.header .eyebrow { color: #8bdde0; }
-.header p { color: #c7dce4; }
+body { margin: 0; min-height: 100vh; background: #f5f6f2 url("optics-background.svg") center top / cover fixed no-repeat; }
+.header { color: #24343b; }
+.header h1 { text-shadow: none; font-weight: 650; }
+.header .eyebrow { color: #46736e; letter-spacing: .08em; }
+.header p { color: #596b70; }
 .top-nav a { color: #075862; }
 @media (max-width: 700px) { body { background-attachment: scroll; background-size: auto 100%; } }
 .shell { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
@@ -18,7 +18,7 @@ h1 { font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.1; letter-spacing: -.04
 h2 { font-size: 1.2rem; margin: 0 0 18px; }
 p { line-height: 1.6; color: #4a5b68; }
 .header p { font-size: 1.05rem; margin: 0; }
-.panel { background: #fff; border: 1px solid #dce5e9; border-radius: 18px; box-shadow: 0 8px 26px #143a4b0b; padding: 26px; margin-bottom: 18px; }
+.panel { background: #fff; border: 1px solid #dfe6e2; border-radius: 14px; box-shadow: 0 4px 18px #29443b06; padding: 26px; margin-bottom: 18px; }
 .inputs { display: grid; gap: 8px; }
 label { font-weight: 700; display: flex; justify-content: space-between; gap: 16px; max-width: 350px; }
 label span { color: #69808c; font-weight: 500; }
@@ -255,3 +255,12 @@ a { color: #086a73; }
 @media (max-width: 900px) { .footprint-geometry { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .footprint-geometry { max-width: 440px; } }
 .results .section-heading h2 { margin-right: auto; }
+
+/* Quiet light palette shared by the calculator and teaching pages. */
+.top-nav a, .header-launch, .training-actions button { background: #fff; border-color: #d2dfd9; color: #365e58; box-shadow: none; font-weight: 650; }
+.top-nav a:hover, .header-launch:hover, .training-actions button:hover { background: #edf4ee; border-color: #a7c2b7; }
+.setting, .metric { background: #eaf2ed; color: #294f45; border: 1px solid #d4e4da; }
+.setting span, .setting small, .metric span, .metric small { color: #547168; }
+.metric-subvalue { border-top-color: #ccddd2; }
+.diagram-card, .diagram-section .soller-comparison svg, .footprint-geometry { background: #fafcf9; border-color: #e0e8e0; }
+input, select { background: #fff; border-color: #c9d8d0; }

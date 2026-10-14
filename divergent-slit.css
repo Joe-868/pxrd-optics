@@ -21,10 +21,10 @@
 .ds-range-ends { display: flex; justify-content: space-between; color: #67818b; font-size: .8rem; }
 .ds-range-ends output { color: #075862; font-weight: 800; font-size: 1.04rem; }
 .ds-summary { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin: 22px 0 20px; }
-.ds-summary div { display: grid; gap: 6px; padding: 17px 18px; border-radius: 11px; background: #0b5963; color: #fff; }
-.ds-summary span { color: #c8e8e9; font-size: .81rem; font-weight: 750; }
+.ds-summary div { display: grid; gap: 6px; padding: 17px 18px; border-radius: 11px; background: #eaf2ed; color: #294f45; border: 1px solid #d4e4da; }
+.ds-summary span { color: #547168; font-size: .81rem; font-weight: 750; }
 .ds-summary strong { font-size: clamp(1.3rem, 2.6vw, 1.9rem); }
-.ds-summary strong.ds-alert { color: #ffd19d; }
+.ds-summary strong.ds-alert { color: #914012; }
 .ds-footprint { border: 1px solid #d9e7e8; background: #f7fbfb; border-radius: 13px; padding: 18px; }
 .ds-footprint-head, .ds-footprint-legend { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 18px; }
 .ds-footprint-head span { color: #627884; font-size: .78rem; }
