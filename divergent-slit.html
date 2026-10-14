@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Divergent slits · MultiCore</title>
-  <link rel="stylesheet" href="styles.css?v=polish-9">
+  <link rel="stylesheet" href="styles.css?v=polish-13">
   <link rel="stylesheet" href="divergent-slit.css">
   <script defer src="divergent-slit.js"></script>
 </head>
@@ -22,7 +22,7 @@
         <figure class="ds-geometry-card">
           <svg viewBox="0 0 700 330" role="img" aria-labelledby="ds-side-title ds-side-desc">
             <title id="ds-side-title">Side view of incident divergence and illuminated sample length</title>
-            <desc id="ds-side-desc">Straight limiting rays leave a source at left, pass between two divergence-slit blades, and reach two points on the flat sample. The angle between the limiting rays is labelled phi. The central ray meets the sample at incident angle omega. The distance between the limiting-ray intersections along the sample is labelled L. Diagram is schematic and not to scale.</desc>
+            <desc id="ds-side-desc">Straight limiting rays leave a source at left, pass between two divergence-slit blades, and reach two points on the flat sample. The angle between the limiting rays is labelled alpha. The central ray meets the sample at incident angle omega. The distance between the limiting-ray intersections along the sample is labelled L. Diagram is schematic and not to scale.</desc>
             <defs><marker id="ds-dim-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8" fill="#9b5d18"/></marker></defs>
             <path d="M65 238 H655" stroke="#344d55" stroke-width="6" stroke-linecap="round"/>
             <path d="M87 65 L394 238 L555 238 Z" fill="#e9b45d" opacity=".18"/>
@@ -32,7 +32,7 @@
             <circle cx="87" cy="65" r="8" fill="#214b55"/>
             <circle cx="394" cy="238" r="4" fill="#b47726"/><circle cx="555" cy="238" r="4" fill="#b47726"/>
             <path d="M126 87 Q137 84 144 85" stroke="#9b5d18" stroke-width="2" fill="none"/>
-            <text x="150" y="84" class="ds-svg-angle">φ</text>
+            <text x="150" y="84" class="ds-svg-angle">α</text>
             <path d="M426 238 Q438 222 450 227" stroke="#087984" stroke-width="2" fill="none"/>
             <text x="429" y="215" class="ds-svg-angle">ω</text>
             <path d="M394 253 V289 M555 253 V289 M394 276 H555" stroke="#9b5d18" stroke-width="1.7" fill="none" marker-start="url(#ds-dim-arrow)" marker-end="url(#ds-dim-arrow)"/>
@@ -43,7 +43,7 @@
             <text x="296" y="111" class="ds-svg-small">limiting rays</text>
             <text x="300" y="170" class="ds-svg-small">central ray</text>
           </svg>
-          <figcaption><strong>Side view · scattering plane.</strong> φ is the nominal angle between limiting incident rays admitted by the DS, not the blade gap or incident angle ω. The source and other optics also shape the transmitted beam. The limiting rays mark geometric length L. Schematic, not to scale; drawn ray distances do not encode the values below.</figcaption>
+          <figcaption><strong>Side view · scattering plane.</strong> α is the nominal angle between limiting incident rays admitted by the DS, not the blade gap or incident angle ω. The source and other optics also shape the transmitted beam. The limiting rays mark geometric length L. Schematic, not to scale; drawn ray distances do not encode the values below.</figcaption>
         </figure>
         <figure class="ds-geometry-card ds-top-card">
           <svg viewBox="0 0 300 215" role="img" aria-labelledby="ds-top-title ds-top-desc">
@@ -112,7 +112,7 @@
         <div><h3>L and W run in different directions</h3><p><strong>L</strong> is the calculated illuminated length in the scattering plane, controlled here by DS and ω. The <a href="training.html">Mask guide</a> uses <strong>W</strong> for the transverse beam FWHM from a mask pair. A sample fit check needs both directions.</p></div>
         <div><h3>Intensity is a tradeoff</h3><p>A wider DS can admit more incident flux, but overspill can illuminate the holder and add unwanted signal. A variable DS can help high-angle intensity, while changing focusing conditions can affect resolution. These controls do not predict intensity ratios or a measured peak shape.</p></div>
       </div>
-      <details><summary>Workbook geometry and sources</summary><div class="detail-body"><p>For fixed DS, this page evaluates the workbook <code>PDSCalc!C</code> equation with source-to-sample radius R = 240 mm, DS opening φ in degrees, and ω = 2θ/2: <code>L = 240/(sin ω/tan(φ/2) + cos ω) + 240/(sin ω/tan(φ/2) − cos ω)</code>. It approaches <code>R φ(rad)/sin ω</code> when ω is much larger than φ/2. The automatic example evaluates workbook <code>PDSCalc!D</code>: <code>φ = 1.75 × degrees[atan(sin ω/(480/Ltarget + cos ω))]</code>.</p><p><a href="https://www.malvernpanalytical.com/en/assets/Empyrean%20MultiCore%20Brochure%20with%20extended%20example%20data_tcm50-99472.pdf">Malvern Panalytical MultiCore brochure, Fig. 5</a> · <a href="https://journals.iucr.org/j/issues/2023/03/00/dv5004/">IUCr education article, Part II, Eq. 52</a> · <a href="https://journals.iucr.org/j/issues/1999/01/00/gl0561/">IUCr Rietveld guidelines</a>.</p></div></details>
+      <details><summary>Workbook geometry and sources</summary><div class="detail-body"><p>For fixed DS, this page evaluates the workbook <code>PDSCalc!C</code> equation with source-to-sample radius R = 240 mm, DS opening α in degrees, and ω = 2θ/2: <code>L = 240/(sin ω/tan(α/2) + cos ω) + 240/(sin ω/tan(α/2) − cos ω)</code>. It approaches <code>R α(rad)/sin ω</code> when ω is much larger than α/2. The automatic example evaluates workbook <code>PDSCalc!D</code>: <code>α = 1.75 × degrees[atan(sin ω/(480/Ltarget + cos ω))]</code>.</p><p><a href="https://www.malvernpanalytical.com/en/assets/Empyrean%20MultiCore%20Brochure%20with%20extended%20example%20data_tcm50-99472.pdf">Malvern Panalytical MultiCore brochure, Fig. 5</a> · <a href="https://journals.iucr.org/j/issues/2023/03/00/dv5004/">IUCr education article, Part II, Eq. 52</a> · <a href="https://journals.iucr.org/j/issues/1999/01/00/gl0561/">IUCr Rietveld guidelines</a>.</p></div></details>
     </section>
   </main>
 </body>

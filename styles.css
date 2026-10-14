@@ -1,7 +1,7 @@
 :root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: #24343b; background: #f5f6f2; color-scheme: light; }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-body { margin: 0; min-height: 100vh; background: #f5f6f2 url("optics-background-bragg.svg?v=polish-9") center top / 100% auto fixed no-repeat; }
+body { margin: 0; min-height: 100vh; background: #f5f6f2 url("optics-background-bragg.svg?v=polish-13") center top / 100% auto fixed no-repeat; }
 .header { color: #24343b; }
 .header h1 { text-shadow: none; font-weight: 650; }
 .header .eyebrow { color: #46736e; letter-spacing: .08em; }
@@ -294,7 +294,7 @@ h1, h2 { color: var(--ink); }
 /* Instrument diagram: moving beam */
 .home-instrument { border-color: #cfe1e3; box-shadow: 0 24px 60px #143a4b1f, 0 2px 0 #fff inset; transition: box-shadow .3s ease; }
 .home-instrument:hover { box-shadow: 0 30px 70px #143a4b2b, 0 2px 0 #fff inset; }
-.home-diagram path[marker-end][stroke="#df7940"] { stroke-dasharray: 14 10; animation: beamflow 1.4s linear infinite; }
+.home-diagram .beam-flow { stroke-dasharray: 14 10; animation: beamflow 1.4s linear infinite; }
 .callout text { transition: fill .2s ease; }
 .callout:hover text { fill: var(--teal); }
 
@@ -352,7 +352,7 @@ summary:hover { color: var(--beam); }
   .guide-card:nth-child(5) { animation-delay: .24s; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .home-diagram path[marker-end][stroke="#df7940"] { animation: none; stroke-dasharray: none; }
+  .home-diagram .beam-flow { animation: none; stroke-dasharray: none; }
   .hero-eyebrow i { animation: none; }
   .guide-card, .btn, .panel { transition: none; }
 }
@@ -382,7 +382,7 @@ summary:hover { color: var(--beam); }
 
 /* Background: warm drafting paper with a millimetre grid and a goniometer-circle motif */
 :root { --paper: #f3eee2; --grid: rgba(86, 104, 112, .075); --grid-major: rgba(86, 104, 112, .13); }
-body { background-color: var(--paper); background-image: url("optics-background-bragg.svg?v=polish-9"), linear-gradient(var(--grid-major) 1px, transparent 1px), linear-gradient(90deg, var(--grid-major) 1px, transparent 1px), linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px), radial-gradient(ellipse at 50% 0, #fbf8ef 0, transparent 62%); background-size: 100% auto, 120px 120px, 120px 120px, 24px 24px, 24px 24px, 100% 70vh; background-position: center top; background-repeat: no-repeat, repeat, repeat, repeat, repeat, no-repeat; background-attachment: fixed; }
+body { background-color: var(--paper); background-image: url("optics-background-bragg.svg?v=polish-13"), linear-gradient(var(--grid-major) 1px, transparent 1px), linear-gradient(90deg, var(--grid-major) 1px, transparent 1px), linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px), radial-gradient(ellipse at 50% 0, #fbf8ef 0, transparent 62%); background-size: 100% auto, 120px 120px, 120px 120px, 24px 24px, 24px 24px, 100% 70vh; background-position: center top; background-repeat: no-repeat, repeat, repeat, repeat, repeat, no-repeat; background-attachment: fixed; }
 @media (max-width: 700px) { body { background-size: auto 620px, 120px 120px, 120px 120px, 24px 24px, 24px 24px, 100% 70vh; background-position: right top, 0 0, 0 0, 0 0, 0 0, center top; background-attachment: scroll; } }
 .panel, .guide-card, .home-instrument { background-color: #fffdf8; }
 .top-nav a, .hero-eyebrow { background: #fffdf8; }
@@ -391,12 +391,12 @@ body { background-color: var(--paper); background-image: url("optics-background-
 
 /* Background v3: sand paper with fine grain and Debye-Scherrer rings (no grid) */
 :root { --paper: #ece6d6; }
-body { background-color: var(--paper); background-image: url("optics-background-bragg.svg?v=polish-9"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .3  0 0 0 0 .2  0 0 0 .13 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"), radial-gradient(ellipse 70% 55% at 22% 0, #f8f4e8 0, transparent 70%), linear-gradient(180deg, transparent 55%, #e3dccb 100%); background-size: 100% auto, 220px 220px, 100% 100vh, 100% 100vh; background-position: right top, 0 0, 0 0, 0 0; background-repeat: no-repeat, repeat, no-repeat, no-repeat; background-attachment: fixed; }
+body { background-color: var(--paper); background-image: url("optics-background-bragg.svg?v=polish-13"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .3  0 0 0 0 .2  0 0 0 .13 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"), radial-gradient(ellipse 70% 55% at 22% 0, #f8f4e8 0, transparent 70%), linear-gradient(180deg, transparent 55%, #e3dccb 100%); background-size: 100% auto, 220px 220px, 100% 100vh, 100% 100vh; background-position: right top, 0 0, 0 0, 0 0; background-repeat: no-repeat, repeat, no-repeat, no-repeat; background-attachment: fixed; }
 @media (max-width: 700px) { body { background-size: auto 620px, 220px 220px, 100% 100vh, 100% 100vh; background-attachment: scroll, scroll, scroll, scroll; } }
 
 /* Background v4: fresh sky-blue field with a simple Bragg-Brentano beam path */
 :root { --paper: #e6f1f8; }
-body { background-color: #eef6fb; background-image: url("optics-background-bragg.svg?v=polish-9"), linear-gradient(180deg, #d8eaf6 0, #e8f3fa 420px, #f3f9fc 900px); background-size: 100% auto, 100% 100%; background-position: center top, 0 0; background-repeat: no-repeat; background-attachment: fixed, fixed; }
+body { background-color: #eef6fb; background-image: url("optics-background-bragg.svg?v=polish-13"), linear-gradient(180deg, #d8eaf6 0, #e8f3fa 420px, #f3f9fc 900px); background-size: 100% auto, 100% 100%; background-position: center top, 0 0; background-repeat: no-repeat; background-attachment: fixed, fixed; }
 @media (max-width: 700px) { body { background-size: auto 360px, 100% 100%; background-position: 62% 0, 0 0; background-attachment: scroll, scroll; } }
 .panel, .guide-card, .home-instrument { background-color: #fff; }
 .top-nav a, .hero-eyebrow { background: #fff; }
@@ -406,7 +406,7 @@ body { background-color: #eef6fb; background-image: url("optics-background-bragg
 .home .header-equations { display: none; }
 
 /* Background v6: cool blue field with a Bragg's-law lattice diagram beside the title */
-body { background-color: #eaf2f9; background-image: url("optics-background-bragg.svg?v=polish-9"), linear-gradient(180deg, #d3e5f4 0, #e4eff8 420px, #f1f7fb 900px); background-size: min(46vw, 440px) auto, 100% 100%; background-position: right 24px top 14px, 0 0; background-repeat: no-repeat; background-attachment: scroll, fixed; }
+body { background-color: #eaf2f9; background-image: url("optics-background-bragg.svg?v=polish-13"), linear-gradient(180deg, #d3e5f4 0, #e4eff8 420px, #f1f7fb 900px); background-size: min(46vw, 440px) auto, 100% 100%; background-position: right 24px top 14px, 0 0; background-repeat: no-repeat; background-attachment: scroll, fixed; }
 @media (min-width: 1280px) { body { background-position: calc(50% + 370px) top 14px, 0 0; } }
 @media (max-width: 700px) { body { background-image: linear-gradient(180deg, #d3e5f4 0, #e4eff8 420px, #f1f7fb 900px); background-size: 100% 100%; background-position: 0 0; background-attachment: fixed; } }
 
@@ -418,12 +418,20 @@ body { background-size: auto 172px, 100% 100%; background-position: right 24px t
 
 /* Background v8: the Bragg diagram becomes a large, faint watermark in the middle of the page */
 body { background-image: linear-gradient(180deg, #d3e5f4 0, #e4eff8 420px, #f1f7fb 900px); background-size: 100% 100%; background-position: 0 0; background-repeat: no-repeat; background-attachment: fixed; }
-body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: url("optics-background-bragg.svg?v=polish-9") center 44% / min(1020px, 94vw) auto no-repeat; opacity: .17; }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: url("optics-background-bragg.svg?v=polish-13") center 44% / min(1020px, 94vw) auto no-repeat; opacity: .17; }
 
 /* v8 fix: :root paints its own background, so the watermark is a body background layer with opacity baked into the SVG */
 body::before { content: none; }
-body { background-image: url("optics-background-bragg.svg?v=polish-9"), linear-gradient(180deg, #d3e5f4 0, #e4eff8 420px, #f1f7fb 900px); background-size: min(1020px, 94vw) auto, 100% 100%; background-position: center 44%, 0 0; background-repeat: no-repeat, no-repeat; background-attachment: fixed, fixed; }
+body { background-image: url("optics-background-bragg.svg?v=polish-13"), linear-gradient(180deg, #d3e5f4 0, #e4eff8 420px, #f1f7fb 900px); background-size: min(1020px, 94vw) auto, 100% 100%; background-position: center 44%, 0 0; background-repeat: no-repeat, no-repeat; background-attachment: fixed, fixed; }
 
 /* v9: watermark back in the top-right corner, sized to the free space beside the title */
 body { background-size: auto min(26vw, 270px), 100% 100%; background-position: right max(24px, calc((100% - 1180px) / 2 + 24px)) top 6px, 0 0; background-attachment: scroll, fixed; }
 @media (max-width: 700px) { body { background-image: linear-gradient(180deg, #d3e5f4 0, #e4eff8 420px, #f1f7fb 900px); background-size: 100% 100%; background-position: 0 0; background-attachment: fixed; } }
+
+/* Slit guide: independent PDS + PASS beside the fixed-vs-programmable scan comparison */
+.slit-combo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.combo-side { display: grid; gap: 12px; align-content: start; padding: 0 16px 16px; background: #fbfdfd; border: 1px solid #d9e4e6; border-radius: 14px; box-shadow: 0 6px 18px #1739430a; }
+.combo-side .overlap-card-heading { padding: 18px 4px 2px; align-items: flex-start; }
+.combo-side .overlap-card-heading h3 { line-height: 1.3; }
+.combo-side .slit-figure { background: #fff; }
+@media (max-width: 700px) { .slit-combo { grid-template-columns: 1fr; } }
