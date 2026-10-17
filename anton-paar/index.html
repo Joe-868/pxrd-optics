@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XRDynamic 500 mask calculator</title>
+  <link rel="stylesheet" href="styles.css?v=polish-14">
+  <script defer src="calculator.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="header hero">
+      <span class="eyebrow hero-eyebrow"><i aria-hidden="true"></i>PXRD · Anton Paar XRDynamic 500</span>
+      <h1>Beam mask <span class="grad">width</span> calculator</h1>
+      <p>Estimate the full illuminated width on the sample from the goniometer radius, the incident Soller slit and the beam mask opening.</p>
+    </header>
+
+    <section class="panel" aria-labelledby="geo-title">
+      <h2 id="geo-title">Beam geometry at the sample</h2>
+      <figure class="slit-figure">
+        <svg viewBox="0 0 640 260" role="img" aria-labelledby="sch-title sch-desc" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto">
+          <title id="sch-title">Illuminated width from beam mask opening and Soller divergence</title>
+          <desc id="sch-desc">Side view in the axial direction. The beam leaves the incident Soller slit at the left and passes a beam mask with opening m. Beyond the mask the edge rays diverge by half the acceptance angle on each side, adding a width x per side over the distance L to the sample plane, giving the illuminated width W.</desc>
+          <defs>
+            <marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto-start-reverse"><path d="M0 0L8 4 0 8Z" fill="#17323a"/></marker>
+          </defs>
+          <rect width="640" height="260" fill="#fbfdfd"/>
+          <!-- Soller slit -->
+          <g fill="#168b96"><rect x="40" y="86" width="14" height="88" rx="2"/></g>
+          <path d="M42 100h10M42 112h10M42 124h10M42 136h10M42 148h10M42 160h10" stroke="#c9f3f4" stroke-width="1.2"/>
+          <text x="47" y="196" text-anchor="middle" font-size="12" fill="#17323a">Soller slit</text>
+          <text x="47" y="212" text-anchor="middle" font-size="12" fill="#17323a">(α)</text>
+          <!-- beam envelope -->
+          <path d="M54 100 L250 108 L250 152 L54 160 Z" fill="#df7940" opacity=".14"/>
+          <path d="M250 108 L520 66 M250 152 L520 194" stroke="#df7940" stroke-width="2.5" fill="none" stroke-dasharray="6 4"/>
+          <path d="M54 100 L250 108 M54 160 L250 152" stroke="#df7940" stroke-width="2.5" fill="none"/>
+          <path d="M250 108 L520 108 M250 152 L520 152" stroke="#0a6870" stroke-width="1.5" fill="none" stroke-dasharray="2 4"/>
+          <path d="M250 108 L520 66 L520 194 L250 152 Z" fill="#df7940" opacity=".12"/>
+          <text x="140" y="124" font-size="12" fill="#a95c2a" text-anchor="middle">beam</text>
+          <!-- mask plates -->
+          <rect x="244" y="50" width="12" height="58" rx="2" fill="#7661b5"/>
+          <rect x="244" y="152" width="12" height="58" rx="2" fill="#7661b5"/>
+          <text x="250" y="40" text-anchor="middle" font-size="12" fill="#17323a">beam mask</text>
+          <!-- sample plane -->
+          <rect x="516" y="40" width="8" height="180" rx="2" fill="#4b626a"/>
+          <text x="520" y="30" text-anchor="middle" font-size="12" fill="#17323a">sample position plane</text>
+          <!-- m dimension -->
+          <path d="M226 108V152" stroke="#17323a" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
+          <text x="214" y="135" text-anchor="end" font-size="16" font-weight="700" fill="#17323a">m</text>
+          <!-- x dimensions -->
+          <path d="M548 66V108" stroke="#17323a" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
+          <path d="M548 152V194" stroke="#17323a" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
+          <text x="560" y="92" font-size="16" font-weight="700" fill="#17323a">x</text>
+          <text x="560" y="178" font-size="16" font-weight="700" fill="#17323a">x</text>
+          <path d="M520 108h34M520 152h34M520 66h34M520 194h34" stroke="#8aa3aa" stroke-width="1"/>
+          <!-- W dimension -->
+          <path d="M594 66V194" stroke="#17323a" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
+          <path d="M554 66h46M554 194h46" stroke="#8aa3aa" stroke-width="1"/>
+          <text x="606" y="136" font-size="16" font-weight="700" fill="#17323a">W</text>
+          <!-- L dimension -->
+          <path d="M250 238H520" stroke="#17323a" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)" transform="translate(0 -4)"/>
+          <path d="M250 214v22" stroke="#8aa3aa" stroke-width="1"/>
+          <text x="385" y="228" text-anchor="middle" font-size="16" font-weight="700" fill="#17323a">L</text>
+          <!-- half-angle -->
+          <text x="352" y="88" font-size="12" fill="#a95c2a">α/2</text>
+        </svg>
+        <figcaption>Schematic, not to scale.</figcaption>
+      </figure>
+    </section>
+
+    <section class="panel" aria-labelledby="inst-title">
+      <div class="section-heading"><span class="step">1</span><h2 id="inst-title">Illuminated width from instrument settings</h2></div>
+      <div class="form-grid">
+        <div class="field"><label for="radius">Goniometer radius R <span>mm</span></label>
+          <select id="radius"><option value="360" selected>360</option><option value="400">400</option></select></div>
+        <div class="field"><label for="alpha">Incident Soller slit acceptance angle α <span>rad</span></label>
+          <select id="alpha"><option value="0.05">0.05</option><option value="0.025" selected>0.025</option><option value="0.0125">0.0125</option></select></div>
+        <div class="field"><label for="mask">Beam mask opening m <span>mm</span></label>
+          <input id="mask" type="number" min="0" max="13" step="0.1" value="6" inputmode="decimal" aria-describedby="mask-warning">
+          <p id="mask-warning" class="inline-warning" hidden></p></div>
+      </div>
+      <h3 class="subhead">Illuminated width</h3>
+      <div aria-live="polite">
+      <div class="metric-grid">
+        <div class="metric"><span>Illuminated width W</span><strong id="out-w">—</strong><small>mm · line focus</small></div>
+        <div class="metric"><span>Extra width per side x</span><strong id="out-x">—</strong><small>mm · Soller divergence</small></div>
+        <div class="metric"><span>Mask-to-sample distance L</span><strong id="out-l">—</strong><small>mm</small></div>
+      </div>
+      <p class="result-note"><strong>W = m + 2·L·tan(α/2)</strong><br><span id="formula">—</span></p>
+      </div>
+
+    </section>
+
+    <section class="panel" aria-labelledby="rev-title">
+      <div class="section-heading"><span class="step">2</span><h2 id="rev-title">Maximum mask for a target width</h2></div>
+      <div class="form-grid">
+        <div class="field"><label for="target">Target maximum illuminated width T <span>mm</span></label>
+          <input id="target" type="number" min="0" step="0.1" value="8" inputmode="decimal"></div>
+        <div class="field"><label for="radius-rev">Goniometer radius R <span>mm</span></label>
+          <select id="radius-rev"><option value="360" selected>360</option><option value="400">400</option></select></div>
+        <div class="field"><label for="alpha-rev">Incident Soller slit acceptance angle α <span>rad</span></label>
+          <select id="alpha-rev"><option value="0.05">0.05</option><option value="0.025" selected>0.025</option><option value="0.0125">0.0125</option></select></div>
+      </div>
+      <p id="rev-message" class="message"></p>
+      <div class="metric-grid">
+        <div class="metric"><span>Largest mask m<sub>max</sub> = T − 2x</span><strong id="out-mmax">—</strong><small id="out-mmax-note">mm</small></div>
+        <div class="metric"><span>Minimum possible width (m → 0)</span><strong id="out-wmin">—</strong><small>mm · 2x</small></div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="notes-title">
+      <h2 id="notes-title">What this calculation does and does not cover</h2>
+      <ol>
+        <li>It is a geometric estimate of the full illuminated width, valid for line focus and a mask opening below 14 mm (workbook note).</li>
+        <li>It applies when an incident Soller slit is installed; α is the acceptance angle of that slit.</li>
+        <li>Removing the Soller slit is not the same as α = 0. α = 0 is the ideal parallel-ray limit. Without a Soller slit the width depends on the optics and cannot be taken from this model.</li>
+        <li>It does not describe the intensity distribution or weak tails beyond W, so it cannot by itself guarantee clearance from a holder edge.</li>
+        <li>For capillary transmission, the mask mainly limits the illuminated length along the capillary; keep W within the sample-filled section.</li>
+      </ol>
+      <p class="result-note">Formulas follow Anton Paar's CalculationsIllumintedWidth.xlsx.</p>
+    </section>
+  </main>
+</body>
+</html>
