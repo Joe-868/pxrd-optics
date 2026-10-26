@@ -3,87 +3,183 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MultiCore programmable slits guide</title>
-  <link rel="stylesheet" href="styles.css?v=polish-14">
+  <title>Fixed, programmable and automatic DS · PXRD Optics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css?v=layers-10">
+  <link rel="stylesheet" href="divergent-slit.css?v=layers-3">
+  <script defer src="slits.js?v=layers-1"></script>
 </head>
-<body>
-  <main class="shell training">
+<body class="page">
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <nav aria-label="Main">
+        <a class="nav-home" href="index.html">Home</a>
+        <a href="index.html#learn" aria-current="page">Optics</a>
+        <a href="index.html#calculators">Calculators</a>
+        <a href="index.html#beam-path">Beam path</a>
+        <a href="https://github.com/Joe-868/pxrd-optics" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell training ds-guide">
     <header class="header">
-      <nav class="top-nav"><span class="eyebrow">PXRD · MultiCore</span><a href="index.html">← Home</a></nav>
-      <h1>Programmable divergence and anti-scatter slits</h1><div class="header-equations" aria-label="Bragg equation"><span>2d sin θ = nλ</span></div>
-      <p>The incident programmable divergence slit (PDS) sets irradiated length. The detector-side programmable anti-scatter slit (PAS, called PASS in the MultiCore brochure) sets the observed region.</p>
+      <p class="kicker">General XRD optics</p>
+      <h1>Fixed, programmable and automatic DS</h1>
+      <p>A fixed DS keeps one opening, so the irradiated length changes with angle; a programmable DS in automatic mode keeps it near a chosen value. A programmable anti-scatter slit can follow it.</p>
     </header>
 
     <section class="panel diagram-section">
-      <h2>How PDS and PASS work together</h2>
-      <p class="overlap-intro">Read down the circles: PDS illuminates the sample, PASS selects what the detector can see, and their intersection contributes to the measurement. Each circle shows the same sample position.</p>
-      <div class="slit-combo">
-        <figure class="slit-figure overlap-card">
-          <div class="overlap-card-heading"><span class="overlap-card-index">01</span><h3>Independent PDS + PASS</h3></div>
-          <svg viewBox="0 0 400 570" role="img" aria-labelledby="asym-title asym-desc">
-            <title id="asym-title">Independent PDS and PASS sample coverage in three stages</title>
-            <desc id="asym-desc">PDS incident and PASS diffracted beam sketch above three circular samples. Yellow irradiation and green observation both span x 82 to 134, so the red measured region occupies the full shared band.</desc>
-            <defs><clipPath id="asym-sample"><circle cx="108" cy="0" r="39"/></clipPath></defs>
-            <g class="overlap-optics">
-              <text x="24" y="27" class="optics-label">PDS · incident</text><text x="239" y="27" class="optics-label">PASS · diffracted</text>
-              <path d="M24 47L82 105L134 105Z" class="optics-beam-pds"/><path d="M82 105L134 105L368 49Z" class="optics-beam-pass"/>
-              <path d="M20 46L108 105L370 45" class="optics-ray"/>
-              <path d="M44 88h37 M135 88h32 M228 75h34 M310 75h33" class="optics-blade"/>
-              <path d="M82 82v13 M134 82v13 M82 104h52" class="optics-slit"/>
-              <circle cx="108" cy="105" r="5" class="optics-target"/>
-              <text x="108" y="134" text-anchor="middle" class="optics-sample-label">sample position</text>
-            </g>
-            <g transform="translate(0 225)"><circle cx="108" r="50" class="sample-rim-fill"/><circle cx="108" r="39" class="sample-fill"/><g clip-path="url(#asym-sample)"><rect x="82" y="-28" width="52" height="56" class="area-pds"/></g><text x="183" y="-5" class="overlap-stage">Irradiation area</text><text x="183" y="17" class="overlap-stage-sub">PDS · yellow band</text></g>
-            <g transform="translate(0 365)"><circle cx="108" r="50" class="sample-rim-fill"/><circle cx="108" r="39" class="sample-fill"/><g clip-path="url(#asym-sample)"><rect x="82" y="-28" width="52" height="56" class="area-pass"/></g><text x="183" y="-5" class="overlap-stage">Observation area</text><text x="183" y="17" class="overlap-stage-sub">PASS · green band</text></g>
-            <g transform="translate(0 505)"><circle cx="108" r="50" class="sample-rim-fill"/><circle cx="108" r="39" class="sample-fill"/><g clip-path="url(#asym-sample)"><rect x="82" y="-28" width="52" height="56" class="area-measured"/></g><text x="183" y="-5" class="overlap-stage">Measured area</text><text x="183" y="17" class="overlap-stage-sub">Fully shared band</text></g>
-            <path d="M82 145V553 M134 145V553" class="overlap-guide"/>
-          </svg>
-          <figcaption>Independent blade positions bring the irradiated and observed bands into alignment.</figcaption>
-        </figure>
-        <div class="combo-side">
-          <div class="overlap-card-heading"><span class="overlap-card-index">02</span><h3>Fixed and programmable divergence across a scan</h3></div>
+      <h2>Fixed and programmable divergence across a scan</h2>
+      <div class="slit-visual-grid">
         <figure class="slit-figure">
-          <svg viewBox="0 0 400 250" role="img" aria-labelledby="fds-title fds-desc">
-            <title id="fds-title">Fixed divergence slit at two scan angles</title>
-            <desc id="fds-desc">With a fixed divergence opening, a schematic beam footprint changes length between low and high incidence angles.</desc>
-            <text x="200" y="28" text-anchor="middle" class="slit-chart-title">Fixed DS</text>
-            <path d="M72 59 L252 190 L317 190 Z" fill="#e9aa72" opacity=".72"/>
-            <path d="M112 59 L223 190 L272 190 Z" fill="#f5ca60" opacity=".8"/>
-            <path d="M43 190 L357 190" stroke="#415f68" stroke-width="8"/>
-            <path d="M204 206 L334 206 M204 200 L204 212 M334 200 L334 212" stroke="#b65b25" stroke-width="2"/>
-            <text x="270" y="232" text-anchor="middle" class="slit-label">footprint changes</text>
-          </svg>
-          <figcaption>A fixed opening gives a changing irradiated length as scan geometry changes.</figcaption>
+          <svg viewBox="0 0 560 370" role="img" aria-labelledby="fds-title fds-desc">
+          <title id="fds-title">Fixed DS at a low and a high scan angle</title>
+          <desc id="fds-desc">Source positions and beam fans for a low incidence angle omega 1 and a high incidence angle omega 2. The divergence opening alpha is the same, so the irradiated length L1 at low angle is much longer than L2 at high angle.</desc>
+          <text x="280" y="30" text-anchor="middle" class="slit-chart-title">Fixed DS</text>
+          <path d="M162.1 193.6L400.6 262L315.7 262Z" fill="#138592" fill-opacity="0.22" stroke="#138592" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M221.4 108.8L369.4 262L332.8 262Z" fill="#d99a1b" fill-opacity="0.3" stroke="#d99a1b" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M162.1 193.6L350 262" stroke="#1f2a33" stroke-opacity=".55" stroke-width="1.3" stroke-dasharray="5 4"/><circle cx="162.1" cy="193.6" r="4.5" fill="#138592"/>
+          <path d="M221.4 108.8L350 262" stroke="#1f2a33" stroke-opacity=".55" stroke-width="1.3" stroke-dasharray="5 4"/><circle cx="221.4" cy="108.8" r="4.5" fill="#d99a1b"/>
+          <path d="M24 262H536" stroke="#334155" stroke-width="5" stroke-linecap="round"/>
+          <text x="530" y="250" text-anchor="end" class="slit-label">sample surface</text>
+          <path d="M306 262A44 44 0 0 1 308.7 247" fill="none" stroke="#1f2a33" stroke-width="1.3"/>
+          <text x="299" y="253" text-anchor="end" class="slit-sym">ω₁</text>
+          <path d="M274 262A76 76 0 0 1 301.1 203.8" fill="none" stroke="#1f2a33" stroke-width="1.3"/>
+          <text x="267" y="253" text-anchor="end" class="slit-sym">ω₂</text>
+          <text x="228.7" y="204.7" class="slit-sym" fill="#138592">α₁</text>
+          <text x="275.8" y="155.6" class="slit-sym" fill="#d99a1b">α₂</text>
+          <path d="M400.6 268V296M315.7 268V296" stroke="#138592" stroke-width="1" stroke-dasharray="2 3"/>
+          <path d="M315.7 296H400.6M315.7 290v12M400.6 290v12" stroke="#138592" stroke-width="2.4" fill="none"/>
+          <text x="412.6" y="301" class="slit-sym">L₁</text>
+          <path d="M369.4 268V320M332.8 268V320" stroke="#d99a1b" stroke-width="1" stroke-dasharray="2 3"/>
+          <path d="M332.8 320H369.4M332.8 314v12M369.4 314v12" stroke="#d99a1b" stroke-width="2.4" fill="none"/>
+          <text x="381.4" y="325" class="slit-sym">L₂</text>
+          <text x="430" y="352" class="slit-label">L₁ > L₂</text>
+        </svg>
+          <figcaption>With one fixed opening α, the irradiated length is long at a low incidence angle ω₁ and short at a high angle ω₂.</figcaption>
         </figure>
         <figure class="slit-figure">
-          <svg viewBox="0 0 400 250" role="img" aria-labelledby="pds-title pds-desc">
-            <title id="pds-title">Programmable divergence slit at two scan angles</title>
-            <desc id="pds-desc">Two schematic beam fans at different incidence angles reach a similar target length on the sample because the opening changes.</desc>
-            <text x="200" y="28" text-anchor="middle" class="slit-chart-title">Programmable DS</text>
-            <path d="M74 59 L157 190 L269 190 Z" fill="#e9aa72" opacity=".72"/>
-            <path d="M145 59 L166 190 L262 190 Z" fill="#f5ca60" opacity=".8"/>
-            <path d="M43 190 L357 190" stroke="#415f68" stroke-width="8"/>
-            <path d="M159 206 L267 206 M159 200 L159 212 M267 200 L267 212" stroke="#b65b25" stroke-width="2"/>
-            <text x="213" y="232" text-anchor="middle" class="slit-label">target length</text>
-          </svg>
-          <figcaption>The opening changes so the irradiated length can be controlled across the scan.</figcaption>
+          <svg viewBox="0 0 560 370" role="img" aria-labelledby="pds-title pds-desc">
+          <title id="pds-title">Programmable DS (constant length) at a low and a high scan angle</title>
+          <desc id="pds-desc">The same two incidence angles. The programmable slit opens wider at the higher angle (alpha 2 greater than alpha 1), so the irradiated lengths L1 and L2 are equal.</desc>
+          <text x="280" y="30" text-anchor="middle" class="slit-chart-title">Programmable DS (constant length)</text>
+          <path d="M162.1 193.6L384.1 262L324.1 262Z" fill="#138592" fill-opacity="0.22" stroke="#138592" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M221.4 108.8L382.9 262L322.9 262Z" fill="#d99a1b" fill-opacity="0.3" stroke="#d99a1b" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M162.1 193.6L350 262" stroke="#1f2a33" stroke-opacity=".55" stroke-width="1.3" stroke-dasharray="5 4"/><circle cx="162.1" cy="193.6" r="4.5" fill="#138592"/>
+          <path d="M221.4 108.8L350 262" stroke="#1f2a33" stroke-opacity=".55" stroke-width="1.3" stroke-dasharray="5 4"/><circle cx="221.4" cy="108.8" r="4.5" fill="#d99a1b"/>
+          <path d="M24 262H536" stroke="#334155" stroke-width="5" stroke-linecap="round"/>
+          <text x="530" y="250" text-anchor="end" class="slit-label">sample surface</text>
+          <path d="M306 262A44 44 0 0 1 308.7 247" fill="none" stroke="#1f2a33" stroke-width="1.3"/>
+          <text x="299" y="253" text-anchor="end" class="slit-sym">ω₁</text>
+          <path d="M274 262A76 76 0 0 1 301.1 203.8" fill="none" stroke="#1f2a33" stroke-width="1.3"/>
+          <text x="267" y="253" text-anchor="end" class="slit-sym">ω₂</text>
+          <text x="228.7" y="204.7" class="slit-sym" fill="#138592">α₁</text>
+          <text x="275.8" y="155.6" class="slit-sym" fill="#d99a1b">α₂</text>
+          <path d="M384.1 268V296M324.1 268V296" stroke="#138592" stroke-width="1" stroke-dasharray="2 3"/>
+          <path d="M324.1 296H384.1M324.1 290v12M384.1 290v12" stroke="#138592" stroke-width="2.4" fill="none"/>
+          <text x="396.1" y="301" class="slit-sym">L₁</text>
+          <path d="M382.9 268V320M322.9 268V320" stroke="#d99a1b" stroke-width="1" stroke-dasharray="2 3"/>
+          <path d="M322.9 320H382.9M322.9 314v12M382.9 314v12" stroke="#d99a1b" stroke-width="2.4" fill="none"/>
+          <text x="394.9" y="325" class="slit-sym">L₂</text>
+          <text x="430" y="352" class="slit-label">L₁ = L₂</text>
+        </svg>
+          <figcaption>The opening widens as ω rises (α₂ &gt; α₁), so the irradiated length stays at the target.</figcaption>
         </figure>
-        </div>
       </div>
-      <p class="diagram-note overlap-legend"><span><i class="legend-swatch pds-swatch"></i>PDS · irradiated</span><span><i class="legend-swatch pass-swatch"></i>PASS · observed</span><span><i class="legend-swatch measured-swatch"></i>Intersection · measured</span></p>
-      <p class="diagram-note">Schematic sample coverage only; the positions and widths are illustrative, not instrument settings.</p>
-      <p class="diagram-note">The beam fans illustrate the brochure’s fixed versus programmable comparison. They do not show instrument dimensions or a calculated scan.</p>
+      <p class="diagram-note">Beam fans are drawn from the θ–θ geometry (source on a circle around the sample centre) with exaggerated openings; they are not instrument dimensions.</p>
+    </section>
+
+    <section class="panel ds-programmable" aria-labelledby="ds-auto-title">
+      <div class="section-heading"><span class="step step-icon" role="img" aria-label="Interactive" title="Interactive"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 4.5h10M3 11.5h10"/><circle cx="6" cy="4.5" r="1.8"/><circle cx="10.5" cy="11.5" r="1.8"/></svg></span><h2 id="ds-auto-title">Opening needed for a constant irradiated length</h2></div>
+      <p>For a target length, the required opening increases with the incident angle. This example inverts the same geometric model used on the <a href="divergent-slit.html">divergence slit</a> page.</p>
+      <div class="ds-auto-grid ds-auto-grid-4">
+        <div class="field"><label for="ds-target">Target L <span>mm</span></label><input id="ds-target" type="number" min="0.1" max="1000" step="any" value="10"></div>
+        <div class="field"><label for="ds-auto-radius">Goniometer radius R <span>mm</span></label><input id="ds-auto-radius" type="number" min="50" max="1000" step="any" value="240"></div>
+        <div class="field"><label for="ds-auto-two-theta">Scan angle 2θ <span>°</span></label><input id="ds-auto-two-theta" type="range" min="2" max="150" step="1" value="20"><div class="ds-range-ends"><span>2°</span><output id="ds-auto-two-theta-readout" for="ds-auto-two-theta">20°</output><span>150°</span></div></div>
+        <div class="ds-auto-card" aria-live="polite"><span>Required DS opening</span><strong id="ds-auto-angle">—</strong><small id="ds-auto-context"></small></div>
+      </div>
+      <p id="ds-auto-range" class="ds-auto-range" aria-live="polite"></p>
+      <p class="ds-limit">Every programmable slit has a largest opening; beyond the angle where it is reached, L falls again. Variable-opening data need an intensity correction before comparison with fixed-slit data, which instrument software normally applies.</p>
+      <details><summary>Geometric model</summary><div class="detail-body"><p>Point source at radius R, flat sample on the axis, straight rays, ω = 2θ/2. L(α) = R/(sin ω / tan(α/2) + cos ω) + R/(sin ω / tan(α/2) − cos ω) rises monotonically with α, so α is solved numerically for the target L. Manufacturers may use their own relation; see the instrument-specific calculators.</p></div></details>
     </section>
 
     <section class="panel diagram-section">
-      <h2>Measured scan example from the brochure</h2>
-      <figure class="brochure-figure">
-        <a href="assets/brochure-figure-6-scan.png?v=figure6" target="_blank" rel="noopener noreferrer" aria-label="Open the original brochure scan at full size"><img src="assets/brochure-figure-6-scan.png?v=figure6" width="1100" height="680" alt="Figure 6 from the Empyrean MultiCore brochure: measured diffraction scans of a metal–organic framework comparing fixed and programmable divergence slit settings across 2θ."></a>
-        <figcaption>Figure 6 in the <a href="https://www.malvernpanalytical.com/en/assets/Empyrean%20MultiCore%20Brochure%20with%20extended%20example%20data_tcm50-99472.pdf" target="_blank" rel="noopener noreferrer">Empyrean MultiCore brochure</a>. This is the source’s measured metal–organic framework example; results depend on the sample and measurement setup. Open the image for full size.</figcaption>
+      <h2>Matching the anti-scatter slit</h2>
+      <p class="overlap-intro">The DS sets what is irradiated, the anti-scatter slit what the detector sees; only the overlap is measured.</p>
+      <figure class="slit-figure match-figure">
+        <svg class="match-svg" viewBox="0 0 1160 340" role="img" aria-labelledby="asym-title asym-desc">
+        <title id="asym-title">Matching the divergence slit and the anti-scatter slit</title>
+        <desc id="asym-desc">Left: side view of a symmetric scan. The divergence slit limits the incident beam and the anti-scatter slit limits what the detector sees; set to the same length L on the sample, both cover the same part of the sample. Right: three top views of a round sample. With matched slits the irradiated and observed areas coincide. If the anti-scatter slit is too wide the detector also sees scatter from outside the irradiated area; if it is too narrow part of the irradiated area is not measured. Only the overlap is measured.</desc>
+        
+          <path d="M35.8 147L320.4 262L183 262Z" fill="#f59e0b" fill-opacity=".34" stroke="#f59e0b" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M434.2 147L149.6 262L287 262Z" fill="#0284c7" fill-opacity=".26" stroke="#0284c7" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M35.8 147L235 262L434.2 147" fill="none" stroke="#1f2a33" stroke-opacity=".5" stroke-width="1.2" stroke-dasharray="5 4"/>
+          <path d="M20 262H450" stroke="#334155" stroke-width="5" stroke-linecap="round"/>
+          <path d="M157.5 196.2L178.5 159.8M139.3 227.8L127.3 248.6M312.5 196.2L291.5 159.8M330.7 227.8L342.7 248.6" stroke="#0f2f3a" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <circle cx="35.8" cy="147" r="5" fill="#f59e0b"/><circle cx="434.2" cy="147" r="5" fill="#0284c7"/>
+          <path d="M181 262A54 54 0 0 1 188.2 235" fill="none" stroke="#1f2a33" stroke-width="1.2"/><path d="M289 262A54 54 0 0 0 281.8 235" fill="none" stroke="#1f2a33" stroke-width="1.2"/>
+          <text x="165" y="253" text-anchor="end" class="slit-sym">ω</text><text x="305" y="253" class="slit-sym">ω</text>
+          <path d="M183 270V292M320.4 270V292M184 284H319.4" stroke="#1f2a33" stroke-width="1.4" fill="none"/>
+          <text x="235" y="308" text-anchor="middle" class="slit-sym">L</text><text x="235" y="334" text-anchor="middle" class="match-sub">same length on the sample</text>
+          <text x="144.5" y="123.8" text-anchor="middle" class="match-label"><tspan x="144.5">Divergence</tspan><tspan x="144.5" dy="17">slit</tspan></text>
+          <text x="325.5" y="123.8" text-anchor="middle" class="match-label"><tspan x="325.5">Anti-scatter</tspan><tspan x="325.5" dy="17">slit</tspan></text>
+          <text x="35.8" y="131" text-anchor="middle" class="match-sub">source</text><text x="434.2" y="131" text-anchor="middle" class="match-sub">detector</text>
+        
+          <clipPath id="mc0"><circle cx="600" cy="130" r="66"/></clipPath>
+          <circle cx="600" cy="130" r="74" fill="#e2e7ed"/><circle cx="600" cy="130" r="66" fill="#fff" stroke="#a9b3bf" stroke-width="1.5"/>
+          <g clip-path="url(#mc0)">
+            <rect x="564" y="96" width="72" height="68" fill="#f59e0b" fill-opacity=".85"/>
+            <rect x="564" y="96" width="72" height="68" fill="#7dd3fc" fill-opacity=".6"/>
+            <rect x="564" y="96" width="72" height="68" fill="#16a34a"/>
+            <rect x="564" y="96" width="72" height="68" fill="none" stroke="#0284c7" stroke-width="2.4"/>
+          </g>
+          <text x="600" y="234" text-anchor="middle" class="match-label">Slits matched</text>
+          <text x="600" y="254" text-anchor="middle" class="match-sub">irradiated area = observed area</text>
+          <clipPath id="mc1"><circle cx="825" cy="130" r="66"/></clipPath>
+          <circle cx="825" cy="130" r="74" fill="#e2e7ed"/><circle cx="825" cy="130" r="66" fill="#fff" stroke="#a9b3bf" stroke-width="1.5"/>
+          <g clip-path="url(#mc1)">
+            <rect x="789" y="96" width="72" height="68" fill="#f59e0b" fill-opacity=".85"/>
+            <rect x="771" y="96" width="108" height="68" fill="#7dd3fc" fill-opacity=".6"/>
+            <rect x="789" y="96" width="72" height="68" fill="#16a34a"/>
+            <rect x="771" y="96" width="108" height="68" fill="none" stroke="#0284c7" stroke-width="2.4"/>
+          </g>
+          <text x="825" y="234" text-anchor="middle" class="match-label">Anti-scatter slit wider</text>
+          <text x="825" y="254" text-anchor="middle" class="match-sub">also sees scatter from outside</text><text x="825" y="272" text-anchor="middle" class="match-sub">the irradiated area</text>
+          <clipPath id="mc2"><circle cx="1050" cy="130" r="66"/></clipPath>
+          <circle cx="1050" cy="130" r="74" fill="#e2e7ed"/><circle cx="1050" cy="130" r="66" fill="#fff" stroke="#a9b3bf" stroke-width="1.5"/>
+          <g clip-path="url(#mc2)">
+            <rect x="1014" y="96" width="72" height="68" fill="#f59e0b" fill-opacity=".85"/>
+            <rect x="1030" y="96" width="40" height="68" fill="#7dd3fc" fill-opacity=".6"/>
+            <rect x="1030" y="96" width="40" height="68" fill="#16a34a"/>
+            <rect x="1030" y="96" width="40" height="68" fill="none" stroke="#0284c7" stroke-width="2.4"/>
+          </g>
+          <text x="1050" y="234" text-anchor="middle" class="match-label">Anti-scatter slit narrower</text>
+          <text x="1050" y="254" text-anchor="middle" class="match-sub">part of the irradiated area</text><text x="1050" y="272" text-anchor="middle" class="match-sub">is not measured</text>
+        <rect x="500" y="296" width="18" height="14" rx="3" fill="#f59e0b" fill-opacity="0.85" stroke="none" stroke-width="1.8"/><text x="526" y="308" class="match-sub">irradiated (DS)</text><rect x="690" y="296" width="18" height="14" rx="3" fill="#7dd3fc" fill-opacity="0.6" stroke="#0284c7" stroke-width="1.8"/><text x="716" y="308" class="match-sub">observed (anti-scatter slit)</text><rect x="940" y="296" width="18" height="14" rx="3" fill="#16a34a" fill-opacity="1" stroke="none" stroke-width="1.8"/><text x="966" y="308" class="match-sub">overlap = measured</text>
+      </svg>
+        <figcaption>With the two slits set to the same length on the sample (left), the irradiated and observed areas coincide. A mismatch (right) either admits extra scatter or discards part of the irradiated area.</figcaption>
       </figure>
+      <p class="match-note">The anti-scatter slit cuts air scatter and scatter from outside the measured area, but it cannot remove a reflection from an irradiated holder. Malvern Panalytical calls the programmable version PASS.</p>
+      <p class="diagram-note">Schematic: the positions and widths are illustrative, not instrument settings.</p>
     </section>
 
-    <section class="panel"><h2>Source and limits</h2><p>The original diagrams above interpret Figures 4 and 5 of the <a href="https://www.malvernpanalytical.com/en/assets/Empyrean%20MultiCore%20Brochure%20with%20extended%20example%20data_tcm50-99472.pdf" target="_blank" rel="noopener noreferrer">Empyrean MultiCore brochure</a>; the scan image reproduces its Figure 6. The brochure calls the detector-side slit “PASS.” The calculator follows the workbook’s slit settings; these illustrations do not determine an opening or predict intensity.</p></section>
+    <section class="panel">
+      <h2>Sources and related pages</h2>
+      <p>Original schematics. Measured fixed and programmable DS scans are compared in Figures 4–6 of the <a href="https://www.malvernpanalytical.com/en/assets/Empyrean%20MultiCore%20Brochure%20with%20extended%20example%20data_tcm50-99472.pdf" target="_blank" rel="noopener noreferrer">Empyrean MultiCore brochure</a>.</p>
+      <div class="related-links"><a href="divergent-slit.html">Divergence slit</a><a href="beam-geometry.html">Beam geometry and sample illumination</a><a href="calculator.html">Malvern Panalytical Empyrean iCore/MultiCore calculator</a></div>
+    </section>
+    <nav class="page-steps" aria-label="General XRD optics pages">
+      <a class="page-prev" href="training.html"><span>← Previous</span><strong>Beam masks</strong></a>
+      <span class="page-count">4 / 5</span>
+      <a class="page-next" href="beam-geometry.html"><span>Next →</span><strong>Beam geometry and sample illumination</strong></a>
+    </nav>
   </main>
+<footer class="landing-footer">
+    <div class="landing-inner">
+      <p class="footer-brand">PXRD Optics</p>
+      <p>An independently developed educational resource. It is not an official product of, or endorsed by, Malvern Panalytical or Anton Paar. Instrument-specific results apply only within the stated configuration and should be checked against the actual instrument.</p>
+    </div>
+  </footer>
 </body>
 </html>

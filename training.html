@@ -3,75 +3,137 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MultiCore mask guide</title>
-  <link rel="stylesheet" href="styles.css?v=polish-14">
+  <title>Beam masks · PXRD Optics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css?v=layers-10">
 </head>
-<body>
+<body class="page">
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <nav aria-label="Main">
+        <a class="nav-home" href="index.html">Home</a>
+        <a href="index.html#learn" aria-current="page">Optics</a>
+        <a href="index.html#calculators">Calculators</a>
+        <a href="index.html#beam-path">Beam path</a>
+        <a href="https://github.com/Joe-868/pxrd-optics" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
   <main class="shell training">
     <header class="header">
-      <nav class="top-nav"><span class="eyebrow">PXRD · MultiCore</span><span class="training-actions"><a href="index.html">← Home</a></span></nav>
-      <h1>Mask</h1><div class="header-equations" aria-label="Bragg equation"><span>2d sin θ = nλ</span></div>
-      <p>These diagrams explain the iCore beam path and the three axial beam-width definitions in the instrument guide. They are schematics, not a measured profile or a scale drawing.</p>
+      <p class="kicker">General XRD optics</p>
+      <h1>Beam masks</h1>
+      <p>An aperture that limits the beam width across the sample (the axial direction). The diagrams are schematic.</p>
     </header>
+
     <section class="panel diagram-section">
       <h2>Incident path: masks and divergence slit</h2>
-      <svg viewBox="0 0 760 320" role="img" aria-labelledby="incident-title incident-desc">
-        <title id="incident-title">Incident X-ray path through two masks and a divergence slit</title>
-        <desc id="incident-desc">Illustrative straight rays leave different positions on a finite line source. A pale fan widens after Mask 1; its outer amber rays pass Mask 1 and are blocked by Mask 2. Teal rays pass both mask openings. The divergence slit is only a nearby reference plane because it acts in the perpendicular scan plane. The fan and rays are not a measured intensity profile, so no FWHM is drawn on this ray path.</desc>
-        <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9" fill="#117d86"/></marker></defs>
-        <text x="38" y="49" font-size="14" fill="#466e78">Axial view · mask-controlled W</text>
-        <path d="M241 143 L400 84.28 L400 235.72 L241 177 Z" fill="#f0ad4e" opacity=".2"/>
-        <path d="M65 120 L241 120 M65 120 L400 177 M65 200 L400 143 M65 112 L400 231.91 M65 208 L400 88.09" stroke="#c88732" stroke-width="2.5" stroke-dasharray="6 5" fill="none"/>
-        <path d="M65 120 L640 205.820896 M65 200 L640 114.179104 M65 144 L640 168.029851 M65 176 L640 151.970149 M65 168 L640 142 M65 152 L640 178 M65 160 L640 160" stroke="#117d86" stroke-width="2.1" fill="none"/>
-        <path d="M65 112 L65 208 M241 90 L241 143 M241 177 L241 230 M400 75 L400 149 M400 171 L400 245" stroke="#284a59" stroke-width="15"/>
-        <path d="M434 78 L434 242" stroke="#829ca6" stroke-width="2" stroke-dasharray="6 6"/>
-        <path d="M640 76 L640 244" stroke="#234b55" stroke-width="7"/>
-        <text x="434" y="60" text-anchor="middle">DS plane</text>
-        <text x="65" y="265" text-anchor="middle">Source</text>
-        <text x="241" y="265" text-anchor="middle">Mask 1</text>
-        <text x="400" y="265" text-anchor="middle">Mask 2</text>
-        <text x="640" y="265" text-anchor="middle">Sample plane</text>
+      <svg class="mask-figure" viewBox="0 0 865 410" role="img" aria-labelledby="incident-title incident-desc">
+        <title id="incident-title">Axial view: two beam masks shape the beam width at the sample</title>
+        <desc id="incident-desc">Axial view of a line source of finite length, a wide first mask, a narrow second mask and the sample plane. Rays from the source that clear both mask openings reach the sample; rays aimed beyond an opening stop on a mask blade, marked with a cross. After the second mask the beam has a fully lit core and partly lit penumbra on each side. Beside the sample plane, the computed intensity across the sample shows a flat top over the core, the full width at half maximum W and the full footprint.</desc>
+        <defs>
+          <linearGradient id="mk-prof" x1="0" x2="1"><stop offset="0" stop-color="#138592" stop-opacity=".08"/><stop offset="1" stop-color="#138592" stop-opacity=".35"/></linearGradient>
+        </defs>
+        <path d="M380 181L402 175.3L424 169.5L446 163.8L468 158L490 152.3L512 146.5L534 140.8L540 139.3L540 286.8L534 285.3L512 279.5L490 273.8L468 268L446 262.3L424 256.5L402 250.8L380 245Z" class="mk-pen"/>
+        <path d="M380 181L402 182.3L424 183.5L446 184.5L468 185.8L490 186.8L512 188L534 189.3L540 189.5L540 236.5L534 236.8L512 238L490 239.3L468 240.3L446 241.5L424 242.5L402 243.8L380 245Z" class="mk-core"/>
+        <path d="M74 165L540 189.5M74 165L540 286.8M74 261L540 139.3M74 261L540 236.5" class="mk-ray"/>
+        <path d="M74 165L232 138.1M74 261L232 287.9M74 261L380 149M74 165L380 277M74 251.4L380 117M74 174.6L380 309" class="mk-blocked"/>
+        <path d="M226 132.1l12 12M226 144.1l12 -12M226 281.9l12 12M226 293.9l12 -12M374 143l12 12M374 155l12 -12M374 271l12 12M374 283l12 -12M374 111l12 12M374 123l12 -12M374 303l12 12M374 315l12 -12" class="mk-x"/>
+        <path d="M74 165V261" class="mk-source"/>
+        <path d="M232 104.19999999999999V173.26143790849673M232 252.73856209150327V321.8M380 104.19999999999999V181M380 245V321.8" class="mk-blade"/>
+        <path d="M540 94.6V331.4" class="mk-sample"/>
+        <text x="74" y="361.4" text-anchor="middle" class="mk-label">Source</text><text x="74" y="383.4" text-anchor="middle" class="mk-sub">line focus, long axis</text>
+        <text x="232" y="361.4" text-anchor="middle" class="mk-label">Mask 1</text>
+        <text x="380" y="361.4" text-anchor="middle" class="mk-label">Mask 2</text>
+        <text x="540" y="361.4" text-anchor="middle" class="mk-label">Sample</text>
+        <text x="480" y="219" text-anchor="middle" class="mk-tag">core</text>
+        <text x="478" y="177.9" text-anchor="middle" class="mk-tag mk-tag-pen">penumbra</text>
+        <g class="mk-legend">
+          <text x="66" y="30" class="mk-head">Axial view · across the sample</text>
+          <path d="M68 62h34" class="mk-ray"/><text x="112" y="67" class="mk-legtext">passes both masks</text>
+          <path d="M304 62h34" class="mk-blocked"/><path d="M346 56l12 12M346 68l12 -12" class="mk-x"/><text x="366" y="67" class="mk-legtext">stopped on a mask blade</text>
+        </g>
+        <path d="M562 131.3L562 131.3L562 131.8L562 132.3L562 132.8L562 133.3L562 133.8L562 134.3L562 134.8L562 135.3L562 135.8L562 136.3L562 136.8L562 137.3L562 137.8L562 138.3L562 138.8L562.2 139.3L563.4 139.8L564.5 140.3L565.6 140.8L566.8 141.3L567.9 141.8L569.1 142.3L570.2 142.8L571.4 143.3L572.5 143.8L573.7 144.3L574.8 144.8L576 145.3L577.1 145.8L578.3 146.3L579.4 146.8L580.5 147.3L581.7 147.8L582.8 148.3L584 148.8L585.1 149.3L586.3 149.8L587.4 150.3L588.6 150.8L589.7 151.3L590.9 151.8L592 152.3L593.1 152.8L594.3 153.3L595.4 153.8L596.5 154.3L597.7 154.8L598.8 155.3L600 155.8L601.1 156.3L602.3 156.8L603.4 157.3L604.6 157.8L605.7 158.3L606.9 158.8L608 159.3L609.1 159.8L610.3 160.3L611.4 160.8L612.6 161.3L613.7 161.8L614.9 162.3L616 162.8L617.2 163.3L618.3 163.8L619.5 164.3L620.6 164.8L621.8 165.3L622.9 165.8L624 166.3L625.2 166.8L626.3 167.3L627.5 167.8L628.6 168.3L629.8 168.8L630.9 169.3L632.1 169.8L633.2 170.3L634.4 170.8L635.5 171.3L636.7 171.8L637.8 172.3L638.9 172.8L640 173.3L641.2 173.8L642.3 174.3L643.5 174.8L644.6 175.3L645.8 175.8L646.9 176.3L648.1 176.8L649.2 177.3L650.4 177.8L651.5 178.3L652.7 178.8L653.8 179.3L654.9 179.8L656.1 180.3L657.2 180.8L658.4 181.3L659.5 181.8L660.7 182.3L661.8 182.8L663 183.3L664.1 183.8L665.3 184.3L666.4 184.8L667.6 185.3L668.7 185.8L669.8 186.3L671 186.8L672.1 187.3L673.3 187.8L674.4 188.3L675.6 188.8L676.7 189.3L677 189.8L677 190.3L677 190.8L677 191.3L677 191.8L677 192.3L677 192.8L677 193.3L677 193.8L677 194.3L677 194.8L677 195.3L677 195.8L677 196.3L677 196.8L677 197.3L677 197.8L677 198.3L677 198.8L677 199.3L677 199.8L677 200.3L677 200.8L677 201.3L677 201.8L677 202.3L677 202.8L677 203.3L677 203.8L677 204.3L677 204.8L677 205.3L677 205.8L677 206.3L677 206.8L677 207.3L677 207.8L677 208.3L677 208.8L677 209.3L677 209.8L677 210.3L677 210.8L677 211.3L677 211.8L677 212.3L677 212.8L677 213.3L677 213.8L677 214.3L677 214.8L677 215.3L677 215.8L677 216.3L677 216.8L677 217.3L677 217.8L677 218.3L677 218.8L677 219.3L677 219.8L677 220.3L677 220.8L677 221.3L677 221.8L677 222.3L677 222.8L677 223.3L677 223.8L677 224.3L677 224.8L677 225.3L677 225.8L677 226.3L677 226.8L677 227.3L677 227.8L677 228.3L677 228.8L677 229.3L677 229.8L677 230.3L677 230.8L677 231.3L677 231.8L677 232.3L677 232.8L677 233.3L677 233.8L677 234.3L677 234.8L677 235.3L677 235.8L677 236.3L676.7 236.8L675.6 237.3L674.4 237.8L673.3 238.3L672.1 238.8L671 239.3L669.8 239.8L668.7 240.3L667.6 240.8L666.4 241.3L665.3 241.8L664.1 242.3L663 242.8L661.8 243.3L660.7 243.8L659.5 244.3L658.4 244.8L657.2 245.3L656.1 245.8L654.9 246.3L653.8 246.8L652.7 247.3L651.5 247.8L650.4 248.3L649.2 248.8L648.1 249.3L646.9 249.8L645.8 250.3L644.6 250.8L643.5 251.3L642.3 251.8L641.2 252.3L640 252.8L638.9 253.3L637.8 253.8L636.7 254.3L635.5 254.8L634.4 255.3L633.2 255.8L632.1 256.3L630.9 256.8L629.8 257.3L628.6 257.8L627.5 258.3L626.3 258.8L625.2 259.3L624 259.8L622.9 260.3L621.8 260.8L620.6 261.3L619.5 261.8L618.3 262.3L617.2 262.8L616 263.3L614.9 263.8L613.7 264.3L612.6 264.8L611.4 265.3L610.3 265.8L609.1 266.3L608 266.8L606.9 267.3L605.7 267.8L604.6 268.3L603.4 268.8L602.3 269.3L601.1 269.8L600 270.3L598.8 270.8L597.7 271.3L596.5 271.8L595.4 272.3L594.3 272.8L593.1 273.3L592 273.8L590.9 274.3L589.7 274.8L588.6 275.3L587.4 275.8L586.3 276.3L585.1 276.8L584 277.3L582.8 277.8L581.7 278.3L580.5 278.8L579.4 279.3L578.3 279.8L577.1 280.3L576 280.8L574.8 281.3L573.7 281.8L572.5 282.3L571.4 282.8L570.2 283.3L569.1 283.8L567.9 284.3L566.8 284.8L565.6 285.3L564.5 285.8L563.4 286.3L562.2 286.8L562 287.3L562 287.8L562 288.3L562 288.8L562 289.3L562 289.8L562 290.3L562 290.8L562 291.3L562 291.8L562 292.3L562 292.8L562 293.3L562 293.8L562 294.3L562 294.8L562 294.8Z" fill="url(#mk-prof)"/>
+        <path d="M562 131.3L562 131.8L562 132.3L562 132.8L562 133.3L562 133.8L562 134.3L562 134.8L562 135.3L562 135.8L562 136.3L562 136.8L562 137.3L562 137.8L562 138.3L562 138.8L562.2 139.3L563.4 139.8L564.5 140.3L565.6 140.8L566.8 141.3L567.9 141.8L569.1 142.3L570.2 142.8L571.4 143.3L572.5 143.8L573.7 144.3L574.8 144.8L576 145.3L577.1 145.8L578.3 146.3L579.4 146.8L580.5 147.3L581.7 147.8L582.8 148.3L584 148.8L585.1 149.3L586.3 149.8L587.4 150.3L588.6 150.8L589.7 151.3L590.9 151.8L592 152.3L593.1 152.8L594.3 153.3L595.4 153.8L596.5 154.3L597.7 154.8L598.8 155.3L600 155.8L601.1 156.3L602.3 156.8L603.4 157.3L604.6 157.8L605.7 158.3L606.9 158.8L608 159.3L609.1 159.8L610.3 160.3L611.4 160.8L612.6 161.3L613.7 161.8L614.9 162.3L616 162.8L617.2 163.3L618.3 163.8L619.5 164.3L620.6 164.8L621.8 165.3L622.9 165.8L624 166.3L625.2 166.8L626.3 167.3L627.5 167.8L628.6 168.3L629.8 168.8L630.9 169.3L632.1 169.8L633.2 170.3L634.4 170.8L635.5 171.3L636.7 171.8L637.8 172.3L638.9 172.8L640 173.3L641.2 173.8L642.3 174.3L643.5 174.8L644.6 175.3L645.8 175.8L646.9 176.3L648.1 176.8L649.2 177.3L650.4 177.8L651.5 178.3L652.7 178.8L653.8 179.3L654.9 179.8L656.1 180.3L657.2 180.8L658.4 181.3L659.5 181.8L660.7 182.3L661.8 182.8L663 183.3L664.1 183.8L665.3 184.3L666.4 184.8L667.6 185.3L668.7 185.8L669.8 186.3L671 186.8L672.1 187.3L673.3 187.8L674.4 188.3L675.6 188.8L676.7 189.3L677 189.8L677 190.3L677 190.8L677 191.3L677 191.8L677 192.3L677 192.8L677 193.3L677 193.8L677 194.3L677 194.8L677 195.3L677 195.8L677 196.3L677 196.8L677 197.3L677 197.8L677 198.3L677 198.8L677 199.3L677 199.8L677 200.3L677 200.8L677 201.3L677 201.8L677 202.3L677 202.8L677 203.3L677 203.8L677 204.3L677 204.8L677 205.3L677 205.8L677 206.3L677 206.8L677 207.3L677 207.8L677 208.3L677 208.8L677 209.3L677 209.8L677 210.3L677 210.8L677 211.3L677 211.8L677 212.3L677 212.8L677 213.3L677 213.8L677 214.3L677 214.8L677 215.3L677 215.8L677 216.3L677 216.8L677 217.3L677 217.8L677 218.3L677 218.8L677 219.3L677 219.8L677 220.3L677 220.8L677 221.3L677 221.8L677 222.3L677 222.8L677 223.3L677 223.8L677 224.3L677 224.8L677 225.3L677 225.8L677 226.3L677 226.8L677 227.3L677 227.8L677 228.3L677 228.8L677 229.3L677 229.8L677 230.3L677 230.8L677 231.3L677 231.8L677 232.3L677 232.8L677 233.3L677 233.8L677 234.3L677 234.8L677 235.3L677 235.8L677 236.3L676.7 236.8L675.6 237.3L674.4 237.8L673.3 238.3L672.1 238.8L671 239.3L669.8 239.8L668.7 240.3L667.6 240.8L666.4 241.3L665.3 241.8L664.1 242.3L663 242.8L661.8 243.3L660.7 243.8L659.5 244.3L658.4 244.8L657.2 245.3L656.1 245.8L654.9 246.3L653.8 246.8L652.7 247.3L651.5 247.8L650.4 248.3L649.2 248.8L648.1 249.3L646.9 249.8L645.8 250.3L644.6 250.8L643.5 251.3L642.3 251.8L641.2 252.3L640 252.8L638.9 253.3L637.8 253.8L636.7 254.3L635.5 254.8L634.4 255.3L633.2 255.8L632.1 256.3L630.9 256.8L629.8 257.3L628.6 257.8L627.5 258.3L626.3 258.8L625.2 259.3L624 259.8L622.9 260.3L621.8 260.8L620.6 261.3L619.5 261.8L618.3 262.3L617.2 262.8L616 263.3L614.9 263.8L613.7 264.3L612.6 264.8L611.4 265.3L610.3 265.8L609.1 266.3L608 266.8L606.9 267.3L605.7 267.8L604.6 268.3L603.4 268.8L602.3 269.3L601.1 269.8L600 270.3L598.8 270.8L597.7 271.3L596.5 271.8L595.4 272.3L594.3 272.8L593.1 273.3L592 273.8L590.9 274.3L589.7 274.8L588.6 275.3L587.4 275.8L586.3 276.3L585.1 276.8L584 277.3L582.8 277.8L581.7 278.3L580.5 278.8L579.4 279.3L578.3 279.8L577.1 280.3L576 280.8L574.8 281.3L573.7 281.8L572.5 282.3L571.4 282.8L570.2 283.3L569.1 283.8L567.9 284.3L566.8 284.8L565.6 285.3L564.5 285.8L563.4 286.3L562.2 286.8L562 287.3L562 287.8L562 288.3L562 288.8L562 289.3L562 289.8L562 290.3L562 290.8L562 291.3L562 291.8L562 292.3L562 292.8L562 293.3L562 293.8L562 294.3L562 294.8" class="mk-prof"/>
+        <path d="M562 94.6V331.4" class="mk-axis"/><path d="M677 94.6V331.4" class="mk-guide"/><path d="M619.5 94.6V331.4" class="mk-guide"/>
+        <text x="619.5" y="86.6" text-anchor="middle" class="mk-sub">0.5</text><text x="677" y="86.6" text-anchor="middle" class="mk-sub">1</text>
+        <text x="619.5" y="361.4" text-anchor="middle" class="mk-sub">I / I<tspan dy="4" font-size="11">max</tspan></text>
+        <path d="M683 189.5H711M683 236.5H711" class="mk-ext mk-c-core"/><path d="M711 189.5V236.5" class="mk-dim mk-c-core"/><path d="M704 189.5h14M704 236.5h14" class="mk-dimcap mk-c-core"/><text x="731" y="213" transform="rotate(-90 731 213)" dy="6" text-anchor="middle" class="mk-dimlabel mk-c-core">core</text>
+        <path d="M625.5 164.5H765M625.5 261.5H765" class="mk-ext mk-c-fwhm"/><path d="M765 164.5V261.5" class="mk-dim mk-c-fwhm"/><path d="M758 164.5h14M758 261.5h14" class="mk-dimcap mk-c-fwhm"/><text x="785" y="213" transform="rotate(-90 785 213)" dy="6" text-anchor="middle" class="mk-dimlabel mk-c-fwhm">FWHM (W)</text>
+        <path d="M568 139.3H819M568 286.8H819" class="mk-ext mk-c-foot"/><path d="M819 139.3V286.8" class="mk-dim mk-c-foot"/><path d="M812 139.3h14M812 286.8h14" class="mk-dimcap mk-c-foot"/><text x="839" y="213" transform="rotate(-90 839 213)" dy="6" text-anchor="middle" class="mk-dimlabel mk-c-foot">footprint</text>
+        <circle cx="677" cy="189.5" r="4.5" class="mk-pt mk-c-core"/><circle cx="677" cy="236.5" r="4.5" class="mk-pt mk-c-core"/><circle cx="619.5" cy="164.5" r="4.5" class="mk-pt mk-c-fwhm"/><circle cx="619.5" cy="261.5" r="4.5" class="mk-pt mk-c-fwhm"/><circle cx="562" cy="139.3" r="4.5" class="mk-pt mk-c-foot"/><circle cx="562" cy="286.8" r="4.5" class="mk-pt mk-c-foot"/>
       </svg>
-      <svg class="profile-inset" viewBox="0 0 760 330" role="img" aria-labelledby="profile-title profile-desc">
-        <title id="profile-title">Core, FWHM and footprint of the iCore beam at the sample</title>
-        <desc id="profile-desc">Schematic trapezoidal axial intensity profile. A flat central plateau spans the core from x 330 to 430. The half-maximum intersections span the FWHM from x 285 to 475. The full baseline from x 240 to 520 spans the footprint. These widths differ from the irradiated length controlled by the divergence slit.</desc>
-        <text x="380" y="30" text-anchor="middle" class="profile-title">Axial beam intensity at the sample</text>
-        <path d="M174 56 L174 198 L580 198" fill="none" stroke="#667d86" stroke-width="1.8"/>
-        <path d="M174 133 L475 133" fill="none" stroke="#9aadb4" stroke-width="1.5" stroke-dasharray="5 5"/>
-        <path d="M240 198 L330 68 L430 68 L520 198 Z" fill="#ccebed" opacity=".75" stroke="#0b7b83" stroke-width="3" stroke-linejoin="round"/>
-        <path d="M330 68 L430 68" stroke="#0b7b83" stroke-width="4"/>
-        <circle cx="285" cy="133" r="4" fill="#b95724"/><circle cx="475" cy="133" r="4" fill="#b95724"/>
-        <path d="M330 74 V220 M430 74 V220 M285 138 V254 M475 138 V254 M240 198 V288 M520 198 V288" fill="none" stroke="#a6bac0" stroke-width="1.4" stroke-dasharray="4 5"/>
-        <path d="M330 218 H430 M330 213 V223 M430 213 V223" fill="none" stroke="#147b83" stroke-width="2.5"/>
-        <path d="M285 252 H475 M285 247 V257 M475 247 V257" fill="none" stroke="#b95724" stroke-width="2.5"/>
-        <path d="M240 286 H520 M240 281 V291 M520 281 V291" fill="none" stroke="#775e9c" stroke-width="2.5"/>
-        <text x="160" y="137" text-anchor="end">0.5</text>
-        <text x="160" y="73" text-anchor="end">1.0</text>
-        <text x="380" y="213" text-anchor="middle" class="profile-measure profile-core">Core</text>
-        <text x="380" y="247" text-anchor="middle" class="profile-measure profile-width">FWHM = W</text>
-        <text x="380" y="281" text-anchor="middle" class="profile-measure profile-footprint">Footprint</text>
-        <text x="595" y="202">Axial position</text>
-        <text x="90" y="124" text-anchor="middle" transform="rotate(-90 90 124)">I / Imax</text>
-        <text x="380" y="316" text-anchor="middle" class="profile-note">Conceptual shape · widths use the iCore guide and workbook tables</text>
-      </svg>
-      <p>The pale fan shows rays admitted by Mask 1 spreading before Mask 2. Its outer amber rays strike Mask 2; teal rays pass both masks. The ray spacing does not measure intensity. The iCore guide describes the resulting axial intensity as trapezoidal: <strong>core</strong> is the flat central width, <strong>FWHM (W)</strong> is the width at half the peak intensity, and <strong>footprint</strong> is the full base width. The calculator uses the workbook's FWHM lookup for W. The divergence slit controls irradiated length L in the perpendicular scan plane; its position alone is marked here.</p>
+      <p>A finite source and the admitted divergence give each beam edge a partly lit penumbra; two masks in series are shown, and a single mask behaves alike. Three widths describe the profile: the <strong>core</strong> (flat top), the <strong>FWHM (W)</strong> and the <strong>footprint</strong> (full width to zero). The DS sets L in the perpendicular direction (the scattering plane), so it does not appear in this axial view.</p>
+      <p class="diagram-note">Manuals quote core, FWHM and footprint for specific mask combinations; see the <a href="calculator.html">Malvern Panalytical Empyrean calculator</a>, which uses the manufacturer’s tables.</p>
     </section>
+
+    <section class="panel diagram-section">
+      <h2>Why the beam is wider than the mask opening</h2>
+      <p>Behind the incident Soller slit, rays still travel at up to about α/2 out of plane. After a mask of opening <em>m</em> they spread further over the mask-to-sample distance <em>d</em>, giving a geometric envelope of</p>
+      <p class="formula-line"><strong>W<sub>full</sub> ≈ m + 2 d tan(α/2)</strong></p>
+      <p>Assumes an incident Soller slit of full acceptance α, straight rays and no source-size or intensity model. The result is an envelope, not a FWHM; weak tails can extend beyond it. Without a Soller slit the expression does not apply, and that is <strong>not</strong> α = 0.</p>
+      <div class="related-links"><a href="anton-paar/index.html">Instrument example: Anton Paar XRDynamic 500 →</a><a href="soller.html">Soller slits →</a></div>
+    </section>
+
     <section class="panel diagram-section">
       <h2>Sample position and holder edge</h2>
-      <svg viewBox="0 0 760 300" role="img" aria-labelledby="sample-title sample-desc">
-        <title id="sample-title">Beam FWHM and tails relative to the sample holder</title>
-        <desc id="sample-desc">Top view of the sample: mask-controlled W runs vertically. A central FWHM strip sits within a larger illustrative axial beam profile. Weak tails can reach the surrounding holder.</desc>
-        <rect x="190" y="45" width="380" height="205" rx="20" fill="#dce5e7"/>
-        <circle cx="380" cy="147" r="89" fill="#f6fbf9" stroke="#577b82" stroke-width="3"/>
-        <ellipse cx="380" cy="147" rx="43" ry="104" fill="#f6c366" opacity=".38"/>
-        <rect x="357" y="90" width="46" height="114" rx="18" fill="#e9923d" opacity=".8"/>
-        <path d="M426 90 L426 204 M419 90 L433 90 M419 204 L433 204" stroke="#a94e1a" stroke-width="2"/>
-        <text x="449" y="147" text-anchor="middle" transform="rotate(90 449 147)">W (FWHM)</text>
-        <text x="380" y="283" text-anchor="middle">Weak tails may reach the holder even when W fits the sample.</text>
+      <svg class="holder-figure" viewBox="0 0 760 352" role="img" aria-labelledby="sample-title sample-desc">
+        <title id="sample-title">Beam FWHM and weak tails relative to the sample and holder</title>
+        <desc id="sample-desc">Top view of a round sample in a metal holder. The beam patch is centred on the sample: a stronger central band of width W (FWHM) lies well inside the sample, while weak axial tails extend further and, near the corners of the patch, fall outside the sample onto the holder.</desc>
+        <defs>
+          <linearGradient id="sf-holder" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6f8fa"/><stop offset="1" stop-color="#e2e7ed"/></linearGradient>
+          <linearGradient id="sf-beam" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f59e4b" stop-opacity="0"/><stop offset=".3" stop-color="#f59e4b" stop-opacity=".16"/>
+            <stop offset=".5" stop-color="#f59e4b" stop-opacity=".36"/><stop offset=".7" stop-color="#f59e4b" stop-opacity=".16"/><stop offset="1" stop-color="#f59e4b" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="sf-spill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ef5f3c" stop-opacity=".05"/><stop offset=".15" stop-color="#ef5f3c" stop-opacity=".34"/><stop offset=".35" stop-color="#ef5f3c" stop-opacity=".5"/>
+            <stop offset=".5" stop-color="#ef5f3c" stop-opacity=".58"/><stop offset=".65" stop-color="#ef5f3c" stop-opacity=".5"/><stop offset=".85" stop-color="#ef5f3c" stop-opacity=".34"/><stop offset="1" stop-color="#ef5f3c" stop-opacity=".05"/>
+          </linearGradient>
+          <clipPath id="sf-out"><path clip-rule="evenodd" d="M0 0H760V352H0Z M268 150a92 92 0 1 0 184 0a92 92 0 1 0 -184 0Z"/></clipPath>
+        </defs>
+        <rect x="110" y="28" width="500" height="244" rx="22" fill="url(#sf-holder)" stroke="#c3cbd3" stroke-width="1.5"/>
+        <circle cx="134" cy="52" r="5" fill="#eef1f5" stroke="#c3cbd3" stroke-width="1"/><path d="M131 52H137" stroke="#b3bcc6" stroke-width="1.2"/><circle cx="586" cy="52" r="5" fill="#eef1f5" stroke="#c3cbd3" stroke-width="1"/><path d="M583 52H589" stroke="#b3bcc6" stroke-width="1.2"/><circle cx="134" cy="248" r="5" fill="#eef1f5" stroke="#c3cbd3" stroke-width="1"/><path d="M131 248H137" stroke="#b3bcc6" stroke-width="1.2"/><circle cx="586" cy="248" r="5" fill="#eef1f5" stroke="#c3cbd3" stroke-width="1"/><path d="M583 248H589" stroke="#b3bcc6" stroke-width="1.2"/>
+        <circle cx="360" cy="150" r="98" fill="#d3d9e0"/>
+        <circle cx="360" cy="150" r="92" fill="#ffffff" stroke="#a9b3bf" stroke-width="1.5"/>
+        <rect x="285" y="68" width="150" height="164" fill="url(#sf-beam)"/>
+        <rect x="285" y="68" width="150" height="164" fill="url(#sf-spill)" clip-path="url(#sf-out)"/>
+        <rect x="285" y="124" width="150" height="52" fill="#fbbf85" opacity=".7"/>
+        <rect x="285" y="124" width="150" height="52" fill="none" stroke="#e8893a" stroke-width="1.6" stroke-dasharray="5 4"/>
+        <path d="M435 124H520M435 176H520M435 68H580M435 232H580" stroke="#94a3b8" stroke-width="1.1" stroke-dasharray="2 4" fill="none"/>
+        <path d="M520 124V176M514 124h12M514 176h12" stroke="#475569" stroke-width="1.8" fill="none"/>
+        <path d="M580 68V232M574 68h12M574 232h12" stroke="#475569" stroke-width="1.8" fill="none"/>
+        <text x="540" y="150" dy="5.5" transform="rotate(-90 540 150)" text-anchor="middle" font-size="16" font-weight="600" fill="#334155">W (FWHM)</text>
+        <text x="600" y="150" dy="5.5" transform="rotate(-90 600 150)" text-anchor="middle" font-size="16" font-weight="600" fill="#334155">weak tails</text>
+        <path d="M194 94L289.2 91.1" stroke="#64748b" stroke-width="1.2" fill="none"/>
+        <circle cx="289.2" cy="91.1" r="2.8" fill="#475569"/>
+        <text x="150" y="90" font-size="17" font-weight="600" fill="#334155">sample</text>
+        <text x="150" y="230" font-size="17" font-weight="600" fill="#334155">metal holder</text>
+        <text x="360" y="19" text-anchor="middle" font-size="14" fill="#64748b">beam → · patch length L along the beam</text>
+        <rect x="110" y="304" width="16" height="16" rx="3" fill="#ef5f3c" opacity=".6"/>
+        <text x="136" y="317" font-size="15" fill="#64748b">weak tails falling on the holder</text>
+        <text x="110" y="340" font-size="15" fill="#64748b">Weak tails may reach the holder even when W fits the sample.</text>
       </svg>
-      <p>During a direct-beam Z alignment scan, the sample surface enters the beam until transmission is about half the open-beam value. That height reference is separate from the mask table's W. Positioning the sample there does not halve W or remove weak beam tails.</p>
+      <p>Holder reflections in a scan suggest that part of the beam, often the tails, reaches the holder.</p>
     </section>
-<section class="panel"><h2>Sources and limits</h2><p>The supplied iCore instrument guide (pp. 1–3) defines the trapezoidal profile and lists core, FWHM and footprint widths for each mask pair. The workbook supplies the calculator's FWHM lookup. These diagrams are qualitative. See the <a href="https://nrf.aux.eng.ufl.edu/_files/documents/16868.pdf" target="_blank" rel="noopener noreferrer">XRD alignment guide</a> for sample-height alignment.</p></section>
+
+    <section class="panel">
+      <h2>Related pages</h2>
+      <div class="related-links"><a href="beam-geometry.html">Beam geometry and sample illumination</a><a href="divergent-slit.html">Divergence slit</a><a href="calculator.html">Malvern Panalytical Empyrean iCore/MultiCore calculator</a><a href="anton-paar/index.html">Anton Paar XRDynamic 500 calculator</a></div>
+      <p class="source">Sources: general diffraction geometry; instrument-specific mask values are described on the calculator pages. See the <a href="https://nrf.aux.eng.ufl.edu/_files/documents/16868.pdf" target="_blank" rel="noopener noreferrer">XRD alignment guide</a> for sample-height alignment.</p>
+    </section>
+    <nav class="page-steps" aria-label="General XRD optics pages">
+      <a class="page-prev" href="soller.html"><span>← Previous</span><strong>Soller slits</strong></a>
+      <span class="page-count">3 / 5</span>
+      <a class="page-next" href="slits.html"><span>Next →</span><strong>Fixed, programmable and automatic DS</strong></a>
+    </nav>
   </main>
+<footer class="landing-footer">
+    <div class="landing-inner">
+      <p class="footer-brand">PXRD Optics</p>
+      <p>An independently developed educational resource. It is not an official product of, or endorsed by, Malvern Panalytical or Anton Paar. Instrument-specific results apply only within the stated configuration and should be checked against the actual instrument.</p>
+    </div>
+  </footer>
 </body>
 </html>

@@ -3,40 +3,89 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>XRDynamic 500 mask calculator</title>
-  <link rel="stylesheet" href="styles.css?v=polish-14">
-  <script defer src="calculator.js"></script>
+  <title>Anton Paar XRDynamic 500 beam mask calculator · PXRD Optics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../styles.css?v=layers-10">
+  <script defer src="calculator.js?v=layers-10"></script>
 </head>
-<body>
+<body class="page">
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <nav aria-label="Main">
+        <a class="nav-home" href="../index.html">Home</a>
+        <a href="../index.html#learn">Optics</a>
+        <a href="../index.html#calculators" aria-current="page">Calculators</a>
+        <a href="../index.html#beam-path">Beam path</a>
+        <a href="https://github.com/Joe-868/pxrd-optics" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
   <main class="shell">
-    <header class="header hero">
-      <span class="eyebrow hero-eyebrow"><i aria-hidden="true"></i>PXRD · Anton Paar XRDynamic 500</span>
-      <h1>Beam mask <span class="grad">width</span> calculator</h1>
-      <p>Estimate the full illuminated width on the sample from the goniometer radius, the incident Soller slit and the beam mask opening.</p>
+    <header class="header">
+      <p class="kicker">Instrument-specific configuration</p>
+      <h1>Anton Paar XRDynamic 500</h1>
+      <p>Estimate the illuminated width from the radius, the incident Soller slit and the mask, or choose a mask for a target width.</p>
+      <ul class="spec-chips" aria-label="Applies to"><li>XRDynamic 500 · line focus</li><li>R = 360 or 400 mm</li><li>Incident Soller slit</li><li>Beam mask < 14 mm</li></ul>
     </header>
 
+    <details class="model-card">
+      <summary><span class="mc-title" id="model-title">Model applicability</span><span class="mc-hint">Configuration, reference sources and limitations</span></summary>
+      <dl>
+        <dt>Applicable configuration</dt>
+        <dd>Anton Paar XRDynamic 500, line focus, goniometer radius 360 mm or 400 mm, beam mask opening below 14 mm (instrument range 0 to about 13 mm).</dd>
+        <dt>Optical components required</dt>
+        <dd>An incident Soller slit with acceptance angle 0.05, 0.025 or 0.0125 rad, and a beam mask downstream of it.</dd>
+        <dt>Source of reference parameters</dt>
+        <dd>Manufacturer-supplied technical guidance and elementary geometrical relationships. The mask position (242.4 mm term) is an instrument-specific parameter from that guidance.</dd>
+        <dt>Assumptions and limitations</dt>
+        <dd><ul>
+          <li>W is a geometric estimate of the full illuminated width (an envelope), not a FWHM or a measured profile.</li>
+          <li>Removing the Soller slit is not the same as α = 0; α = 0 is the ideal parallel-ray limit. Without a Soller slit this model does not apply.</li>
+          <li>Weak tails beyond W are not described, so the result cannot by itself guarantee clearance from a holder edge.</li>
+        </ul></dd>
+      </dl>
+    </details>
+
     <section class="panel" aria-labelledby="geo-title">
-      <h2 id="geo-title">Beam geometry at the sample</h2>
+      <h2 id="geo-title">How the width arises</h2>
       <figure class="slit-figure">
-        <svg viewBox="0 0 640 260" role="img" aria-labelledby="sch-title sch-desc" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto">
+        <svg viewBox="0 12 760 232" role="img" aria-labelledby="sch-title sch-desc" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto">
           <title id="sch-title">Illuminated width from beam mask opening and Soller divergence</title>
-          <desc id="sch-desc">Side view in the axial direction. The beam leaves the incident Soller slit at the left and passes a beam mask with opening m. Beyond the mask the edge rays diverge by half the acceptance angle on each side, adding a width x per side over the distance L to the sample plane, giving the illuminated width W.</desc>
+          <desc id="sch-desc">Side view in the axial direction. Every point along the line focus emits rays in many directions, so rays enter the incident Soller slit over a wide range of angles. Steeply inclined rays strike the Soller plates and are absorbed, so the rays that leave the Soller slit are inclined by at most half its acceptance angle α. These rays travel in straight lines. Rays that reach a mask plate stop there; rays that pass the opening of width m continue in the same direction. The two steepest rays that just pass the opening edges spread by x on each side over the mask-to-sample distance L, so the geometric envelope at the sample plane has width W = m + 2x. Angles are exaggerated.</desc>
           <defs>
-            <marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto-start-reverse"><path d="M0 0L8 4 0 8Z" fill="#17323a"/></marker>
+            <marker id="ah" viewBox="0 0 9 6" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="6" refX="8" refY="3" orient="auto-start-reverse"><path d="M0 .5L9 3 0 5.5Z" fill="#8a9bae"/></marker>
           </defs>
-          <rect width="640" height="260" fill="#fbfdfd"/>
-          <!-- Soller slit -->
-          <g fill="#168b96"><rect x="40" y="86" width="14" height="88" rx="2"/></g>
-          <path d="M42 100h10M42 112h10M42 124h10M42 136h10M42 148h10M42 160h10" stroke="#c9f3f4" stroke-width="1.2"/>
-          <text x="47" y="196" text-anchor="middle" font-size="12" fill="#17323a">Soller slit</text>
-          <text x="47" y="212" text-anchor="middle" font-size="12" fill="#17323a">(α)</text>
-          <!-- beam envelope -->
-          <path d="M54 100 L250 108 L250 152 L54 160 Z" fill="#df7940" opacity=".14"/>
-          <path d="M250 108 L520 66 M250 152 L520 194" stroke="#df7940" stroke-width="2.5" fill="none" stroke-dasharray="6 4"/>
-          <path d="M54 100 L250 108 M54 160 L250 152" stroke="#df7940" stroke-width="2.5" fill="none"/>
+          
+          <!-- source and incident Soller slit: steep rays are absorbed by the plates, only rays within ±α/2 leave -->
+          <rect x="12" y="96" width="8" height="72" rx="2" fill="#df7940"/>
+          <text x="4" y="186" font-size="11" fill="#17323a">line focus</text>
+          <rect x="110" y="86" width="64" height="88" fill="#e3f3f4"/>
+          <path d="M110 86H174M110 97H174M110 108H174M110 124H174M110 136H174M110 150H174M110 162H174M110 174H174" stroke="#168b96" stroke-width="2"/>
+          <g stroke="#df7940" stroke-width="1.8" fill="none" stroke-linecap="round">
+            <path d="M20 118H174M20 130H174M20 142H174"/>
+            <path d="M20 162.5 L174 138.5 M20 97.5 L174 121.5" stroke-width="2.4"/>
+            <path d="M20 100 L122.9 136 M20 164 L134.3 124 M20 110 L129.1 86 M20 154 L131.1 174 M20 124 L123.8 97 M20 140 L150.8 174" stroke-dasharray="4 3"/>
+          </g>
+          <g fill="#17323a"><circle cx="122.9" cy="136" r="2.6"/><circle cx="134.3" cy="124" r="2.6"/><circle cx="129.1" cy="86" r="2.6"/><circle cx="131.1" cy="174" r="2.6"/><circle cx="123.8" cy="97" r="2.6"/><circle cx="150.8" cy="174" r="2.6"/></g>
+          <text x="58" y="80" text-anchor="middle" font-size="11" fill="#a95c2a">wide divergence</text>
+          <text x="142" y="196" text-anchor="middle" font-size="12" fill="#17323a">Soller slit</text>
+          <text x="142" y="212" text-anchor="middle" font-size="12" fill="#17323a">(acceptance α)</text>
+          <g transform="translate(120 0)">
+          <!-- incident beam region between Soller slit and mask -->
+          <rect x="54" y="100" width="190" height="60" fill="#df7940" opacity=".07"/>
+          <!-- calculated geometric envelope beyond the mask -->
+          <path d="M250 108 L520 66 L520 194 L250 152 Z" fill="#df7940" opacity=".10"/>
           <path d="M250 108 L520 108 M250 152 L520 152" stroke="#0a6870" stroke-width="1.5" fill="none" stroke-dasharray="2 4"/>
-          <path d="M250 108 L520 66 L520 194 L250 152 Z" fill="#df7940" opacity=".12"/>
-          <text x="140" y="124" font-size="12" fill="#a95c2a" text-anchor="middle">beam</text>
+          <!-- straight rays: parallel rays and the two steepest rays that just pass the opening edges -->
+          <g stroke="#df7940" stroke-width="1.8" fill="none" stroke-linecap="round">
+            <path d="M54 118 L520 118 M54 130 L520 130 M54 142 L520 142"/>
+            <path d="M54 138.5 L520 66 M54 121.5 L520 194" stroke-width="2.4"/>
+            <!-- equally steep rays that reach a mask plate and stop -->
+            <path d="M54 104 L244 74.4 M54 156 L244 185.6" stroke-dasharray="5 4"/>
+          </g>
+          <g fill="#17323a"><circle cx="244" cy="74.4" r="3"/><circle cx="244" cy="185.6" r="3"/></g>
+          <text x="140" y="72" font-size="11" fill="#a95c2a" text-anchor="middle">blocked by mask</text>
           <!-- mask plates -->
           <rect x="244" y="50" width="12" height="58" rx="2" fill="#7661b5"/>
           <rect x="244" y="152" width="12" height="58" rx="2" fill="#7661b5"/>
@@ -45,80 +94,97 @@
           <rect x="516" y="40" width="8" height="180" rx="2" fill="#4b626a"/>
           <text x="520" y="30" text-anchor="middle" font-size="12" fill="#17323a">sample position plane</text>
           <!-- m dimension -->
-          <path d="M226 108V152" stroke="#17323a" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
+          <path d="M226 108V152" stroke="#8a9bae" stroke-width="1.3" marker-start="url(#ah)" marker-end="url(#ah)"/>
           <text x="214" y="135" text-anchor="end" font-size="16" font-weight="700" fill="#17323a">m</text>
           <!-- x dimensions -->
-          <path d="M548 66V108" stroke="#17323a" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
-          <path d="M548 152V194" stroke="#17323a" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
+          <path d="M548 66V108" stroke="#8a9bae" stroke-width="1.3" marker-start="url(#ah)" marker-end="url(#ah)"/>
+          <path d="M548 152V194" stroke="#8a9bae" stroke-width="1.3" marker-start="url(#ah)" marker-end="url(#ah)"/>
           <text x="560" y="92" font-size="16" font-weight="700" fill="#17323a">x</text>
           <text x="560" y="178" font-size="16" font-weight="700" fill="#17323a">x</text>
           <path d="M520 108h34M520 152h34M520 66h34M520 194h34" stroke="#8aa3aa" stroke-width="1"/>
           <!-- W dimension -->
-          <path d="M594 66V194" stroke="#17323a" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
+          <path d="M594 66V194" stroke="#8a9bae" stroke-width="1.3" marker-start="url(#ah)" marker-end="url(#ah)"/>
           <path d="M554 66h46M554 194h46" stroke="#8aa3aa" stroke-width="1"/>
           <text x="606" y="136" font-size="16" font-weight="700" fill="#17323a">W</text>
           <!-- L dimension -->
-          <path d="M250 238H520" stroke="#17323a" stroke-width="1.5" marker-start="url(#ah)" marker-end="url(#ah)" transform="translate(0 -4)"/>
+          <path d="M250 238H520" stroke="#8a9bae" stroke-width="1.3" marker-start="url(#ah)" marker-end="url(#ah)" transform="translate(0 -4)"/>
           <path d="M250 214v22" stroke="#8aa3aa" stroke-width="1"/>
           <text x="385" y="228" text-anchor="middle" font-size="16" font-weight="700" fill="#17323a">L</text>
-          <!-- half-angle -->
-          <text x="352" y="88" font-size="12" fill="#a95c2a">α/2</text>
+          <!-- half-angle between the steepest ray and the axis -->
+          <path d="M306 108 A80 80 0 0 0 305.3 97.7" stroke="#a95c2a" stroke-width="1.4" fill="none"/>
+          <text x="296" y="86" font-size="12" fill="#a95c2a">α/2</text>
+          <text x="430" y="168" font-size="11" fill="#a95c2a" text-anchor="middle">calculated envelope</text>
+                  </g>
         </svg>
-        <figcaption>Schematic, not to scale.</figcaption>
+        <figcaption>Schematic; angles exaggerated. The Soller slit absorbs rays steeper than ±α/2 and the mask removes rays outside its opening; neither bends the rays that pass. Here <strong>L</strong> is the mask-to-sample distance and <strong>W</strong> the full geometric width (manufacturer's notation); on the general pages L is the irradiated length and W the FWHM.</figcaption>
       </figure>
     </section>
 
-    <section class="panel" aria-labelledby="inst-title">
-      <div class="section-heading"><span class="step">1</span><h2 id="inst-title">Illuminated width from instrument settings</h2></div>
-      <div class="form-grid">
-        <div class="field"><label for="radius">Goniometer radius R <span>mm</span></label>
-          <select id="radius"><option value="360" selected>360</option><option value="400">400</option></select></div>
-        <div class="field"><label for="alpha">Incident Soller slit acceptance angle α <span>rad</span></label>
-          <select id="alpha"><option value="0.05">0.05</option><option value="0.025" selected>0.025</option><option value="0.0125">0.0125</option></select></div>
-        <div class="field"><label for="mask">Beam mask opening m <span>mm</span></label>
-          <input id="mask" type="number" min="0" max="13" step="0.1" value="6" inputmode="decimal" aria-describedby="mask-warning">
-          <p id="mask-warning" class="inline-warning" hidden></p></div>
-      </div>
-      <h3 class="subhead">Illuminated width</h3>
-      <div aria-live="polite">
-      <div class="metric-grid">
-        <div class="metric"><span>Illuminated width W</span><strong id="out-w">—</strong><small>mm · line focus</small></div>
-        <div class="metric"><span>Extra width per side x</span><strong id="out-x">—</strong><small>mm · Soller divergence</small></div>
-        <div class="metric"><span>Mask-to-sample distance L</span><strong id="out-l">—</strong><small>mm</small></div>
-      </div>
-      <p class="result-note"><strong>W = m + 2·L·tan(α/2)</strong><br><span id="formula">—</span></p>
-      </div>
+    <div class="calc-layout ap-layout">
+      <form class="calc-inputs" aria-label="Instrument settings" onsubmit="return false">
+        <fieldset class="calc-group">
+          <legend><span class="step">1</span>Instrument</legend>
+          <div class="form-grid">
+            <div class="field"><label for="radius">Goniometer radius R <span>mm</span></label>
+              <select id="radius"><option value="360" selected>360</option><option value="400">400</option></select></div>
+            <div class="field"><span class="field-label">Mask-to-sample L <span>mm</span></span><output id="dist" for="radius">—</output></div>
+            <div class="field span-2"><label for="alpha">Incident Soller acceptance α <span>rad</span></label>
+              <select id="alpha"><option value="0.05">0.05</option><option value="0.025" selected>0.025</option><option value="0.0125">0.0125</option></select></div>
+          </div>
+          <p class="input-hint">L = R − 242.4 mm, set by the radius.</p>
+        </fieldset>
+        <fieldset class="calc-group">
+          <legend><span class="step">2</span>What do you want to find?</legend>
+          <fieldset class="mode-choice segmented"><legend class="visually-hidden">Calculation</legend>
+            <label><input type="radio" name="ap-mode" id="mode-target" value="target" checked> Mask for a target width</label>
+            <label><input type="radio" name="ap-mode" id="mode-mask" value="mask"> Width for a mask</label>
+          </fieldset>
+          <div class="form-grid one">
+            <div class="field" id="target-field"><label for="target">Target full illuminated width T <span>mm</span></label>
+              <input id="target" type="number" min="0" step="0.1" value="8" inputmode="decimal">
+              <p class="input-hint">The full width W you want on the sample, including the extra 2x from the Soller divergence.</p></div>
+            <div class="field" id="mask-field" hidden><label for="mask">Beam mask opening m <span>mm</span></label>
+              <input id="mask" type="number" min="0" max="13" step="0.1" value="6" inputmode="decimal" aria-describedby="mask-warning">
+              <p id="mask-warning" class="inline-warning" hidden></p></div>
+          </div>
+        </fieldset>
+      </form>
 
-    </section>
-
-    <section class="panel" aria-labelledby="rev-title">
-      <div class="section-heading"><span class="step">2</span><h2 id="rev-title">Maximum mask for a target width</h2></div>
-      <div class="form-grid">
-        <div class="field"><label for="target">Target maximum illuminated width T <span>mm</span></label>
-          <input id="target" type="number" min="0" step="0.1" value="8" inputmode="decimal"></div>
-        <div class="field"><label for="radius-rev">Goniometer radius R <span>mm</span></label>
-          <select id="radius-rev"><option value="360" selected>360</option><option value="400">400</option></select></div>
-        <div class="field"><label for="alpha-rev">Incident Soller slit acceptance angle α <span>rad</span></label>
-          <select id="alpha-rev"><option value="0.05">0.05</option><option value="0.025" selected>0.025</option><option value="0.0125">0.0125</option></select></div>
-      </div>
-      <p id="rev-message" class="message"></p>
-      <div class="metric-grid">
-        <div class="metric"><span>Largest mask m<sub>max</sub> = T − 2x</span><strong id="out-mmax">—</strong><small id="out-mmax-note">mm</small></div>
-        <div class="metric"><span>Minimum possible width (m → 0)</span><strong id="out-wmin">—</strong><small>mm · 2x</small></div>
-      </div>
-    </section>
+      <section class="calc-results" aria-live="polite" aria-labelledby="result-title">
+        <div class="result-head"><h2 id="result-title">Result</h2></div>
+        <div class="ap-answer"><span id="answer-label">Largest mask opening</span><strong id="answer">—</strong></div>
+        <p id="message" class="message"></p>
+        <figure class="fit-figure">
+          <svg id="ap-svg" viewBox="0 0 400 230" role="img" aria-labelledby="ap-svg-title"><title id="ap-svg-title">Axial view of the beam from the mask opening to the sample</title></svg>
+          <figcaption>Axial side view. Widths are to scale with each other; the distance L and the spread are not.</figcaption>
+        </figure>
+        <dl class="fit-numbers">
+          <div><dt>Mask opening m</dt><dd id="out-m">—</dd><small id="out-m-note">mm</small></div>
+          <div><dt>Extra width per side x</dt><dd id="out-x">—</dd><small>mm · L·tan(α/2)</small></div>
+          <div><dt>Illuminated width W</dt><dd id="out-w">—</dd><small>mm · m + 2x</small></div>
+        </dl>
+        <p class="fit-rule"><strong>W = m + 2·L·tan(α/2)</strong> <span id="formula">—</span></p>
+      </section>
+    </div>
 
     <section class="panel" aria-labelledby="notes-title">
       <h2 id="notes-title">What this calculation does and does not cover</h2>
       <ol>
-        <li>It is a geometric estimate of the full illuminated width, valid for line focus and a mask opening below 14 mm (workbook note).</li>
+        <li>It is a geometric estimate of the full illuminated width, valid for line focus and a mask opening below 14 mm.</li>
         <li>It applies when an incident Soller slit is installed; α is the acceptance angle of that slit.</li>
-        <li>Removing the Soller slit is not the same as α = 0. α = 0 is the ideal parallel-ray limit. Without a Soller slit the width depends on the optics and cannot be taken from this model.</li>
+        <li>Removing the Soller slit is not α = 0, the ideal parallel-ray limit; without a Soller slit this model does not apply.</li>
         <li>It does not describe the intensity distribution or weak tails beyond W, so it cannot by itself guarantee clearance from a holder edge.</li>
         <li>For capillary transmission, the mask mainly limits the illuminated length along the capillary; keep W within the sample-filled section.</li>
       </ol>
-      <p class="result-note">Formulas follow Anton Paar's CalculationsIllumintedWidth.xlsx.</p>
+      <p class="result-note">Source: manufacturer-supplied technical guidance and elementary geometrical relationships. Calculations are implemented independently in this page.</p>
+      <div class="related-links"><a href="../training.html">Principle: beam masks</a><a href="../soller.html">Principle: Soller slits</a><a href="../beam-geometry.html">Principle: beam geometry and sample illumination</a></div>
     </section>
   </main>
+<footer class="landing-footer">
+    <div class="landing-inner">
+      <p class="footer-brand">PXRD Optics</p>
+      <p>An independently developed educational resource. It is not an official product of, or endorsed by, Malvern Panalytical or Anton Paar. Instrument-specific results apply only within the stated configuration and should be checked against the actual instrument.</p>
+    </div>
+  </footer>
 </body>
 </html>

@@ -3,79 +3,135 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PXRD · MultiCore optics guides</title>
-  <link rel="stylesheet" href="styles.css?v=polish-14">
+  <title>PXRD Optics</title>
+  <meta name="description" content="Interactive education and instrument-specific calculation tools for powder X-ray diffraction optics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css?v=layers-10">
 </head>
-<body>
-  <main class="shell home">
-    <header class="header hero">
-      <span class="eyebrow hero-eyebrow"><i aria-hidden="true"></i>PXRD · MultiCore · Panalytical Empyrean</span>
-      <h1>PXRD <span class="grad">optics</span> setup</h1><div class="header-equations" aria-label="Bragg equation"><span>2d sin θ = nλ</span></div>
-      <p>Explore the MultiCore optics guides or open the calculator to check workbook settings for your sample and scan.</p>
-    </header>
-    <section class="guide-section" id="guides" aria-label="Optics guides">
-      <div class="guide-grid">
-        <a class="guide-card" href="calculator.html"><span class="guide-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="4" width="20" height="24" rx="4"/><rect x="10" y="8" width="12" height="5" rx="1.5" class="fill"/><path d="M11 18h2M15 18h2M19 18h2M11 23h2M15 23h2M19 23h2"/></svg></span><span class="guide-num">01</span><strong>Optics setup calculator</strong><span class="guide-desc">Check mask, divergence slit, PASS and Soller choices against your sample size and scan range.</span></a>
-        <a class="guide-card" href="training.html"><span class="guide-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 9h9v14H4M28 9h-9v14h9"/><path d="M16 5v22" class="dash"/></svg></span><span class="guide-num">02</span><strong>Mask</strong><span class="guide-desc">See how Mask 1 and Mask 2 shape the beam, and what core, FWHM and footprint mean.</span></a>
-        <a class="guide-card" href="divergent-slit.html"><span class="guide-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 16 28 6M4 16l24 10"/><path d="M20 4v10M20 18v10"/></svg></span><span class="guide-num">03</span><strong>Divergent slit</strong><span class="guide-desc">Compare fixed divergence slit openings and how the irradiated length changes with 2θ.</span></a>
-        <a class="guide-card" href="soller.html"><span class="guide-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 6v20M12 6v20M18 6v20M24 6v20"/><path d="M2 16h28" class="dash"/></svg></span><span class="guide-num">04</span><strong>Soller slit</strong><span class="guide-desc">Understand axial acceptance and how Soller slits change peak shape.</span></a>
-        <a class="guide-card" href="slits.html"><span class="guide-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="13" cy="16" r="8"/><circle cx="20" cy="16" r="8"/></svg></span><span class="guide-num">05</span><strong>Programmable divergence &amp; anti-scatter slits</strong><span class="guide-desc">How PDS and PASS keep the measured area on the sample across a scan.</span></a>
+<body class="landing">
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <nav aria-label="Main">
+        <a href="#learn">Optics</a>
+        <a href="#calculators">Calculators</a>
+        <a href="#beam-path">Beam path</a>
+        <a href="https://github.com/Joe-868/pxrd-optics" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="landing-hero">
+      <div class="landing-inner">
+        <div class="hero-copy">
+          <h1 class="kicker kicker-title hero-title">Powder X-ray diffraction optics</h1>
+        </div>
       </div>
     </section>
-    <figure class="home-instrument">
+
+    <section class="landing-section" id="learn">
+      <div class="landing-inner">
+        <div class="section-intro">
+          <h2 class="kicker kicker-title">General XRD optics</h2>
+        </div>
+        <ol class="learning-path">
+          <li><a href="divergent-slit.html"><span class="step-no">1</span><span class="step-title">Divergence slit</span><span class="step-desc">How the slit angle and the incident angle set the irradiated length along the sample.</span></a></li>
+          <li><a href="soller.html"><span class="step-no">2</span><span class="step-title">Soller slits</span><span class="step-desc">Axial divergence, angular acceptance and why low-angle peaks become asymmetric.</span></a></li>
+          <li><a href="training.html"><span class="step-no">3</span><span class="step-title">Beam masks</span><span class="step-desc">How a mask limits the axial width, and what core, FWHM and footprint mean.</span></a></li>
+          <li><a href="slits.html"><span class="step-no">4</span><span class="step-title">Fixed, programmable and automatic DS</span><span class="step-desc">Constant opening or constant irradiated length across a scan.</span></a></li>
+          <li><a href="beam-geometry.html"><span class="step-no">5</span><span class="step-title">Beam geometry and sample illumination</span><span class="step-desc">Put length and width together and check them against the sample.</span></a></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="landing-section alt" id="calculators">
+      <div class="landing-inner">
+        <div class="section-intro">
+          <h2 class="kicker kicker-title">Instrument-specific configurations</h2>
+          <p>Each calculator states the configuration, components and reference parameters it applies to. Check that your instrument matches before using the numbers.</p>
+        </div>
+        <div class="calc-row">
+          <a class="calc-item" href="calculator.html">
+            <span class="calc-maker">Malvern Panalytical</span>
+            <span class="calc-title">Empyrean iCore/MultiCore</span>
+            <span class="calc-go">Open calculator →</span>
+          </a>
+          <a class="calc-item" href="anton-paar/index.html">
+            <span class="calc-maker">Anton Paar</span>
+            <span class="calc-title">XRDynamic 500 mask</span>
+            <span class="calc-go">Open calculator →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section" id="beam-path">
+      <div class="landing-inner">
+        <div class="section-intro">
+          <h2 class="kicker kicker-title">The beam path</h2>
+          <p>A generic arrangement for illustration. Which components are fitted, their order and their spacing depend on the instrument.</p>
+        </div>
+        <figure class="beam-path-figure">
       <div class="home-diagram-scroll" role="region" aria-label="Scrollable diffractometer optics schematic" tabindex="0">
-        <svg class="home-diagram" viewBox="0 0 1200 540" role="img" aria-labelledby="schematic-title schematic-desc" xmlns="http://www.w3.org/2000/svg">
-          <title id="schematic-title">Bragg-Brentano MultiCore optics arrangement</title>
-          <desc id="schematic-desc">Schematic of the incident path from the X-ray tube through the Bragg-BrentanoHD multilayer mirror, incident Soller slits, Mask 1, Mask 2 and divergence slit to the sample. The diffracted path goes through the programmable anti-scatter slit and diffracted Soller slits to the detector.</desc>
+        <svg class="home-diagram" viewBox="0 0 1200 516" role="img" aria-labelledby="schematic-title schematic-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="schematic-title">Generic Bragg–Brentano powder diffractometer optics</title>
+          <desc id="schematic-desc">Schematic of the incident path from the X-ray tube through incident-beam conditioning optics, incident Soller slits, a beam mask and the divergence slit to the sample. The diffracted path goes through the anti-scatter slit and diffracted Soller slits to the detector. The incident and diffracted rays make the same angle θ with the sample surface, and the X-ray tube and detector sit at the same distance (the goniometer radius) from the sample. Component order and spacing vary between instruments.</desc>
           <defs>
-            <linearGradient id="housing" x2="1" y2="1"><stop stop-color="#edf4f5"/><stop offset="1" stop-color="#9bb0b6"/></linearGradient>
+            <linearGradient id="housing" x2="1" y2="1"><stop stop-color="#b9d6e3"/><stop offset="1" stop-color="#79a8bd"/></linearGradient>
             <linearGradient id="stageMetal" x2="0" y2="1"><stop stop-color="#e4edef"/><stop offset="1" stop-color="#9bb0b6"/></linearGradient>
-            <linearGradient id="detector" x2="1" y2="1"><stop stop-color="#dfe9eb"/><stop offset="1" stop-color="#78929a"/></linearGradient>
+            <linearGradient id="detector" x2="1" y2="1"><stop stop-color="#b9d6e3"/><stop offset="1" stop-color="#79a8bd"/></linearGradient>
             <marker id="arrowBeam" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5 0 9Z" fill="#df7940"/></marker>
             <marker id="arrowCall" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4 0 8Z" fill="#657e85"/></marker>
           </defs>
-          <rect width="1200" height="540" rx="20" fill="#fbfdfd"/>
-          <text x="42" y="37" class="diagram-kicker">INCIDENT OPTICS</text>
-          <text x="857" y="37" class="diagram-kicker">DIFFRACTED OPTICS</text>
-          <path d="M95 280 L155 297 L600 423 L1048 147" fill="none" stroke="#e59b68" stroke-width="30" opacity=".13"/>
-          <path class="beam-flow" d="M95 280 L155 297 L600 423" fill="none" stroke="#df7940" stroke-width="3"/>
-          <path class="beam-flow" d="M600 423 L1048 147" fill="none" stroke="#df7940" stroke-width="3" marker-end="url(#arrowBeam)"/>
-          <text x="103" y="248" class="beam-label">incident beam</text>
-          <text x="906" y="213" class="beam-label" transform="rotate(-31 906 213)">diffracted beam</text>
+          <text x="42" y="37" class="diagram-kicker">Incident optics</text>
+          <text x="857" y="37" class="diagram-kicker">Diffracted optics</text>
+          <g transform="rotate(4.191 600 423)"><path d="M95 280 L155 297 L600 423" fill="none" stroke="#e59b68" stroke-width="30" opacity=".13"/></g>
+          <g transform="rotate(-4.191 600 423)"><path d="M600 423 L1105 280" fill="none" stroke="#e59b68" stroke-width="30" opacity=".13"/></g>
+          <g transform="rotate(4.191 600 423)"><path class="beam-flow" d="M95 280 L155 297 L600 423" fill="none" stroke="#df7940" stroke-width="3"/></g>
+          <g transform="rotate(-4.191 600 423)"><path class="beam-flow" d="M600 423 L1100 281.4" fill="none" stroke="#df7940" stroke-width="3" marker-end="url(#arrowBeam)"/></g>
+          <g transform="rotate(4.191 600 423)"><text x="103" y="248" class="beam-label">incident beam</text></g>
+          <g transform="rotate(-4.191 600 423)"><text x="840" y="342" class="beam-label" transform="rotate(-16 840 342)">diffracted beam</text></g>
 
           <!-- source and incident components, each placed across the beam -->
-          <g aria-label="X-ray tube"><rect x="38" y="208" width="52" height="112" rx="9" fill="url(#housing)" stroke="#779098" stroke-width="2" transform="rotate(16 64 264)"/><rect x="70" y="263" width="27" height="13" rx="3" fill="#df7940" transform="rotate(16 83 270)"/></g>
-          <g aria-label="Bragg-BrentanoHD multilayer mirror"><path d="M137 292 L177 303 L177 311 L137 300 Z" fill="#168b96" stroke="#075862" stroke-width="2"/><path d="M137 292 L177 303" stroke="#b8edf0" stroke-width="3"/></g>
-          <g aria-label="Incident Soller slits"><rect x="252" y="286" width="14" height="48" rx="2" fill="#15849a" transform="rotate(16 259 310)"/><path d="M254 290l12 4m-13 2 12 4m-13 2 12 4m-13 2 12 4m-13 2 12 4m-13 2 12 4" stroke="#c9f3f4" stroke-width="1" transform="rotate(16 259 310)"/></g>
-          <g aria-label="Mask 1"><rect x="333" y="320" width="12" height="43" rx="2" fill="#7661b5" transform="rotate(16 339 341)"/><path d="M334 341l11 3" stroke="#fff" stroke-width="3" transform="rotate(16 339 341)"/></g>
-          <g aria-label="Mask 2"><rect x="399" y="339" width="12" height="43" rx="2" fill="#7661b5" transform="rotate(16 405 360)"/><path d="M400 360l11 3" stroke="#fff" stroke-width="3" transform="rotate(16 405 360)"/></g>
-          <g aria-label="Divergence slit DS"><rect x="490" y="363" width="14" height="46" rx="2" fill="#168b96" transform="rotate(16 497 386)"/><path d="M491 380l12 4" stroke="#fff" stroke-width="3" transform="rotate(16 497 386)"/></g>
+          <g transform="rotate(4.191 600 423)"><g aria-label="X-ray tube"><rect x="38" y="208" width="52" height="112" rx="9" fill="url(#housing)" stroke="#a9c6d4" stroke-width="2" transform="rotate(16 64 264)"/><rect x="70" y="263" width="27" height="13" rx="3" fill="#f59e4b" transform="rotate(16 83 270)"/></g></g>
+          <g transform="rotate(4.191 600 423)"><g aria-label="Incident-beam conditioning optics"><path d="M137 292 L177 303 L177 311 L137 300 Z" fill="#168b96" stroke="#075862" stroke-width="2"/><path d="M137 292 L177 303" stroke="#b8edf0" stroke-width="3"/></g></g>
+          <g transform="rotate(4.191 600 423)"><g aria-label="Incident Soller slits"><rect x="252" y="286" width="14" height="48" rx="2" fill="#15849a" transform="rotate(16 259 310)"/><path d="M254 290l12 4m-13 2 12 4m-13 2 12 4m-13 2 12 4m-13 2 12 4m-13 2 12 4" stroke="#c9f3f4" stroke-width="1" transform="rotate(16 259 310)"/></g></g>
+          <g transform="rotate(4.191 600 423)"><g aria-label="Beam mask"><rect x="366" y="330" width="12" height="43" rx="2" fill="#7661b5" transform="rotate(16 372 351)"/><path d="M367 351l11 3" stroke="#fff" stroke-width="3" transform="rotate(16 372 351)"/></g></g>
+          <g transform="rotate(4.191 600 423)"><g aria-label="Divergence slit"><rect x="490" y="363" width="14" height="46" rx="2" fill="#168b96" transform="rotate(16 497 386)"/><path d="M491 380l12 4" stroke="#fff" stroke-width="3" transform="rotate(16 497 386)"/></g></g>
 
           <!-- sample and receiving side -->
-<g aria-label="Sample on stage"><ellipse cx="600" cy="460" rx="64" ry="5" fill="#143a4b" opacity=".12"/><rect x="546" y="444" width="108" height="9" rx="4.5" fill="url(#stageMetal)" stroke="#6f878e" stroke-width="1.5"/><rect x="561" y="423" width="78" height="21" rx="4" fill="#4b626a" stroke="#34494f" stroke-width="1.5"/><rect x="567" y="423" width="66" height="9" rx="2" fill="#e6d29c" stroke="#b69a57" stroke-width="1.2"/><path d="M570 427.5h60" stroke="#f6ead0" stroke-width="2" stroke-linecap="round" opacity=".7"/><g fill="#c1a766" opacity=".7"><circle cx="578" cy="429" r="1"/><circle cx="590" cy="430" r="1"/><circle cx="610" cy="429.5" r="1"/><circle cx="622" cy="430" r="1"/></g><path d="M567 436h66" stroke="#6b838a" stroke-width="1" opacity=".7"/></g>
-          <g aria-label="Programmable anti-scatter slit PASS"><rect x="718" y="337" width="16" height="48" rx="2" fill="#15849a" transform="rotate(-31 726 361)"/><path d="M719 360l13-8" stroke="#fff" stroke-width="3" transform="rotate(-31 726 361)"/></g>
-          <g aria-label="Diffracted Soller slits"><rect x="858" y="248" width="14" height="48" rx="2" fill="#15849a" transform="rotate(-31 865 272)"/><path d="M860 252l12 8m-14-2 12 8m-14-2 12 8m-14-2 12 8m-14-2 12 8" stroke="#c9f3f4" stroke-width="1" transform="rotate(-31 865 272)"/></g>
-          <g aria-label="Detector"><rect x="1020" y="94" width="63" height="113" rx="10" fill="url(#detector)" stroke="#6d8790" stroke-width="2" transform="rotate(18 1051 150)"/><rect x="1012" y="191" width="52" height="12" rx="3" fill="#536e77" transform="rotate(18 1038 197)"/></g>
+          <g aria-label="Sample on stage"><ellipse cx="600" cy="460" rx="64" ry="5" fill="#143a4b" opacity=".12"/><rect x="546" y="444" width="108" height="9" rx="4.5" fill="url(#stageMetal)" stroke="#6f878e" stroke-width="1.5"/><rect x="561" y="423" width="78" height="21" rx="4" fill="#4b626a" stroke="#34494f" stroke-width="1.5"/><rect x="567" y="423" width="66" height="9" rx="2" fill="#e6d29c" stroke="#b69a57" stroke-width="1.2"/><path d="M570 427.5h60" stroke="#f6ead0" stroke-width="2" stroke-linecap="round" opacity=".7"/><g fill="#c1a766" opacity=".7"><circle cx="578" cy="429" r="1"/><circle cx="590" cy="430" r="1"/><circle cx="610" cy="429.5" r="1"/><circle cx="622" cy="430" r="1"/></g><path d="M567 436h66" stroke="#6b838a" stroke-width="1" opacity=".7"/></g>
+          <g aria-label="Equal angles θ on both sides" fill="none" stroke="#a95c2a" stroke-width="1.6"><path d="M532 423 H668" stroke="#a95c2a" stroke-dasharray="3 4" opacity=".7"/><path d="M540 423 A60 60 0 0 1 543.62 402.48"/><path d="M656.38 402.48 A60 60 0 0 1 660 423"/></g>
+          <text x="526" y="410" class="beam-label" text-anchor="end">θ</text><text x="674" y="410" class="beam-label">θ</text>
+          <g transform="rotate(-4.191 600 423)"><g aria-label="Anti-scatter slit" transform="matrix(-1 0 0 1 1200 0)"><rect x="490" y="363" width="14" height="46" rx="2" fill="#168b96" transform="rotate(16 497 386)"/><path d="M491 380l12 4" stroke="#fff" stroke-width="3" transform="rotate(16 497 386)"/></g></g>
+          <g transform="rotate(-4.191 600 423)"><g aria-label="Diffracted Soller slits" transform="matrix(-1 0 0 1 1200 0)"><rect x="252" y="286" width="14" height="48" rx="2" fill="#15849a" transform="rotate(16 259 310)"/><path d="M254 290l12 4m-13 2 12 4m-13 2 12 4m-13 2 12 4m-13 2 12 4m-13 2 12 4" stroke="#c9f3f4" stroke-width="1" transform="rotate(16 259 310)"/></g></g>
+          <g transform="rotate(-4.191 600 423)"><g aria-label="Detector" transform="matrix(-1 0 0 1 1200 0)"><rect x="38" y="208" width="52" height="112" rx="9" fill="url(#detector)" stroke="#a9c6d4" stroke-width="2" transform="rotate(16 64 264)"/><rect x="70" y="263" width="27" height="13" rx="3" fill="#5fd0da" transform="rotate(16 83 270)"/></g></g>
 
           <!-- callouts with independent lanes to keep every label legible -->
-          <g class="callout"><path d="M63 193V208"/><text x="63" y="180" text-anchor="middle">X-ray tube</text></g>
-          <g class="callout"><path d="M155 124V286"/><text x="155" y="77" text-anchor="middle"><tspan>Bragg-BrentanoHD</tspan><tspan x="155" dy="19">multilayer mirror</tspan><tspan x="155" dy="17" class="callout-sub">MultiCore · Kα selection</tspan></text></g>
-          <g class="callout"><path d="M258 210V279"/><text x="258" y="191" text-anchor="middle"><tspan>Incident</tspan><tspan x="258" dy="18">Soller slits</tspan></text></g>
-          <g class="callout"><path d="M339 265V313"/><text x="339" y="246" text-anchor="middle">Mask 1</text></g>
-          <g class="callout"><path d="M405 276V332"/><text x="405" y="257" text-anchor="middle">Mask 2</text></g>
-          <g class="callout"><path d="M497 302V358"/><text x="497" y="283" text-anchor="middle"><tspan>Divergence slit</tspan><tspan x="497" dy="18">(DS)</tspan></text></g>
+          <g class="callout" transform="translate(13.05 -38.75)"><path d="M63 193V208"/><text x="63" y="180" text-anchor="middle">X-ray tube</text></g>
+          <g class="callout"><path d="M165 124V254"/><text x="155" y="68" text-anchor="middle"><tspan>Incident-beam</tspan><tspan x="155" dy="18">conditioning optics</tspan><tspan x="155" dy="17" class="callout-sub">varies with configuration</tspan></text></g>
+          <g class="callout" transform="translate(9.17 -24.62)"><path d="M258 210V279"/><text x="258" y="191" text-anchor="middle"><tspan>Incident</tspan><tspan x="258" dy="18">Soller slits</tspan></text></g>
+          <g class="callout" transform="translate(5.87 -16.47)"><path d="M372 271V323"/><text x="372" y="252" text-anchor="middle">Beam mask</text></g>
+          <g class="callout" transform="translate(2.98 -7.43)"><path d="M497 302V358"/><text x="497" y="283" text-anchor="middle"><tspan>Divergence slit</tspan><tspan x="497" dy="18">(DS)</tspan></text></g>
           <g class="callout"><path d="M600 490v-26"/><text x="600" y="506" text-anchor="middle">Sample</text></g>
-          <g class="callout"><path d="M727 413V389"/><text x="750" y="433" text-anchor="middle"><tspan>Programmable anti-scatter slit</tspan><tspan x="750" dy="18">(PASS / PAS)</tspan></text></g>
-          <g class="callout"><path d="M865 319v-20"/><text x="865" y="340" text-anchor="middle"><tspan>Diffracted</tspan><tspan x="865" dy="18">Soller slits</tspan></text></g>
-          <g class="callout"><path d="M1052 235V214"/><text x="1052" y="258" text-anchor="middle">Detector</text></g>
+          <g class="callout" transform="translate(-2.98 -7.43)"><path d="M703 320V358"/><text x="703" y="301" text-anchor="middle">Anti-scatter slit</text></g>
+          <g class="callout" transform="translate(-9.17 -24.62)"><path d="M942 210V279"/><text x="942" y="191" text-anchor="middle"><tspan>Diffracted</tspan><tspan x="942" dy="18">Soller slits</tspan></text></g>
+          <g class="callout" transform="translate(-13.05 -38.75)"><path d="M1137 193V208"/><text x="1137" y="180" text-anchor="middle">Detector</text></g>
 
-          <rect x="34" y="511" width="1132" height="1" fill="#deeaec"/>
-          <text x="600" y="531" class="diagram-foot" text-anchor="middle">Bragg–Brentano reflection geometry · schematic, not to scale</text>
         </svg>
       </div>
-      <p class="home-scroll-hint">Swipe horizontally to follow the beam path →</p>
-      <figcaption><strong>Bragg–Brentano optics path</strong><span>MultiCore uses a Bragg–BrentanoHD multilayer mirror. Component spacing and shapes are schematic, not to scale. <a href="https://www.malvernpanalytical.com/tw/assets/Empyrean%20MultiCore%20Brochure%20with%20extended%20example%20data_tcm73-99472.pdf" target="_blank" rel="noopener noreferrer">Optics reference</a>.</span></figcaption>
-    </figure>
+          <p class="home-scroll-hint">Swipe horizontally to follow the beam path →</p>
+          <figcaption class="beam-path-caption">Bragg–Brentano reflection geometry · schematic, not to scale</figcaption>
+        </figure>
+      </div>
+    </section>
   </main>
+
+  <footer class="landing-footer">
+    <div class="landing-inner">
+      <p class="footer-brand">PXRD Optics</p>
+      <p>An independently developed educational resource. It is not an official product of, or endorsed by, Malvern Panalytical or Anton Paar. Instrument-specific results apply only within the stated configuration and should be checked against the actual instrument.</p>
+    </div>
+  </footer>
 </body>
 </html>

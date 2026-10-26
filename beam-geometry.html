@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beam geometry and sample illumination · PXRD Optics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css?v=layers-10">
+</head>
+<body class="page">
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <nav aria-label="Main">
+        <a class="nav-home" href="index.html">Home</a>
+        <a href="index.html#learn" aria-current="page">Optics</a>
+        <a href="index.html#calculators">Calculators</a>
+        <a href="index.html#beam-path">Beam path</a>
+        <a href="https://github.com/Joe-868/pxrd-optics" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell training">
+    <header class="header">
+      <p class="kicker">General XRD optics</p>
+      <h1>Beam geometry and sample illumination</h1>
+      <p>The illuminated patch has a length along the beam and a width across it; compare both with the sample to see whether the beam stays on it.</p>
+    </header>
+
+    <section class="panel">
+      <h2>Three quantities, two directions</h2>
+      <div class="table-scroll">
+        <table class="ref-table">
+          <thead><tr><th scope="col">Quantity</th><th scope="col">Direction</th><th scope="col">Mainly set by</th><th scope="col">What it describes</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Irradiated length L</th><td>Along the beam (scattering plane)</td><td>Divergence slit opening and incident angle ω</td><td>Geometric length between the limiting rays on the sample</td></tr>
+            <tr><th scope="row">Beam FWHM W</th><td>Across the beam (axial)</td><td>Beam mask(s), Soller acceptance, source</td><td>Width at half the maximum intensity</td></tr>
+            <tr><th scope="row">Full axial footprint F</th><td>Across the beam (axial)</td><td>Same as W</td><td>Full width of the beam down to (near) zero intensity; always ≥ W</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>W shows where most of the intensity falls; F shows whether any of the beam leaves the sample. Neither includes very weak tails, which can still give holder reflections.</p>
+      <div class="related-links"><a href="divergent-slit.html">Divergence slit (L)</a><a href="training.html">Beam masks (W and F)</a></div>
+    </section>
+
+    <section class="panel" aria-labelledby="fit-title">
+      <div class="section-heading"><span class="step step-icon" role="img" aria-label="Interactive" title="Interactive"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 4.5h10M3 11.5h10"/><circle cx="6" cy="4.5" r="1.8"/><circle cx="10.5" cy="11.5" r="1.8"/></svg></span><h2 id="fit-title">Does the illuminated patch fit a round sample?</h2></div>
+      <p>A centred L × W patch fits a round sample of diameter D when its diagonal is no longer than D: <strong>L² + W² ≤ D²</strong>. Use F in place of W for the full footprint.</p>
+      <div class="form-grid geometry-inputs">
+        <div class="field"><label for="g-d">Sample diameter D <span>mm</span></label><input id="g-d" type="number" min="0.1" step="any" value="13"><p class="input-hint">Use the sample itself, not the holder: if the sample is smaller than the holder cavity, enter the sample diameter.</p></div>
+        <div class="field"><label for="g-l">Irradiated length L <span>mm</span></label><input id="g-l" type="number" min="0" step="any" value="10"></div>
+        <div class="field"><label for="g-w">Beam FWHM W <span>mm</span></label><input id="g-w" type="number" min="0" step="any" value="6"></div>
+        <div class="field"><label for="g-f">Full axial footprint F <span>mm</span></label><input id="g-f" type="number" min="0" step="any" value="9"></div>
+      </div>
+      <div class="metric-grid" aria-live="polite">
+        <div class="metric"><span>Diagonal with W</span><strong id="g-diag-w">—</strong><small id="g-fit-w">—</small></div>
+        <div class="metric"><span>Diagonal with F</span><strong id="g-diag-f">—</strong><small id="g-fit-f">—</small></div>
+        <div class="metric"><span>Largest L for this D and W</span><strong id="g-maxl">—</strong><small>√(D² − W²)</small></div>
+      </div>
+      <p id="g-message" class="notice" hidden></p>
+      <p class="result-note">Enter L, W and F from your instrument: L from the divergence slit geometry, W and F from the beam-mask documentation for your optics. The rectangle is an approximation of the illuminated patch; the real edges are graded.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Instrument examples</h2>
+      <p>The instrument-specific calculators supply L, W and F for documented configurations.</p>
+      <div class="related-links"><a href="calculator.html">Malvern Panalytical Empyrean iCore/MultiCore →</a><a href="anton-paar/index.html">Anton Paar XRDynamic 500 →</a></div>
+    </section>
+    <nav class="page-steps" aria-label="General XRD optics pages">
+      <a class="page-prev" href="slits.html"><span>← Previous</span><strong>Fixed, programmable and automatic DS</strong></a>
+      <span class="page-count">5 / 5</span>
+      <a class="page-next" href="index.html#calculators"><span>Next →</span><strong>Instrument calculators</strong></a>
+    </nav>
+  </main>
+  <script>
+    (() => {
+      const $ = id => document.getElementById(id);
+      const f2 = v => v.toFixed(2);
+      function render() {
+        const D = +$('g-d').value, L = +$('g-l').value, W = +$('g-w').value, F = +$('g-f').value;
+        const msg = $('g-message');
+        if (!(D > 0) || !(L >= 0) || !(W >= 0) || !(F >= 0)) {
+          ['g-diag-w', 'g-diag-f', 'g-maxl'].forEach(id => $(id).textContent = '—');
+          $('g-fit-w').textContent = $('g-fit-f').textContent = 'Enter non-negative values';
+          msg.hidden = true; return;
+        }
+        const dW = Math.hypot(L, W), dF = Math.hypot(L, F);
+        $('g-diag-w').textContent = `${f2(dW)} mm`;
+        $('g-diag-f').textContent = `${f2(dF)} mm`;
+        $('g-fit-w').textContent = dW <= D ? 'fits within D' : 'exceeds D';
+        $('g-fit-f').textContent = dF <= D ? 'fits within D' : 'exceeds D';
+        $('g-maxl').textContent = W > D ? 'W > D' : `${f2(Math.sqrt(D * D - W * W))} mm`;
+        if (F < W) { msg.hidden = false; msg.textContent = 'F should not be smaller than W: the full footprint includes the FWHM.'; }
+        else if (dW > D) { msg.hidden = false; msg.textContent = 'The FWHM patch already extends beyond the sample. Reduce L (smaller divergence slit) or W (smaller mask).'; }
+        else if (dF > D) { msg.hidden = false; msg.textContent = 'The FWHM patch fits, but the full axial footprint extends beyond the sample. The beam edges can reach the holder.'; }
+        else msg.hidden = true;
+      }
+      for (const id of ['g-d', 'g-l', 'g-w', 'g-f']) $(id).addEventListener('input', render);
+      render();
+    })();
+  </script>
+<footer class="landing-footer">
+    <div class="landing-inner">
+      <p class="footer-brand">PXRD Optics</p>
+      <p>An independently developed educational resource. It is not an official product of, or endorsed by, Malvern Panalytical or Anton Paar. Instrument-specific results apply only within the stated configuration and should be checked against the actual instrument.</p>
+    </div>
+  </footer>
+</body>
+</html>

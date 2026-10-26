@@ -1,37 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -30 560 300" opacity=".17">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -30 560 300" opacity=".38">
 <defs>
-<marker id="ar" viewBox="0 0 8 8" markerWidth="4" markerHeight="4" refX="6" refY="4" orient="auto"><path d="M0 0L8 4 0 8Z" fill="#123f7a"/></marker>
-<marker id="ad" viewBox="0 0 8 8" markerWidth="4" markerHeight="4" refX="4" refY="4" orient="auto-start-reverse"><path d="M0 8L4 0 8 8Z" fill="#1d5fa0"/></marker>
+<marker id="ar" viewBox="0 0 8 8" markerWidth="4" markerHeight="4" refX="6" refY="4" orient="auto"><path d="M0 0L8 4 0 8Z" fill="#cfe8ee"/></marker>
+<marker id="ad" viewBox="0 0 8 8" markerWidth="4" markerHeight="4" refX="4" refY="4" orient="auto-start-reverse"><path d="M0 8L4 0 8 8Z" fill="#cfe8ee"/></marker>
 </defs>
 <!-- Bragg's law (schematic): parallel rays reflect from adjacent planes spaced d; the extra path is 2 d sin(theta) -->
-<g stroke="#4a78a8" stroke-width="1.6" stroke-dasharray="7 6" opacity=".75" fill="none">
+<g stroke="#cfe8ee" stroke-width="1.6" stroke-dasharray="7 6" opacity=".75" fill="none">
 <path d="M55 120H545M55 190H545M55 260H545"/>
 </g>
-<g fill="#5f8fbd" opacity=".85">
+<g fill="#cfe8ee" opacity=".85">
 <g id="row"><circle cx="100" cy="120" r="7"/><circle cx="180" cy="120" r="7"/><circle cx="260" cy="120" r="7"/><circle cx="340" cy="120" r="7"/><circle cx="420" cy="120" r="7"/><circle cx="500" cy="120" r="7"/></g>
 <use href="#row" y="70"/><use href="#row" y="140"/>
 </g>
 <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-<g stroke="#123f7a" stroke-width="3" opacity=".9">
+<g stroke="#cfe8ee" stroke-width="3" opacity=".9">
 <path d="M78.1 15L169 67.5L260 120" marker-mid="url(#ar)"/>
 <path d="M78.1 85L169 137.5L260 190" marker-mid="url(#ar)"/>
 <path d="M260 120L441.9 15" marker-end="url(#ar)"/>
 <path d="M260 190L441.9 85" marker-end="url(#ar)"/>
 </g>
-<g stroke="#123f7a" stroke-width="1.8" stroke-dasharray="5 4" opacity=".65">
+<g stroke="#cfe8ee" stroke-width="1.8" stroke-dasharray="5 4" opacity=".65">
 <path d="M260 120V190M260 120L229.7 172.5M260 120L290.3 172.5"/>
 </g>
-<g stroke="#1d5fa0" stroke-width="1.8" opacity=".8">
+<g stroke="#cfe8ee" stroke-width="1.8" opacity=".8">
 <path d="M225.4 100A40 40 0 0 0 220 120" transform="translate(0 0)"/>
 <path d="M294.6 100A40 40 0 0 1 300 120"/>
 <path d="M294.8 180.3L264.5 197.8"/>
 <path d="M32 122V188" marker-start="url(#ad)" marker-end="url(#ad)"/>
 </g>
 </g>
-<g fill="#123f7a" opacity=".9" font-family="Georgia, serif" font-style="italic">
+<g fill="#cfe8ee" opacity=".9" font-family="Georgia, serif" font-style="italic">
 <text x="196" y="112" font-size="24">θ</text><text x="306" y="112" font-size="24">θ</text>
-<text x="12" y="160" font-size="26" fill="#1d5fa0">d</text>
-<text x="298" y="214" font-size="21" font-style="normal" font-weight="700" fill="#1d6a4f">d sin θ</text>
+<text x="12" y="160" font-size="26" fill="#cfe8ee">d</text>
+<text x="298" y="214" font-size="21" font-style="normal" font-weight="700" fill="#f3b48a">d sin θ</text>
 <text x="150" y="-6" font-size="30">2d sin θ = nλ</text>
 </g>
 </svg>

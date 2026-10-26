@@ -3,117 +3,129 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Divergent slits · MultiCore</title>
-  <link rel="stylesheet" href="styles.css?v=polish-14">
-  <link rel="stylesheet" href="divergent-slit.css">
-  <script defer src="divergent-slit.js"></script>
+  <title>Divergence slit · PXRD Optics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css?v=layers-10">
+  <link rel="stylesheet" href="divergent-slit.css?v=layers-3">
+  <script defer src="divergent-slit.js?v=layers-12"></script>
 </head>
-<body>
+<body class="page">
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <nav aria-label="Main">
+        <a class="nav-home" href="index.html">Home</a>
+        <a href="index.html#learn" aria-current="page">Optics</a>
+        <a href="index.html#calculators">Calculators</a>
+        <a href="index.html#beam-path">Beam path</a>
+        <a href="https://github.com/Joe-868/pxrd-optics" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
   <main class="shell training ds-guide">
     <header class="header">
-      <nav class="top-nav"><span class="eyebrow">PXRD · MultiCore</span><a href="index.html">← Home</a></nav>
-      <h1>Divergent slits</h1><div class="header-equations" aria-label="Bragg equation"><span>2d sin θ = nλ</span></div>
-      <p>The incident divergence slit (DS) sets the angular opening in the scattering plane. Explore how that opening and the incident angle change the calculated illuminated length along a flat sample.</p>
+      <p class="kicker">General XRD optics</p>
+      <h1>Divergence slit</h1>
+      <p>The divergence slit (DS) sets the opening angle of the beam in the scattering plane; with the incident angle, that sets the irradiated length on the sample.</p>
     </header>
 
     <section class="panel ds-geometry" aria-labelledby="ds-geometry-title">
       <h2 id="ds-geometry-title">See the two directions</h2>
       <div class="ds-geometry-grid">
         <figure class="ds-geometry-card">
-          <svg viewBox="0 0 700 330" role="img" aria-labelledby="ds-side-title ds-side-desc">
-            <title id="ds-side-title">Side view of incident divergence and illuminated sample length</title>
-            <desc id="ds-side-desc">Straight limiting rays leave a source at left, pass between two divergence-slit blades, and reach two points on the flat sample. The angle between the limiting rays is labelled alpha. The central ray meets the sample at incident angle omega. The distance between the limiting-ray intersections along the sample is labelled L. Diagram is schematic and not to scale.</desc>
-            <defs><marker id="ds-dim-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8" fill="#9b5d18"/></marker></defs>
-            <path d="M65 238 H655" stroke="#344d55" stroke-width="6" stroke-linecap="round"/>
-            <path d="M87 65 L394 238 L555 238 Z" fill="#e9b45d" opacity=".18"/>
-            <path d="M87 65 L394 238 M87 65 L555 238" stroke="#b47726" stroke-width="2.5" fill="none"/>
-            <path d="M87 65 L475 238" stroke="#087984" stroke-width="2" stroke-dasharray="7 5" fill="none"/>
-            <path d="M231 40 V110 M231 155 V204" stroke="#405d66" stroke-width="12" stroke-linecap="square"/>
-            <circle cx="87" cy="65" r="8" fill="#214b55"/>
-            <circle cx="394" cy="238" r="4" fill="#b47726"/><circle cx="555" cy="238" r="4" fill="#b47726"/>
-            <path d="M126 87 Q137 84 144 85" stroke="#9b5d18" stroke-width="2" fill="none"/>
-            <text x="150" y="84" class="ds-svg-angle">α</text>
-            <path d="M426 238 Q438 222 450 227" stroke="#087984" stroke-width="2" fill="none"/>
-            <text x="429" y="215" class="ds-svg-angle">ω</text>
-            <path d="M394 253 V289 M555 253 V289 M394 276 H555" stroke="#9b5d18" stroke-width="1.7" fill="none" marker-start="url(#ds-dim-arrow)" marker-end="url(#ds-dim-arrow)"/>
-            <text x="474" y="310" text-anchor="middle" class="ds-svg-angle">L along sample</text>
-            <text x="53" y="47" class="ds-svg-label">Source</text>
-            <text x="174" y="29" class="ds-svg-label">DS blades</text>
-            <text x="511" y="219" class="ds-svg-label">Sample surface</text>
-            <text x="296" y="111" class="ds-svg-small">limiting rays</text>
-            <text x="300" y="170" class="ds-svg-small">central ray</text>
+          <svg viewBox="0 0 640 290" role="img" aria-labelledby="ds-side-title ds-side-desc">
+            <title id="ds-side-title">Side view: divergence and irradiated length</title>
+            <desc id="ds-side-desc">Rays leave the source, pass the opening between two divergence-slit blades and spread over a fan of angle α. The central ray meets the flat sample at the incident angle ω. The two limiting rays land at two points on the sample; the distance between them is the irradiated length L. Angles are exaggerated.</desc>
+            <defs><marker id="ds-dim-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 .8L8 4 0 7.2Z" fill="#4a5f66"/></marker></defs>
+            <path d="M72 75.5L343.5 226H509.1Z" class="dsv-fan"/>
+            <path d="M72 75.5L343.5 226M72 75.5L509.1 226" class="dsv-ray"/>
+            <path d="M72 75.5L410 226" class="dsv-central"/>
+            <path d="M30 226H620" class="dsv-sample"/>
+            <path d="M171.6 109.8L190.4 67.8M164.2 126.6L145.5 168.6" class="dsv-blade"/>
+            <circle cx="72" cy="75.5" r="6" class="dsv-source"/>
+            <g class="dsv-pt"><circle cx="343.5" cy="226" r="3.5"/><circle cx="509.1" cy="226" r="3.5"/></g>
+            <path d="M126.8 94.4A58 58 0 0 1 122.7 103.6" class="dsv-arc"/>
+            <text x="135" y="88.6" class="dsv-sym">α</text>
+            <path d="M358 226A52 52 0 0 1 362.5 204.8" class="dsv-arc"/>
+            <text x="345.4" y="218.3" text-anchor="middle" class="dsv-sym">ω</text>
+            <path d="M343.5 234V266M509.1 234V266" class="dsv-ext"/>
+            <path d="M344.5 258H508.1" class="dsv-dim"/>
+            <text x="426.3" y="282" text-anchor="middle" class="dsv-sym">L</text>
+            <text x="68" y="59.5" class="dsv-label">source</text>
+            <text x="198.4" y="61.8" class="dsv-label">divergence slit</text>
+            <text x="612" y="216" text-anchor="end" class="dsv-label">sample</text>
           </svg>
-          <figcaption><strong>Side view · scattering plane.</strong> α is the nominal angle between limiting incident rays admitted by the DS, not the blade gap or incident angle ω. The source and other optics also shape the transmitted beam. The limiting rays mark geometric length L. Schematic, not to scale; drawn ray distances do not encode the values below.</figcaption>
+          <figcaption><strong>Side view.</strong> The DS admits a fan of angle α; at incidence ω it spreads over a length L of the sample. In a coupled θ–θ (or θ–2θ) scan, ω = θ = 2θ/2. Angles exaggerated.</figcaption>
         </figure>
         <figure class="ds-geometry-card ds-top-card">
-          <svg viewBox="0 0 300 215" role="img" aria-labelledby="ds-top-title ds-top-desc">
-            <title id="ds-top-title">Top-view reminder of length and transverse width</title>
-            <desc id="ds-top-desc">A rectangular sample is shown from above. The arrow along the incident beam direction is L, affected by the divergence slit. The perpendicular arrow is W, the transverse FWHM width from the masks.</desc>
-            <rect x="57" y="49" width="184" height="119" rx="7" fill="#dceae9" stroke="#4a8688" stroke-width="2"/>
-            <rect x="87" y="76" width="125" height="65" rx="3" fill="#e9b45d" opacity=".63"/>
-            <path d="M98 106 H203" stroke="#9b5d18" stroke-width="2" marker-start="url(#ds-top-arrow)" marker-end="url(#ds-top-arrow)"/>
-            <path d="M221 81 V136" stroke="#087984" stroke-width="2" marker-start="url(#ds-top-arrow)" marker-end="url(#ds-top-arrow)"/>
-            <defs><marker id="ds-top-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto-start-reverse"><path d="M0 0 L7 3.5 L0 7" fill="context-stroke"/></marker></defs>
-            <text x="150" y="98" text-anchor="middle" class="ds-svg-angle">L · DS</text>
-            <text x="246" y="112" class="ds-svg-angle">W</text>
-            <text x="149" y="34" text-anchor="middle" class="ds-svg-label">Top view</text>
-            <text x="150" y="194" text-anchor="middle" class="ds-svg-small">W comes from the mask pair</text>
+          <svg viewBox="0 0 300 250" role="img" aria-labelledby="ds-top-title ds-top-desc">
+            <title id="ds-top-title">Top view: length and width of the irradiated patch</title>
+            <desc id="ds-top-desc">A round sample seen from above with the irradiated patch on it. The length L along the beam is set by the divergence slit; the width W across the beam is set by the beam mask.</desc>
+            <defs><marker id="ds-top-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 .8L8 4 0 7.2Z" fill="#4a5f66"/></marker></defs>
+            <circle cx="150" cy="125" r="88" class="dsv-disc"/>
+            <rect x="92" y="98" width="116" height="54" class="dsv-patch"/>
+            <path d="M93 172H207" class="dsv-dim"/><path d="M92 156V180M208 156V180" class="dsv-ext"/>
+            <text x="143" y="193" text-anchor="end" class="dsv-sym">L</text><text x="149" y="192" class="dsv-note">DS</text>
+            <path d="M228 99V151" class="dsv-dim"/><path d="M212 98H236M212 152H236" class="dsv-ext"/>
+            <text x="246" y="124" class="dsv-sym">W</text><text x="246" y="140" class="dsv-note">mask</text>
+            <path d="M20 125H70" class="dsv-beamdir" marker-end="url(#ds-top-arrow)"/><text x="20" y="116" class="dsv-note">beam</text>
           </svg>
-          <figcaption><strong>Top view.</strong> DS controls L along the scattering plane; masks set transverse FWHM width W. For a centered round sample, the workbook maximum L also depends on W.</figcaption>
+          <figcaption><strong>Top view.</strong> The DS sets L along the beam; the beam mask sets W across it.</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="panel ds-explore" aria-labelledby="ds-explore-title">
-      <div class="section-heading"><span class="step">1</span><h2 id="ds-explore-title">Compare fixed DS sizes</h2></div>
-      <p class="ds-lead">Choose a scan angle and a fixed opening. All seven workbook openings are compared at that same angle. Training uses ω offset = 0, so <strong>ω = 2θ / 2</strong>.</p>
-      <div class="ds-controls">
+      <div class="section-heading"><span class="step step-icon" role="img" aria-label="Interactive" title="Interactive"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 4.5h10M3 11.5h10"/><circle cx="6" cy="4.5" r="1.8"/><circle cx="10.5" cy="11.5" r="1.8"/></svg></span><h2 id="ds-explore-title">Fixed divergence slit openings</h2></div>
+      <p class="ds-lead">Choose a scan angle, a goniometer radius and a fixed opening. All listed openings are compared at the same angle. A symmetric scan is assumed, so <strong>ω = 2θ / 2</strong>.</p>
+      <div class="ds-controls ds-controls-4">
         <div class="field"><label for="ds-angle">Scan angle 2θ <span>°</span></label><input id="ds-angle" type="range" min="2" max="90" step="1" value="5"><div class="ds-range-ends"><span>2°</span><output id="ds-angle-readout" for="ds-angle">5°</output><span>90°</span></div></div>
-        <div class="field"><label for="ds-fixed">Selected fixed DS <span>°</span></label><select id="ds-fixed"><option value="0.02">1/50°</option><option value="0.03125">1/32°</option><option value="0.0625">1/16°</option><option value="0.125" selected>1/8°</option><option value="0.25">1/4°</option><option value="0.5">1/2°</option><option value="0.61">61/100°</option></select></div>
-        <div class="field"><label for="ds-sample">Available sample length <span>mm</span></label><input id="ds-sample" type="number" min="0.1" max="1000" step="any" value="10"><small>Illustrative one-dimensional span. For a centered round sample, the calculator derives the available L from diameter and mask width W.</small></div>
+        <div class="field"><label for="ds-radius">Goniometer radius R <span>mm</span></label><input id="ds-radius" type="number" min="50" max="1000" step="any" value="240"><small>Source-to-sample distance. Use your instrument's value.</small></div>
+        <div class="field"><label for="ds-fixed">Selected fixed DS <span>°</span></label><select id="ds-fixed"><option value="0.03125">1/32°</option><option value="0.0625">1/16°</option><option value="0.125" selected>1/8°</option><option value="0.25">1/4°</option><option value="0.5">1/2°</option><option value="1">1°</option></select></div>
+        <div class="field"><label for="ds-sample">Sample length along the beam <span>mm</span></label><input id="ds-sample" type="number" min="0.1" max="1000" step="any" value="10"><small>Use the sample itself, not the holder: if the sample is shorter than the holder cavity or smaller than its diameter, enter the sample size. Rectangular: the side along the beam. Round: the diameter, or √(D² − W²) to allow for the beam width W; see <a href="beam-geometry.html">beam geometry</a>.</small></div>
       </div>
       <div class="ds-summary" aria-live="polite">
         <div><span>Incident angle ω</span><strong id="ds-omega">2.5°</strong></div>
-        <div><span>Calculated length L</span><strong id="ds-length">12.01 mm</strong></div>
-        <div><span>Compared with sample</span><strong id="ds-fit">Beyond sample</strong></div>
+        <div><span>Calculated length L</span><strong id="ds-length">—</strong></div>
+        <div><span>Compared with sample</span><strong id="ds-fit">—</strong></div>
       </div>
-      <div class="ds-footprint" aria-label="Centered length comparison">
-        <div class="ds-footprint-head"><strong>Length along sample</strong><span>centered geometric comparison</span></div>
-        <div class="ds-footprint-track" role="img" id="ds-footprint-image" aria-label="Calculated irradiated length compared with available sample length">
+      <div class="ds-footprint" aria-label="Centred length comparison">
+        <div class="ds-footprint-head"><strong>Length along sample</strong><span>centred geometric comparison</span></div>
+        <div class="ds-footprint-track" role="img" id="ds-footprint-image" aria-label="Calculated irradiated length compared with the sample length along the beam">
           <div class="ds-sample-band" id="ds-sample-band"></div>
           <div class="ds-illumination-band" id="ds-illumination-band"></div>
           <div class="ds-center-mark"></div>
         </div>
-        <div class="ds-footprint-legend"><span><i class="ds-key ds-key-sample"></i>available sample length <strong id="ds-sample-legend">10 mm</strong></span><span><i class="ds-key ds-key-illumination"></i>calculated L <strong id="ds-length-legend">12.01 mm</strong></span></div>
+        <div class="ds-footprint-legend"><span><i class="ds-key ds-key-sample"></i>sample length <strong id="ds-sample-legend">10 mm</strong></span><span><i class="ds-key ds-key-illumination"></i>calculated L <strong id="ds-length-legend">—</strong></span></div>
         <p id="ds-overspill" class="ds-overspill" aria-live="polite"></p>
       </div>
       <details class="ds-table-details">
-        <summary>Every fixed opening at <span id="ds-table-angle">2θ = 5°</span></summary>
+        <summary>Every listed opening at <span id="ds-table-angle">2θ = 5°</span></summary>
         <div class="ds-table-scroll"><table class="ds-table"><thead><tr><th scope="col">Fixed DS</th><th scope="col">Opening</th><th scope="col">Calculated L</th><th scope="col">Relative length at this angle</th></tr></thead><tbody id="ds-rows"></tbody></table></div>
       </details>
-      <p class="ds-limit">This is a geometric length screen, not a measured intensity profile. Actual beam tails, sample alignment, and holder clearance require an instrument check.</p>
-    </section>
-
-    <section class="panel ds-programmable" aria-labelledby="ds-auto-title">
-      <div class="section-heading"><span class="step">2</span><h2 id="ds-auto-title">What changes with a programmable DS?</h2></div>
-      <p>A fixed DS keeps its angular opening while L changes across the scan. The workbook's automatic setting instead changes the DS angle to target an entered irradiated length.</p>
-      <div class="ds-auto-grid">
-        <div class="field"><label for="ds-target">Target L <span>mm</span></label><input id="ds-target" type="number" min="0.1" max="1000" step="any" value="5"></div>
-        <div class="field"><label for="ds-auto-two-theta">Scan angle 2θ <span>°</span></label><input id="ds-auto-two-theta" type="range" min="2" max="90" step="1" value="5"><div class="ds-range-ends"><span>2°</span><output id="ds-auto-two-theta-readout" for="ds-auto-two-theta">5°</output><span>90°</span></div></div>
-        <div class="ds-auto-card" aria-live="polite"><span>Calculated DS at selected 2θ</span><strong id="ds-auto-angle">0.0451°</strong><small id="ds-auto-context">for 5 mm at 2θ = 5°</small></div>
-      </div>
-      <p id="ds-auto-range" class="ds-auto-range" aria-live="polite"></p>
-      <p class="ds-limit">The automatic angle follows the workbook's separate <code>PDSCalc!D</code> formula; it is not obtained by reversing the fixed-slit equation. Check the instrument range: the workbook flags calculated settings above <strong>0.61°</strong> at the scan stop.</p>
+      <p class="ds-limit">A geometric length, not a measured profile; check tails, alignment and holder clearance on the instrument. Available openings depend on the instrument.</p>
     </section>
 
     <section class="panel ds-notes" aria-labelledby="ds-notes-title">
       <h2 id="ds-notes-title">How to interpret the picture</h2>
       <div class="ds-note-grid">
-        <div><h3>L and W run in different directions</h3><p><strong>L</strong> is the calculated illuminated length in the scattering plane, controlled here by DS and ω. The <a href="training.html">Mask guide</a> uses <strong>W</strong> for the transverse beam FWHM from a mask pair. A sample fit check needs both directions.</p></div>
-        <div><h3>Intensity is a tradeoff</h3><p>A wider DS can admit more incident flux, but overspill can illuminate the holder and add unwanted signal. A variable DS can help high-angle intensity, while changing focusing conditions can affect resolution. These controls do not predict intensity ratios or a measured peak shape.</p></div>
+        <div><h3>L and W are controlled by different optics</h3><p><strong>L</strong>, the irradiated length in the scattering plane, is determined by the DS and ω. <strong>W</strong>, the axial width, is determined by the beam mask; see <a href="training.html">beam masks</a>. A sample-fit check needs both.</p></div>
+        <div><h3>Intensity is a trade-off</h3><p>A wider DS gives more flux but can spill onto the holder, especially at low angles where L is longest. A programmable DS can keep L constant; see <a href="slits.html">fixed, programmable and automatic DS</a>.</p></div>
       </div>
-      <details><summary>Workbook geometry and sources</summary><div class="detail-body"><p>For fixed DS, this page evaluates the workbook <code>PDSCalc!C</code> equation with source-to-sample radius R = 240 mm, DS opening α in degrees, and ω = 2θ/2: <code>L = 240/(sin ω/tan(α/2) + cos ω) + 240/(sin ω/tan(α/2) − cos ω)</code>. It approaches <code>R α(rad)/sin ω</code> when ω is much larger than α/2. The automatic example evaluates workbook <code>PDSCalc!D</code>: <code>α = 1.75 × degrees[atan(sin ω/(480/Ltarget + cos ω))]</code>.</p><p><a href="https://www.malvernpanalytical.com/en/assets/Empyrean%20MultiCore%20Brochure%20with%20extended%20example%20data_tcm50-99472.pdf">Malvern Panalytical MultiCore brochure, Fig. 5</a> · <a href="https://journals.iucr.org/j/issues/2023/03/00/dv5004/">IUCr education article, Part II, Eq. 52</a> · <a href="https://journals.iucr.org/j/issues/1999/01/00/gl0561/">IUCr Rietveld guidelines</a>.</p></div></details>
+      <details><summary>Geometric model and sources</summary><div class="detail-body"><p>Assuming a point source at distance R, a flat sample on the goniometer axis, straight rays and ω = 2θ/2, the limiting rays land at R sin(α/2)/sin(ω ± α/2) either side of the centre, so</p><p><code>L = R/(sin ω / tan(α/2) + cos ω) + R/(sin ω / tan(α/2) − cos ω)</code></p><p>which approaches <code>R α(rad) / sin ω</code> when ω is much larger than α/2. A finite source size and the actual beam profile are not included.</p><p><a href="https://journals.iucr.org/j/issues/2023/03/00/dv5004/" target="_blank" rel="noopener noreferrer">IUCr education article, Part II, Eq. 52</a> · <a href="https://journals.iucr.org/j/issues/1999/01/00/gl0561/" target="_blank" rel="noopener noreferrer">IUCr Rietveld refinement guidelines</a>.</p></div></details>
+      <div class="related-links"><a href="calculator.html">Instrument example: Malvern Panalytical Empyrean iCore/MultiCore →</a></div>
     </section>
+    <nav class="page-steps" aria-label="General XRD optics pages">
+      <a class="page-prev" href="index.html#learn"><span>← Back to</span><strong>Learning path</strong></a>
+      <span class="page-count">1 / 5</span>
+      <a class="page-next" href="soller.html"><span>Next →</span><strong>Soller slits</strong></a>
+    </nav>
   </main>
+<footer class="landing-footer">
+    <div class="landing-inner">
+      <p class="footer-brand">PXRD Optics</p>
+      <p>An independently developed educational resource. It is not an official product of, or endorsed by, Malvern Panalytical or Anton Paar. Instrument-specific results apply only within the stated configuration and should be checked against the actual instrument.</p>
+    </div>
+  </footer>
 </body>
 </html>
