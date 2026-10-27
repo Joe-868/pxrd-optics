@@ -2,7 +2,7 @@
 
 Interactive education and instrument-specific calculation tools for powder X-ray diffraction optics.
 
-Website: <https://joe-868.github.io/pxrd-optics/>
+Website: <https://jliu-science.github.io/pxrd-optics/>
 
 ## Overview
 
