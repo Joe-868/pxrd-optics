@@ -62,10 +62,10 @@ Users should verify calculated results against their actual instrument configura
 
 | Layer | Page | File |
 |---|---|---|
-| General XRD optics | Divergence slit | `divergent-slit.html` |
 | General XRD optics | Soller slits | `soller.html` |
-| General XRD optics | Beam masks | `training.html` |
+| General XRD optics | Divergence slit | `divergent-slit.html` |
 | General XRD optics | Fixed, programmable and automatic DS | `slits.html` |
+| General XRD optics | Beam masks | `training.html` |
 | General XRD optics | Beam geometry and sample illumination | `beam-geometry.html` |
 | Instrument-specific | Malvern Panalytical Empyrean iCore/MultiCore | `calculator.html`, `app.js` |
 | Instrument-specific | Anton Paar XRDynamic 500 | `anton-paar/` |
